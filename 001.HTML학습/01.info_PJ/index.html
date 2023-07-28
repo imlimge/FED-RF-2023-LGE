@@ -1,45 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <!-- 뷰포트: 모바일에서 실제픽셀로 변환 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>네이버 요약뉴스</title>
-</head>
-<body>
-  
-  <!-- 1. 상단영역 : 제목, 메뉴 -->
-  <header id="top" class="bx"></header>
-  
-  <!-- 2. 메인영역 : 컨텐츠 -->
-  <main id="cont" class="bx"></main>
-  
-  <!-- 3. 하단영역 : 회사정보 -->
-  <footer id="info" class="bx"></footer>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- 뷰포트: 모바일에서 실제픽셀로 변환 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>네이버 요약뉴스</title>
 
-  <!-- 
-    [ 레이아웃을 위한 요소 ]
-    div : 영역을 나누고 묶어주는 요소
+        <!-- css인터널방식 코딩영역 -->
+        <style>
+            /* CSS영역내 주석문 */
 
-    [ HTML5에서 등장한 div 친구들 ] 
-    - div에 내용을 구분하는 이름을 지어줌
-    - 의미가 있는 요소를 시멘틱태그라고 함
+            /* [모든 요소 공통 디자인 요소 : 박스모델] 
+              1. 크기 : width 가로, height 세로
+              2. 경계선 : border 
+              3. 내부여백 : padding
+              4. 외부여백 : margin
+                (여백공통방향 : top, bottom, left. right)
 
-    1. header : 머릿부분
-    2. footer : 아랫부분
-    3. main : 메인부분 (한번만 사용)
-    4. nav : 네비게이션 부분
-    5. aside : 부가정보
-    6. section : 내용구분파트
-    7. article : 독립된 내용구분파트
-    (section / article 내부에 h1~6태그를 쓸것을 권고함)
+                [ CSS 속성셋팅 형식 ]
+                선택자{
+                  속성:값;
+                }
+
+                [ CSS 선택자]
+                1. 타입선택자 : 태그명 (div,p,a 등)
+                2. 아이디선택자 : #아이디명
+                3. 클래스선택자 : .클래스명
+                4. 자식선택자 : 띄어쓰기 (div a)
+                5. 직계자식선택자 : 오른쪽꺽쇠 (div > a)
+                6. 종속선택자 : 요소명#아이디명 / 요소명.클래스명 (div.mymy -> div인데 클래스가 mymy)
+
+                */
+
+            /* 레이이아웃 박스 공통 디자인 */
+            .bx{
+              /* 크기 : w800 엔터 -> 가로크기 젠코딩 */
+              width: 800px;
+              
+              /* 외곽선 - bd 엔터 -> 외곽 젠코딩 */
+              border: 4px double darkblue;
+
+              /* 패딩 p20 엔터 -> 패딩 젠코딩*/
+              padding: 20px;
+              
+              /* 외곽선 */
+              
+            
+            
+            }
+
+            /* 메인이미지 */
+            .cimg{
+              width: 100%;
+            }
 
 
-    참고) 요소와 태그는 무엇이 다른가
-    요소(element)는 공통적인 성질을 이를 때 사용
-    태그(tag)는 구체적인 요소를 사용할 때 지칭하는 말
-    
+            /* 1.상단영역 */
+            #top{background-color: lightblue;}
+        </style>
+    </head>
+    <body>
+        <!-- 1. 상단영역 : 제목, 메뉴 -->
+        <header id="top" class="bx">
+            <!-- 1-1.제목 -->
+            <h1>네이버 요약 뉴스</h1>
+            <!-- 1.2.GNB메뉴 -->
+            <!-- GNB(Global navigation Bar) -->
+            <nav id="gnb">
+                <a href="">
+                    <!-- 상대경로 -->
+                    <img src="./images/logo.png" alt="네이버로고" style="width: 50px;"/>
+                    <!-- style속성으로 CSS를 셋팅하는 방법은 인라인방식이라고 함 -->
+                </a>
+                  
+                
+                <!-- 절대상대경로 
+                <a href=" ">
+                <img src="/001.HTML학습/01.info_PJ/images/logo.png" alt="네이버로고" />
+                </a>
+                    절대경로 
+                <a href="">
+                <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="네이버로고" />
+                </a>-->
+                
+                <a href="sub1.html">정치</a>
+                <a href="sub2.html">경제</a>
+                <a href="sub3.html">사회</a>
+                <a href="sub4.html">IT/과학</a>
+                <a href="sub5.html">TV/연예</a>
+            </nav>
+        </header>
+
+        <!-- 2. 메인영역 : 컨텐츠 -->
+        <main id="cont" class="bx">
+        <img class="cimg" src="./images/mainimg.jpg" alt="메인이미지">
+        </main>
+
+        <!-- 3. 하단영역 : 회사정보 -->
+        <footer id="info" class="bx">
+          <address>
+            서울시 강남구 역삼동 119 대호B 8F <br>
+            대표: Tom Brace Parker <br>
+            전화: 010-2222-3333
+          </address>
+
+        </footer>
+
+    <!-- 
+        [ 레이아웃을 위한 요소 ]
+        div : 영역을 나누고 묶어주는 요소
+
+        [ HTML5에서 등장한 div 친구들 ] 
+        - div에 내용을 구분하는 이름을 지어줌
+        - 의미가 있는 요소를 시멘틱태그라고 함
+
+        1. header : 머릿부분
+        2. footer : 아랫부분
+        3. main : 메인부분 (한번만 사용)
+        4. nav : 네비게이션 부분
+        5. aside : 부가정보
+        6. section : 내용구분파트
+        7. article : 독립된 내용구분파트
+        (section / article 내부에 h1~6태그를 쓸것을 권고함)
+
+
+        참고) 요소와 태그는 무엇이 다른가
+        요소(element)는 공통적인 성질을 이를 때 사용
+        태그(tag)는 구체적인 요소를 사용할 때 지칭하는 말
+        
+        [웹에서의 경로]
+        1. 상대경로 : 현재파일 위치에서 파악되는 경로
+        1) ./ - 현재위치 (또는 쓰지 않고 바로)
+        2) ../ - 상위폴더로 이동
+        
+        2. 절대경로 : http부터 쓰는 웹경로
+
+        3. 절대상대경로 : 웹 사이트 루트부터의 경로
+            -> 슬래시(/)부터 씀
+
+            -> 주의 : 절대상대경로는 서버 루트폴더가 같지 않으면 경로가 망가진다. 또는 로컬에서 직접 웹페이지를 열어도 망가짐.
    -->
-
-</body>
+    </body>
 </html>
