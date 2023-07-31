@@ -32,23 +32,44 @@
 
                 */
 
+            /* 웹폰트 CDN (Content delivery Network) */
+            @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;500;900&display=swap");
+
+            /* 웹폰트 font-family 이름 
+            font-family: 'Black Han Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+
+
+            font-family: 'Noto Sans KR', sans-serif, '나눔고딕';
+
+            값 - 콤마로 구분하여 우선순위 적용함
+            (상위체가 없으면 하위체를 적용, 이도 없으면 브라우저 기본체로  표시)
+
+            font-weight: normal;  >> fwn 글자두께 기본  
+
+
+            */
+
+            /* @import url (주소)
+                  - 외부 CSS를 불러올 때 사용하는 형식
+                  - 외부 CSS 파일을 하나로 합칠 때 많이 사용함
+                */
+
             /* 레이이아웃 박스 공통 디자인 */
-            .bx{
-              /* 크기 : w800 엔터 -> 가로크기 젠코딩 */
-              width: 800px;
-              
-              /* 외곽선 - bd 엔터 -> 외곽 젠코딩 */
-              border: 4px double rgb(0, 0, 0);
+            .bx {
+                /* 크기 : w800 엔터 -> 가로크기 젠코딩 */
+                width: 800px;
 
-              /* 패딩 p20 엔터 -> 패딩 젠코딩*/
-              padding: 20px;
-              
-              /* 마진 m0 엔터 -> 마진 젠코딩 / 마영오 ㅋㅋ */
-              margin: 0 auto;
-            
+                /* 외곽선 - bd 엔터 -> 외곽 젠코딩 */
+                border: 4px double rgb(0, 0, 0);
 
-             
-              /* 
+                /* 패딩 p20 엔터 -> 패딩 젠코딩*/
+                padding: 20px;
+
+                /* 마진 m0 엔터 -> 마진 젠코딩 / 마영오 ㅋㅋ */
+                margin: 0 auto;
+
+                /* 
               [마진/패딩 공통 개수별 정의
               margin : 4방향 ; 
               margin : 위아래 양쪽; (2개)
@@ -58,26 +79,101 @@
               양쪽 마진을 auto로 쓰면 등분할 되어 블록박스가 중앙위치함
               */
 
-              /* 텍스트 중앙 : tac -> 텍스트 중앙 젠코딩 */
-              text-align: center;
-
+                /* 텍스트 중앙 : tac -> 텍스트 중앙 젠코딩 */
+                text-align: center;
             }
 
             /* 메인이미지 */
-            .cimg{
-              width: 100%;
+            .cimg {
+                width: 100%;
             }
-
 
             /* 1.상단영역 */
-            #top{background-color: #ffe089;}
-
-
-            /* 2.메인영역 */
-            #cont{
-              margin: 20px auto;
+            #top {
+                background-color: #ffe08a;
             }
 
+            /* 타이틀 }*/
+            #top h1 {
+                color: #313131;
+                font-size: 40px;
+                font-weight: 900;
+                /* text-shadow: 10px 2px 10px #00000036; */
+                font-family: 'Noto Sans KR', sans-serif  ;
+
+            }
+            /* 메뉴링크  */
+            #gnb a {
+                text-decoration: none; /* tdn */
+                font-size: 17px; /* fz */
+                color: #313131; 
+                font-family: inherit; /* ff */
+                vertical-align: -1px; /* va-1 */
+                font-family: 'Noto Sans KR', sans-serif;
+                font-weight: 500;
+
+                /* text-shadow: 1px 1px 1px #000; >> 글씨 그림자 */
+            }
+
+            /* 가상클래스 : hover 마우스 오버 시 
+            a+a는 앞에 a요소가 있는 형제 a요소를 선택. 결과적으로 첫번째 a요소가 선택되지 않는다
+            */
+
+            #gnb a+a:hover {
+                color: #fff;
+                text-shadow: 1px 0px 9px #d5852b;
+
+                /* 글자그림자 ts 엔터-> 젠코딩
+                text-shadow: 1px 0px 2px #d5852b, 1px -20px 0px #fda159; 
+                 값 - x축 y축 블러(경계흐림) 색 콤마로 효과 추가가능 */
+
+                /* 글자데코 : 윗줄 물결모양 */
+                text-decoration: overline;
+                text-decoration-style: wavy;
+            }
+
+            /* 
+            vertical-align  인라인 세로정렬
+            top bottom middle baselime /수치
+             */
+
+            /* 로고 이미지 - vam > 젠코딩*/
+            #gnb img {
+                vertical-align: middle;
+            }
+
+            /* 2.메인영역 */
+            #cont {
+                margin: 20px auto;
+            }
+
+            /* 3.하단영역 */
+            #info{
+              background-color: #ffe08a;
+            }
+            /* 회사주소 */
+            #info address{
+              font-style: normal; /* fsn */
+              font-family: 'Noto Sans KR', sans-serif  ;
+              font-weight: 100;
+              font-size: 15px;
+            }
+
+            /* 대표자 span */
+            span.utxt{
+                text-decoration: underline; /* tdu */
+                text-decoration-style: dotted;
+                text-decoration-color: #d5852b;
+            }
+
+            /* 종속선택자로 같은 이름의 클래스인데 다른 디자인으로 변경하여 셋팅하기 */
+            b.utxt{
+                text-decoration: underline;
+                text-decoration-style: wavy;
+                text-decoration-color: #313131;
+            }
+            
+           
 
         </style>
     </head>
@@ -91,13 +187,10 @@
             <nav id="gnb">
                 <a href="">
                     <!-- 상대경로 -->
-                    <img src="./images/logo.png" alt="네이버로고" style="width: 50px;"/>
+                    <img src="./images/logo.png" alt="네이버로고" style="width: 24px" />
                     <!-- style속성으로 CSS를 셋팅하는 방법은 인라인방식이라고 함 -->
                 </a>
-                  
 
-                
-                
                 <!-- 절대상대경로 
                 <a href=" ">
                 <img src="/001.HTML학습/01.info_PJ/images/logo.png" alt="네이버로고" />
@@ -106,31 +199,44 @@
                 <a href="">
                 <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" alt="네이버로고" />
                 </a>-->
-                
-                <a href="sub1.html">정치</a> 
-                <a href="sub2.html">경제</a>
-                <a href="sub3.html">사회</a>
-                <a href="sub4.html">IT/과학</a>
+
+                <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> | <a href="sub3.html">사회</a> |
+                <a href="sub4.html">IT/과학</a> |
                 <a href="sub5.html">TV/연예</a>
             </nav>
         </header>
 
         <!-- 2. 메인영역 : 컨텐츠 -->
         <main id="cont" class="bx">
-        <img class="cimg" src="./images/mainimg.jpg" alt="메인이미지">
+            <img class="cimg" src="./images/mainimg.jpg" alt="메인이미지" />
         </main>
 
         <!-- 3. 하단영역 : 회사정보 -->
         <footer id="info" class="bx">
-          <address>
-            서울시 강남구 역삼동 119 대호B 8F <br>
-            대표: Tom Brace Parker <br>
-            전화: 010-2222-3333
-          </address>
-
+            <address>
+                서울시 강남구 역삼동 119 대호B 8F <br />
+                대표: <span class="utxt">Tom Brace Parker</span> <br />
+                전화: <b class="utxt">010-2222-3333</span>
+            </address>
         </footer>
 
-    <!-- 
+        <!-- 
+
+        [ 웹표준이란? ]
+        - 모든 브라우저에서 하나의 소스로 동일한 디스플레이 및 기능이 작동하도록 정한 웹 코딩의 표준안
+
+        [ 웹접근성이란? ]
+        - 평등의 원칙. 즉, 장애인 차별금지법에 따라 이미지(alt속성), 동영상(자막) 등에 설명을 추가하여 정보제공에 차별이 없도록 하는 것
+
+        [img요소 : 이미지 연결 요소 ]
+        - 필수속성
+        1) src : 이미지 경로
+        (source)
+        2) alt : 이미지 설명(웹접근성)
+        (alternative text - 대체텍스트 )
+
+
+
         [ 레이아웃을 위한 요소 ]
         div : 영역을 나누고 묶어주는 요소
 
@@ -166,3 +272,5 @@
    -->
     </body>
 </html>
+
+""
