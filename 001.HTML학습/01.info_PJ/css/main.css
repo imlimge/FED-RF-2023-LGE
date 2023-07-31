@@ -3,3 +3,10 @@
 
 /* 공통 외부 CSS 합치기 */
 @import url(./common.css);
+
+img.cimg {
+  margin: auto;
+  display: block;
+}
+
+
