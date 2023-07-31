@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* 서브페이지용 CSS - sub.css*/
+
+/* 공통 외부 CSS 합치기 */
+@import url(./common.css);
+
+/* 서브타이틀 */
+
+h2.shit {
+  font-size: 24px;
+  color: #313131;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  text-shadow: 1px 1px 0px #87fd00;
+}

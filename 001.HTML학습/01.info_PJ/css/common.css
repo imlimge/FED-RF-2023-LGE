@@ -1,0 +1,198 @@
+@charset "utf-8";
+/* charset 맨 위에 utf-8 인코딩 표시 필수 */
+
+/* CSS영역내 주석문 */
+
+/* [모든 요소 공통 디자인 요소 : 박스모델] 
+    1. 크기 : width 가로, height 세로
+    2. 경계선 : border 
+    3. 내부여백 : padding
+    4. 외부여백 : margin
+      (여백공통방향 : top, bottom, left. right)
+
+      [ CSS 속성셋팅 형식 ]
+      선택자{
+        속성:값;
+      }
+
+      [ CSS 선택자]
+      1. 타입선택자 : 태그명 (div,p,a 등)
+      2. 아이디선택자 : #아이디명
+      3. 클래스선택자 : .클래스명
+      4. 자손선택자 : 띄어쓰기 (div a)
+      5. 직계자식선택자 : 오른쪽꺽쇠 (div > a)
+      6. 종속선택자 : 요소명#아이디명 / 요소명.클래스명 (div.mymy -> div인데 클래스가 mymy)
+      7. 형제선택자 : 요소+요소 (a+a)
+          -> 앞의 요소가 있는 형제요소를 선택
+      8. 그룹선택자 : 선택자,선택자 (html,body,h1,p)
+          -> 여러요소를 동시에 선택함
+      
+          
+*/
+
+/* 웹폰트 CDN (Content delivery Network) */
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;500;900&display=swap");
+
+/* 웹폰트 font-family 이름 
+      font-family: 'Black Han Sans', sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
+
+
+      font-family: 'Noto Sans KR', sans-serif, '나눔고딕';
+
+      값 - 콤마로 구분하여 우선순위 적용함
+      (상위체가 없으면 하위체를 적용, 이도 없으면 브라우저 기본체로  표시)
+
+      font-weight: normal;  >> fwn 글자두께 기본  
+
+
+*/
+
+/* @import url (주소)
+      - 외부 CSS를 불러올 때 사용하는 형식
+      - 외부 CSS 파일을 하나로 합칠 때 많이 사용함
+*/
+
+/* 기본 요소의 초기화 
+      -기존 기본셋팅값 중 마진/패딩 초기화*/
+html,body,h1,h2 {
+    margin: 0; /* m0엔터 */
+    padding: 0; /* p0엔터 */
+}
+
+/* 레이이아웃 박스 공통 디자인 */
+.bx {
+/* 크기 : w800 엔터 -> 가로크기 젠코딩 */
+width: 800px;
+
+/* 외곽선 - bd 엔터 -> 외곽 젠코딩 */
+/* border: 6px double rgb(0, 0, 0); */
+border: 2px solid rgb(0, 0, 0);
+
+/* 패딩 p20 엔터 -> 패딩 젠코딩*/
+padding: 20px;
+
+/* 마진 m0 엔터 -> 마진 젠코딩 / 마영오 ㅋㅋ */
+margin: 0 auto;
+
+
+/* 
+  [마진/패딩 공통 개수별 정의
+  margin : 4방향 ; 
+  margin : 위아래 양쪽; (2개)
+  margin : 위 양쪽 아래; (3개)
+  margin : 위 오른 아래 왼; (4개- 시계방향)]
+
+  양쪽 마진을 auto로 쓰면 등분할 되어 블록박스가 중앙위치함
+  */
+
+  /* 텍스트 중앙 : tac -> 텍스트 중앙 젠코딩 
+  text-align: center;*/
+
+ /* 둥근모서리 : brad20 -> 젠코딩 */
+ border-radius: 20px;
+}
+
+
+  /* 상단, 하단만 중앙정렬 */
+  #top, #info {
+    text-align: center;
+  }
+
+
+ 
+
+
+/* 메인이미지 
+            100%, 70%등 퍼센트의 기준은 싸고있는 블록박스의 content 영역을 말함 (보더/패딩 제외 내부영역)*/
+.cimg {
+    width: 70%;  
+}
+
+/* 1.상단영역 */
+#top {
+    background-color: #fff;
+}
+
+/* 타이틀 }*/
+#top h1 {
+    color: #313131;
+    font-size: 50px;
+    font-weight: 900;
+    /* text-shadow: 10px 2px 10px #00000036; */
+    font-family: "Noto Sans KR", sans-serif;
+    margin: 40px;
+}
+/* 메뉴링크  */
+#gnb a {
+    text-decoration: none; /* tdn */
+    font-size: 17px; /* fz */
+    color: #313131;
+    vertical-align: -1px; /* va-1 */
+    font-family: "Noto Sans KR", sans-serif;/* ff */
+    font-weight: 500;
+    margin: 5px;
+    /* text-shadow: 1px 1px 1px #000; >> 글씨 그림자 */
+}
+
+/* 가상클래스 : hover 마우스 오버 시 
+            a+a는 앞에 a요소가 있는 형제 a요소를 선택. 결과적으로 첫번째 a요소가 선택되지 않는다
+            */
+
+#gnb a + a:hover {
+    color: #4e4e4e;
+    text-shadow: 2px 2px 0px #87fd00;
+
+    /* 글자그림자 ts 엔터-> 젠코딩
+                text-shadow: 1px 0px 2px #d5852b, 1px -20px 0px #fda159; 
+                 값 - x축 y축 블러(경계흐림) 색 콤마로 효과 추가가능 */
+
+    /* 글자데코 : 윗줄 물결모양 */
+    text-decoration: overline;
+    text-decoration-style: dashed;
+}
+
+/* 
+            vertical-align  인라인 세로정렬
+            top bottom middle baselime /수치
+             */
+
+/* 로고 이미지 - vam > 젠코딩*/
+#gnb img {
+    vertical-align: middle;
+}
+
+/* 2.메인영역 */
+#cont {
+    margin: 20px auto;
+}
+
+/* 3.하단영역 */
+#info {
+    background-color: #fff;
+}
+/* 회사주소 */
+#info address {
+    font-style: normal; /* fsn */
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+}
+
+/* 대표자 span */
+span.utxt {
+    text-decoration: underline; /* tdu */
+    text-decoration-style: wavy;
+    text-decoration-color: #87fd00;
+}
+
+/* 종속선택자로 같은 이름의 클래스인데 다른 디자인으로 변경하여 셋팅하기 */
+b.utxt {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #313131;
+}
+
+nav {
+    margin: 0 0 30px 0;
+}
