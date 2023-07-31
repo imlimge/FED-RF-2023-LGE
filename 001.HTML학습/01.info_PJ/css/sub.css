@@ -14,3 +14,25 @@ h2.shit {
   text-align: center;
   text-shadow: 1px 1px 0px #87fd00;
 }
+
+
+figcaption {
+  font-size: 14px;
+  color: #888888;
+}
+
+
+p {
+  margin: 2em 50px;
+}
+
+
+.a {
+  text-align: center;
+}
+
+figcaption{
+  text-align: center;
+}
+
+              
