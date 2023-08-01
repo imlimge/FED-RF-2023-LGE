@@ -55,7 +55,7 @@ h2.shit {
       */
 
     /* 박스그림자 */
-    box-shadow: inset 7px 2px 80px -7px #87fd00;
+    box-shadow: inset 7px 2px 95px 11px #87fd00;
     /* 
     [ box-shadow 속성 : bsh ]
     - 박스 외부/내부 그림자 설정속성
@@ -186,16 +186,17 @@ h2.st1 {
   /* 디자인 적용휘해 display 변경하기 */
   display: inline-block; /* dib */
   text-align: center; /* tac */
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   border: 1px solid #87fd00;
   border-radius: 50%; /* 원형 */
-  /* 줄간격으로 세로 글자 중앙 lw70px (px안하면 배수) */
-  line-height: 70px;
+  /* 줄간격으로 세로 글자 중앙 lw90px (px안하면 배수) */
+  line-height: 90px;
 
   /* a요소 기본 글자색, 밑줄없앰 */
   color: #87fd00;
   text-decoration: none;
+  letter-spacing: 4px;
 
 }
 
