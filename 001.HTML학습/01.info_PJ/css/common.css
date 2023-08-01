@@ -63,7 +63,16 @@ html,body,h1,h2,figure {
 /* 레이이아웃 박스 공통 디자인 */
 .bx {
 /* 크기 : w800 엔터 -> 가로크기 젠코딩 */
-width: 800px;
+
+/* 최대가로크기 maw1000px 1000px보다 안커지고 작을경우 auto로 전환함(부모박스 크기로 맞춤) */
+max-width: 900px;
+
+/* 
+최소가로크기 min-width 
+mw700px
+min-width: 700px;
+최소 가로크기를 설정하면 최소크기보다 작아지지 않는다
+*/
 
 /* 외곽선 - bd 엔터 -> 외곽 젠코딩 */
 /* border: 6px double rgb(0, 0, 0); */

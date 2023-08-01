@@ -4,14 +4,11 @@
 /* 공통 외부 CSS 합치기 */
 @import url(./common.css);
 
-
-
 /* 서브페이지 공통 글자 설정 */
-#cont{
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 300;
+#cont {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
 }
-
 
 /* 서브타이틀 */
 
@@ -58,7 +55,7 @@ h2.shit {
       */
 
     /* 박스그림자 */
-    box-shadow: inset 7px 2px 61px -7px #87fd00;
+    box-shadow: inset 7px 2px 80px -7px #87fd00;
     /* 
     [ box-shadow 속성 : bsh ]
     - 박스 외부/내부 그림자 설정속성
@@ -97,7 +94,7 @@ h2.st1 {
 }
 /* IT/과학 배경이미지 */
 .st4 {
-    background: url(../images/afig4.jpg) no-repeat 0 -200px / cover;
+    background: url(../images/afig4.jpg) no-repeat center / cover;
 }
 
 /* TV/연예 */
@@ -112,34 +109,28 @@ h2.st1 {
     color: #00af26;
 }
 
-
-
-
 /* 언론사로고 */
-.prlogo img{
-  height: 32px;
+.prlogo img {
+    height: 32px;
 }
-
-
 
 /* 이미지는 기본 비율을 가지고 있어서 가로, 세로 중
 한쪽만 크기를 주면 나머지 방향은 자동으로 비율을 유지함. 
 가로 세로 다 주면 비율이 깨짐 */
 
 /* 기사타이틀 */
-.atit{
-  font-size: 26px;
+.atit {
+    font-size: 26px;
 }
 
 /* 기사이미지 박스 */
-.afig{
-  margin-bottom: 20px;
+.afig {
+    margin-bottom: 20px;
 }
 
 /* 기사이미지 */
-.afig img{
-  width: 70%;
-
+.afig img {
+    width: 70%;
 }
 
 /* 기사이미지 설정 */
@@ -149,31 +140,78 @@ h2.st1 {
     text-align: center;
 }
 
-
 /* 기사 문단 */
-.acont p{
-  font-size: 17px;
-  color: #303038;
-  /* 자간 ls */
-  letter-spacing: 1px;
-  /* 단어간격 ws */
-  word-spacing: 5px;
-  /* 양쪽정렬 taj */
-  text-align: justify;
-  
+.acont p {
+    font-size: 17px;
+    color: #303038;
+    /* 자간 ls */
+    letter-spacing: -1px;
+    /* 단어간격 ws */
+    word-spacing: 5px;
+    /* 양쪽정렬 taj */
+    text-align: justify;
+    /* 줄간격 lh1.2 글자 라인간 간격 조정. 숫자만 쓰면 배수. 글자 높이값의 1배 2배 1.2배 px도 가능*/
+    line-height: 1.56;
+    /* --> 줄간격의 응용은 버튼 등의 글자를 세로 중앙에 오게 할 때 박스 높이값만큼 준다 */
+
 }
+
+/* 유튜브 동영상 */
+.mvbx {
+    
+    height: 400px;
+    /* 
+    div와 같은 block요소는
+    width 설정을 하지 않으면  width:auto로 자동설정됨
+    이는 싸고 있는 박스 컨텐트 영역을 자동으로 채워준다
+    */
+
+
+
+}
+
+.mvbx iframe{
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* 기사원문 */
+.alink{
+  text-align: right;
+
+}
+.alink a{
+  /* 디자인 적용휘해 display 변경하기 */
+  display: inline-block; /* dib */
+  text-align: center; /* tac */
+  width: 70px;
+  height: 70px;
+  border: 1px solid #87fd00;
+  border-radius: 50%; /* 원형 */
+  /* 줄간격으로 세로 글자 중앙 lw70px (px안하면 배수) */
+  line-height: 70px;
+
+  /* a요소 기본 글자색, 밑줄없앰 */
+  color: #87fd00;
+  text-decoration: none;
+
+}
+
+/* 마우스 오버 시 변경 */
+.alink a:hover{
+  color: #000;
+  background-color: #87fd00;
+  box-shadow: 0 0 3px 5px #e3ffc2;
+}
+
 
 
 
 .a {
     text-align: center;
-} 
-
-
-
-
-
- 
+}
 
 .b {
     padding: 50px;
