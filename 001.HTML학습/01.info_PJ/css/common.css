@@ -55,7 +55,7 @@
 
 /* 기본 요소의 초기화 
       -기존 기본셋팅값 중 마진/패딩 초기화*/
-html,body,h1,h2 {
+html,body,h1,h2,figure {
     margin: 0; /* m0엔터 */
     padding: 0; /* p0엔터 */
 }

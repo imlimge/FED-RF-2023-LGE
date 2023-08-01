@@ -4,35 +4,182 @@
 /* 공통 외부 CSS 합치기 */
 @import url(./common.css);
 
+
+
+/* 서브페이지 공통 글자 설정 */
+#cont{
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+}
+
+
 /* 서브타이틀 */
 
 h2.shit {
-  font-size: 24px;
-  color: #313131;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 900;
-  text-align: center;
-  text-shadow: 1px 1px 0px #87fd00;
+    font-size: 24px;
+    color: #313131;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 1px 1px 0px #87fd00;
+
+    /* 
+
+      [ outline 요소 ]
+      box모델의 필수속성은 아니지만
+      박스의 외곽선을 표현해주며
+      박스자체에 크기에 영향을 주지 않음
+      outline : 두께 종류 색상
+      -> border와 셋팅이 같음
+      단, border-radius 둥근 모서리는 보더에만 적용되었으나 아웃라인도 적용 됨
+      ->주로 사용되는 예는 input 입력창에서 포커스가 갈 경우 외곽선 표시가 됨
+   
+    */
+
+    outline: 1px solid #87fd00;
+    padding: 40px;
+    border-radius: 10px;
+
+    /* 배경넣기 : 한번에 쓰기 
+  background: 색이반고윙/크;   bg엔터
+              배경색 이미지 반복 고정 위치/크기
+    */
+
+    /* 배경넣기 : 속성별 쓰기
+      
+  -배경이미지
+      background-image: url(../images/afig4.jpg);
+      -반복여부
+      background-repeat: no-repeat;
+      -배경위치 : 가로 세로 
+      background-position: center;
+      -배경크기 : 가로 세로
+      background-size: cover; (bgz  contain이 기본설정)
+      */
+
+    /* 박스그림자 */
+    box-shadow: inset 7px 2px 61px -7px #87fd00;
+    /* 
+    [ box-shadow 속성 : bsh ]
+    - 박스 외부/내부 그림자 설정속성
+    - 값: x축 y축 blur경계 spread확장 색
+    text-shadow와 달리 spread 속성이 있음 이것은 그림자를 커지게 함.
+    - 내부 그림자 옵션: inset
+    - 그림자 다중설정 : 콤마로 연속사용가능
+       
+    ex) 
+    box-shadow:
+    inset 7px 2px 61px -7px #87fd00,
+    1px -4px 18px -6px #87FD02;
+
+    ex)
+    box-shadow: inset 50px 23px 61px 0px #54ffd4, inset -48px -19px 61px 3px #fffc26;
+  */
+
+    /* 마진 아래: mb30 */
+    margin-bottom: 30px;
+}
+
+/* 정치 배경이미지 */
+h2.st1 {
+    background: url(../images/afig1.jpg) no-repeat 0 -20px / cover;
+    color: #0d3ff3;
+}
+
+/* 경제 배경이미지 */
+.st2 {
+    background: url(../images/afig2.jpg) no-repeat center/cover;
+}
+/* 사회 배경이미지 */
+
+.st3 {
+    background: url(../images/afig3.jpg) no-repeat center/cover;
+}
+/* IT/과학 배경이미지 */
+.st4 {
+    background: url(../images/afig4.jpg) no-repeat 0 -200px / cover;
+}
+
+/* TV/연예 */
+#cont .st5 {
+    /* background: url(../images/afig5.jpg) no-repeat 0 -40px/cover; */
+    /* 배경이미지 */
+    background-image: url(../images/afig5.jpg);
+    /* 배경위치 변경(세로 y축) */
+    background-position-y: -40px;
+
+    /* #cont .st5로 하면 우선순위 높일 수 있음. 글자색 개별 변경 가능 */
+    color: #00af26;
 }
 
 
-figcaption {
-  font-size: 14px;
-  color: #888888;
+
+
+/* 언론사로고 */
+.prlogo img{
+  height: 32px;
 }
 
 
-p {
-  margin: 2em 50px;
+
+/* 이미지는 기본 비율을 가지고 있어서 가로, 세로 중
+한쪽만 크기를 주면 나머지 방향은 자동으로 비율을 유지함. 
+가로 세로 다 주면 비율이 깨짐 */
+
+/* 기사타이틀 */
+.atit{
+  font-size: 26px;
 }
+
+/* 기사이미지 박스 */
+.afig{
+  margin-bottom: 20px;
+}
+
+/* 기사이미지 */
+.afig img{
+  width: 70%;
+
+}
+
+/* 기사이미지 설정 */
+.afig figcaption {
+    font-size: small;
+    color: #888888;
+    text-align: center;
+}
+
+
+/* 기사 문단 */
+.acont p{
+  font-size: 17px;
+  color: #303038;
+  /* 자간 ls */
+  letter-spacing: 1px;
+  /* 단어간격 ws */
+  word-spacing: 5px;
+  /* 양쪽정렬 taj */
+  text-align: justify;
+  
+}
+
 
 
 .a {
-  text-align: center;
+    text-align: center;
+} 
+
+
+
+
+
+ 
+
+.b {
+    padding: 50px;
 }
 
-figcaption{
-  text-align: center;
-}
-
-              
+/*
+figcaption {
+    text-align: center;
+} */
