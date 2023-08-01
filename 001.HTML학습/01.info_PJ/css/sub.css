@@ -86,7 +86,7 @@ h2.st1 {
 /* 경제 배경이미지 */
 h2.st2 {
     background: url(../images/afig2.jpg) no-repeat center/cover;
-    color:hotpink ;
+    color:rgb(255, 51, 153) ;
 }
 /* 사회 배경이미지 */
 
@@ -108,8 +108,8 @@ h2.st5 {
     /* 배경위치 변경(세로 y축) */
     background-position-y: -40px;
 
-    /* #cont .st5로 하면 우선순위 높일 수 있음. 글자색 개별 변경 가능 */
-    color: #00af26;
+    /* #cont .st5? / h2.st5로 하면 우선순위 높일 수 있음. 글자색 개별 변경 가능 */
+    color: #ffe605;
 }
 
 /* 언론사로고 */
