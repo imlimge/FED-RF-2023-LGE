@@ -86,15 +86,18 @@ h2.st1 {
 /* 경제 배경이미지 */
 .st2 {
     background: url(../images/afig2.jpg) no-repeat center/cover;
+    color:hotpink ;
 }
 /* 사회 배경이미지 */
 
 .st3 {
     background: url(../images/afig3.jpg) no-repeat center/cover;
+    color: #da05ff;
 }
 /* IT/과학 배경이미지 */
 .st4 {
     background: url(../images/afig4.jpg) no-repeat center / cover;
+    color: #ff2c0b;
 }
 
 /* TV/연예 */
