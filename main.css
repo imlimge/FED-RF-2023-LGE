@@ -1,0 +1,83 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;500;900&display=swap");
+
+body {
+  background-color: yellow;
+  font-family: "Noto Sans KR", sans-serif;
+
+}
+
+
+a{
+  text-decoration: none;
+}
+
+h1{
+  font-size: 70px;
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: center;
+}
+
+
+.bx1{
+  background-color: #ffffff;
+  max-width: 70%;
+  border: 3px solid rgb(0, 0, 0);
+ 
+  border-radius: 30px;
+
+  padding: 20px;
+  margin: 30px auto;
+  
+
+}
+
+
+.BigBox{
+  margin: 30px;
+  text-align: center;
+}
+
+
+.bx2{
+  color: #ffffff;
+  display: inline-block;
+  max-width: 300px;
+  min-width: 30%;
+  border: 3px solid rgb(0, 0, 0);
+ 
+  border-radius: 30px;
+
+  padding: 20px;
+  margin: 0 10px 10px 0;
+  background-color: #000000d4;
+}
+
+.part1 a{
+  color: white;
+}
+
+.part1 a:hover{
+  color: yellow;
+}
+
+.bx3{
+  display: inline-block;
+  max-width: 40%;
+  
+  
+  border: 3px solid rgb(0, 0, 0);
+ 
+  border-radius: 30px;
+
+  padding: 20px;
+  margin: 0px;
+  background-color: rgba(255, 255, 255, 0.413);
+
+  text-align: left;
+
+  width: 100%;
+  
+  margin-right: 20px;
+}
+
