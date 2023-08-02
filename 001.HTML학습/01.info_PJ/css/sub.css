@@ -159,6 +159,35 @@ h2.st5 {
 
 }
 
+/* 강조em요소 디자인변경 */
+.acont p em{
+    /* 이탤릭해제 */
+    font-style: normal;
+    /* 글자색 변경 */
+    color: #0d3ff3;
+    /* 글자 두껍게 */
+    font-weight: bold;
+    /* 글자그림자 */
+    text-shadow: 2px 2px 2px yellow;
+
+}
+
+/* 마크 */
+.acont p mark {
+    display: block;
+    width: 70%;
+    background-color: lightgray;
+    text-align: center;
+    margin: 15px auto;
+    padding: 55px 50px;
+    font-size: 20px;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    color: darkslategray;
+    font-size: medium;
+}
+
+
 /* 유튜브 동영상 */
 .mvbx {
     
@@ -170,8 +199,64 @@ h2.st5 {
     */
 
 
+}
+
+/* 인용블록 영역 */
+.bqbx{
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 14px;
+  border-top: 1px dashed #d5d5d5;
+  border-bottom: 1px dashed #d5d5d5;
 
 }
+
+
+
+/* 인용블록 이미지 */
+.bqbx img{
+  float: right;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.bqbx blockquote{
+
+  padding: 15px 0;
+  line-height: 2;
+
+
+}
+
+
+.desc {
+  border-top: 1px dashed #CCC;
+  border-bottom: 1px dashed #CCC;
+  padding: 20px 0;
+}
+
+.desc div{
+  padding: 15px 0;
+}
+
+
+
+/* article 제목공통 - .atbx */
+.atbx h5{
+
+  /* 배경색 */
+  background-color: #ebebeb;
+  /* 패딩 */
+  padding: 10px 20px;
+  display: inline-block;
+  border-radius: 31px;
+  box-shadow: inset 1.9px 2.4px 2.5px #87fd00;
+  font-size: 17px;
+  color: #767676;
+  margin: 0;
+}
+
+
 
 .mvbx iframe{
   border: none;

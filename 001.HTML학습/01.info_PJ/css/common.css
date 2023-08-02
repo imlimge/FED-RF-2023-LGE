@@ -55,7 +55,7 @@
 
 /* 기본 요소의 초기화 
       -기존 기본셋팅값 중 마진/패딩 초기화*/
-html,body,h1,h2,figure {
+html,body,h1,h2,figure, blockquote {
     margin: 0; /* m0엔터 */
     padding: 0; /* p0엔터 */
 }
@@ -106,7 +106,7 @@ margin: 0 auto;
   /* 상단, 하단만 중앙정렬 */
   #top, #info {
     text-align: center;
-  }
+}
 
 
  
