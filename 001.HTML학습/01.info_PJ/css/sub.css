@@ -297,6 +297,237 @@ h2.st5 {
 }
 
 
+/* 오늘의 작품 & 느낌 */
+
+.work{
+  text-align: center;
+  /* 배경색 */
+  /* background-color: lightcoral; */
+
+  background-image: linear-gradient(56deg, #4e3d2c 24%, #ed5a38 55%);
+  background-clip: content-box;
+  /* 그라데이션 -> 이미지로 bgi 
+    [ 선형 그라데이션 : linear gradient ]
+    background-image: linear-gradient(방향, 색1, 색2)
+    background-image: linear-gradient(방향, 색1 몇%, 색2몇%)
+    background-image: linear-gradient(각도, 색1 몇%, 색2몇%)
+    -옵션
+      1.방향 : to top, to bottom, to left, to right
+      2.각도 : 각도deg
+      3.콤마로 나열된 색상에 %를 뒤에 쓰면 비율 조정가능
+
+    */
+    border: 10px dotted orange ;
+    padding: 50px;
+
+    /* 
+      배경옵션 추가
+      background-clip : 배경이 적용되는 범위 설정
+      1. border-box -> 보더까지 적용 (기본값)
+      2. padding-box -> 패딩까지 적용
+      3. content-box -> 내용영역만 적용 (패딩, 보더 빠짐)
+
+
+
+
+    */
+
+}
+
+
+
+
+
+/* 작품 타이틀 */
+.work h3{
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: #87fd00;
+    padding-top: 20px;
+
+}
+
+/* 작품이미지 */
+.work img{
+  border: 15px ridge gold;
+  /* ridge - 액자틀모양 */
+  background-clip: content-box;
+  box-shadow: 6px 8px 10px rgba(0, 0, 0, 0.926);
+  
+}
+
+
+/* 작품명 */
+.work figcaption{
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  color: #87fd00;
+  
+
+}
+
+/* 작품명 인용구 */
+.work figcaption cite{
+  font-style: normal;
+  padding: 10px;
+}
+
+
+/* 뉴스파트 공통 class */
+.nbx{
+  border-top: 1px dashed #87fd00;
+  margin: 20px 0;
+  padding: 20px 0;
+}
+
+
+
+/* 뉴스파트 공통 a 요소 */
+.nbx a{
+  /* 글자크기 fz */
+  font-size: 17px;
+  /* 줄간격 lh */
+  line-height: 2.5;
+  /* 글자색 c */
+  color: #222;
+  /* 밑줄없앰  */
+  text-decoration: none;
+
+}
+/* 공통 마우스오버 */
+.nbx a:hover{
+  color: #87fd00;
+  text-shadow: 1px 1px 1px #000;
+
+}
+
+/* 뉴스 타이틀 공통 */
+.nbx h3{
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: normal;
+  font-size: 30px;
+  background-image: linear-gradient(to right,#87fd00,transparent );
+  padding: 10px;
+
+}
+
+/* 한줄 말줄임표시하기 공통처리 */
+.nbx li, .nbx dd, .nbx td {
+  /* 1.줄바꿈 방지 wh */
+  white-space: nowrap;
+  /* 2.넘치는 컨텐츠 숨기기 of */
+  overflow: hidden;
+  /* 3.넘치는 글자 말줄임표시 tv */
+  text-overflow: ellipsis;
+ 
+  /*
+  추가)여러줄일때 말줄임은 아래 3가지 추가 
+  
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;  (: 라인수;)
+    -webkit-box-orient: vertical;
+    단, 박스 높이값을 글자가 보일만큼 조절함'
+    ->> white-space: nowrap; 없음 
+  */
+
+
+}
+
+
+/* 주요뉴스 ul */
+.cnews ul li::before{
+  content: '🍔';
+
+}
+.cnews ul li::after{
+  content: '입니다🧀';
+
+}
+
+
+/* 주요뉴스 li별 글자색 바꾸기 */
+.cnews li:first-child a{
+  color:red
+}
+.cnews li:nth-child(2) a{
+  color:blue
+}
+.cnews li:last-child a{
+  color:green
+}
+
+
+
+
+
+
+/* 분야별 뉴스 제목 */
+
+.snews dt{
+  display: inline-block;
+  border: 2px double #87fd00;
+  border-radius: 100px;
+  padding: 15px;
+  background-color: #e8ffcd;
+  margin-top: 35px;
+}
+
+
+
+/* dd앞에 가상요소로 블릿넣기 */
+
+.snews dd::before{
+  content: '🍦';
+}
+
+
+/* 
+  [ CSS 가상요소 : before, after ]
+  - 모든 요소는 맨앞과 맨뒤에 가상요소를 사용할 수 있다.
+  - 맨앞은 before, 맨뒤는 after
+  - 필수속성 : content
+  - 이미지는 url()사용
+
+*/
+
+
+/*  분야별뉴스 dt별 글자색, 배경색변경하기 */
+.snews dt:first-of-type{
+  color: red;
+  background-color: #d6fe6e;
+  border-color: #0d3ff3;
+}
+.snews dt:nth-of-type(2){
+  color: blue;
+  background-color: #6efee8;
+
+}
+.snews dt:last-of-type {
+  color: rgb(219, 100, 255);
+  background-color: #ecfffc;
+  border-color: #39ffba;
+
+}
+/* 
+[ 자식요소 선택 가상클래스 : 자식요소 종류가 같아야함! ]
+    요소:first-child -> 첫번째 자식요소
+    요소:nth-child(n) -> n번째 자식요소
+    요소:last-child -> 마지막째 자식요소
+
+[ 여러종류가 섞여 있을 경우 형제 선택하기 ]
+    요소:first-of-type -> 같은 요소 중 첫번째
+    요소:nth-of-type(n) -> 같은 요소 중 n번째
+    요소:last-of-type -> 같은 요소 중 마지막째 
+    
+    단, n은 1부터
+  
+*/
+
+
 
 
 .a {
