@@ -228,13 +228,14 @@ h2.st5 {
 
 }
 
-
+/* 주해 영역 */
 .desc {
   border-top: 1px dashed #CCC;
   border-bottom: 1px dashed #CCC;
   padding: 20px 0;
 }
 
+/* 주해 블록 */
 .desc div{
   padding: 15px 0;
 }
