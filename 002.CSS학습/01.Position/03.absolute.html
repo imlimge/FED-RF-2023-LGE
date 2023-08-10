@@ -5,20 +5,21 @@
     <title>03. absolute 포지션</title>
     <style>
         .bx{
-            width: 100px;
-            height: 100px;
+            width: 300px;
+            height: 300px;
             border: 2px solid blue;
             text-align: center;
             font-size: 24px;
             font-weight: bold;/* fwb */
             /* 글자세로중앙 */
-            line-height: 100px;
+            line-height: 300px;
         }
 
         /* 첫번째 앱솔루트 */
         #a1{
 
             position: absolute; /* poa */
+
 
             /************************************* 
 
@@ -79,7 +80,41 @@
                 크기를 설정할 수 없기때문이다
                 - 일바적으로 앱솔루트 포지션 요소는 블록이다
 
-                
+                4. 앱솔루트끼리는 서로 겹친다
+
+                5. 앱솔루트 자식요소는 부모 박스가 overflow:hidden으로
+                셋팅되어있을때 부모자격이 있어야만 숨겨진다.
+
+
+                6. 위치설정값과 값은 방향의 마진만 적용 됨
+                예컨대 bottom으로 위치이동하였으면 margin-bottom만 적용 된다
+                (위치이동값이 없는 앱솔루트의 마진은?
+                기본기준위치인 top, left를 기준하므로 같은방향의 마진만 적용된다)
+
+                7. 위치이동값의 초기화는?
+                top: 50px -> top: auto
+                초기화는 언제 하는가
+                > 기존에 셋팅된 위치 이동값을 다른 기준으로 변경할 경우
+                초기화를 사용한다
+                예) top: 30px;
+                -> bottom기준으로 변경할 경우
+                top: auto;
+                bottom: 50px;
+
+
+                8. 위치이동값을 전부 다 쓰는경우도 있다
+                -> 부모박스를 가득 채우거나 일정위치를 잡고
+                크기가 유동적이어야 할 때 사용함
+
+                예) 부모박스를 채우는 앱솔루트는?
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                (단, width, height값을 설정 안 함)
+
+
 
 
             *************************************/
@@ -99,6 +134,12 @@
             background: url(./images/ab1.jpg)
             no-repeat center/cover;
 
+            /* 위치설정값과 값은 방향의 마진만 적용 됨 */
+            margin-bottom: 100px;
+            margin-right: 100px;
+
+            /* margin-top: 100px;
+            margin-left: 100px; */
 
 
         }
@@ -108,78 +149,12 @@
             position: relative;  /* por */
             
             /* 위치이동값 */
-            top: 50px;
-            left: 50px;
+            top: 168px;
+            left: 205px;
             background: url(./images/ab5.jpg)
             no-repeat center/cover;
 
-           
-            /******************************** 
-            
-            [ 2. relative 포지션 ]
-            - 렐러티브 > 라고 읽기
-
-            1. 위치이동 속성이 적용된다
-            
-            2. 위치 이동의 기준은 원래있던 위치
-            (그래서 상대적인 즉, relative라는 단어를 사용)
-
-            3. 이동시에 다른요소에 영향이 없이 겹쳐질 수 있다
-
-            4. 원래있던 위치는 그대로 보존된다
-            (의미: 기존위치가 보존되기 때문에 본래의 디자인이 망가지지 않는다)
-
-            5. 위치값 설정시 2가지 기준으로만 세팅한다
-            - 위, 아래 중 하나
-            - 좌, 우 중 하나
-            top, left / top, right
-            bottom, left / bottom, right
-
-            6. 마진은 그대로 적용된다
-            (다른 static한 요소에 영향을 미친다 )
-            -> 본래위치에 마진이 적용된 것이므로 상대적인 이동값도 변경된 것으로 보인다
-
-            7. relative는 위치이동값을 사용하지 않으면
-            static과 똑같은 특징을 가진다
-
-            8. relative는 겹쳐질 수 있으므로 위 아래 관계가 성립한다
-                기본적인 위아래 관계는 아래와 같다
-                (1) static 보다는 항상 위
-                (2) static 포지션이 아닌경우 나중에 그려진 요소가 위
-                    (손 놓고 손등때리기)
-                (3) z-index 속성으로 숫자가 크면 위
-
-            9. 부모자격
-
-            
-
-
-
-
-            ______________________________
-
-            [ z-index란 ] - static이 아닌 포지션만 적용
-            - 겹치는 포지션을 준 경우 위치 순서를 정하여 디스플레이를 변경하는 속성
-
-            - z 는 화면 방향의 축을 의미함
-            - 기본값은 0 -> 같은 층에 있는 모든 요소는 0
-            - 숫자를 비교하여 큰 숫자가 위에 위치함
-            
-            - 기본값이 0이므로 마이너스값은 static 요소보다 아래로 내려감
-                (직접 선택툴로 안 만져지는 이유 : body보다 아래에 있어서 그렇다)            
-
-        
-            ((유의사항))
-            z-index 비교시에 형제레벨에서 먼저 비교하고
-            그 다음 하위 자손에서 비교하기 때문에 여러 부분에 z-index 주게 되면
-            위아래 관계가 복잡해져서 정리가 어려워진다
-
-
           
-
-
-            ********************************/
-            
             /* 먼저 그렸지만 z-index를 1만 줘도 위로 올라감 */
              z-index: 1;
 
@@ -193,10 +168,11 @@
             background: url(./images/ab4.jpg)
             no-repeat center/cover;
             background-color: lightgreen;
-            bottom: 10px;
-            right: -70px;
-
+            bottom: 175px;
+            right: -250px;
         }
+
+      
 
         
 
@@ -243,6 +219,11 @@
         }
 
 
+
+
+
+
+
         /* 부모를 찾는 앱솔루트 박스 */
 
         .abs{
@@ -261,7 +242,10 @@
         .a4{
             top: 0;
             left: 0;
-            /* 나의 부모는? */
+            /* 나의 부모는? .s7*/
+            width: 25%;
+            height: 40%;
+            /* 앱솔루트요소 크기를 %로 주면 부모자격박스를 기준한다 */
 
         }
 
@@ -275,18 +259,103 @@
             border: 4px dotted red;
 
         }
+/* 앱솔루트 판타롱 스타킹 */
+.a5{
+  position: absolute;
+  /* 크기를 안주면 내용만큼 늘어남 */
+  top: 30%;
+  right: 30%;
+  /* 부모는? */
 
+  outline: 2px solid red;
+}        
+/* 블록박스 내의 단독이미지 */
+.a5 img{
+  /* 
+    박스에 단일한 이미지를 넣을 경우
+    하단에 자연스런 간극이 존재한다(4px)
+
+    이것을 없애려면  vertical-align
+    인라인 요소간 세로정렬 속성의 값으로
+    top/bottom/middle 중 어떤것을 써도 하단간극이 사라진다
+
+
+  */
+vertical-align: top;
+
+
+}
+
+/* 앱솔루트끼리는 서로 겹친다 */
+.absimg{
+  width: 92px;
+  height: 115px;
+  border: 10px ridge goldenrod;
+  margin:100px auto;
+
+  /* 박스를 원형으로 만들기 */
+  border-radius: 50%;
+
+  /* 넘치는 이미지 숨기기 */
+  overflow: hidden;
+  /* 박스의 자식으로 앱솔루트가 있을 때 overflow:hidden은 
+  부모자격이 있는 박스에서만 숨길 수 있다 */
+  position: relative;
+}
+
+.absimg img{
+    position: absolute;
+  /* 젠틀앱솔루트이기 때문에 부모자격이 없는 일반 static요소여도
+  그 자리에 이미지가 가만히 있음
+  -> 앱솔루트 이미지끼리는 서로 겹쳐짐
+  위, 아래관계는 나중에 온게 위에옴
+  z-index로 위치관계 조정 가능 */
+
+
+
+}
+
+/* 두번째 이미지 닥스만 투명하게 만들기 */
+.absimg img:last-child{
+   /* 투명도 : opacity (0:투명, 0.몇:반투명, 1: 불투명 )*/
+  opacity: 0; /* op숫자 */
+  /* 트랜지션 : transition - trs
+  transition : 속성 시간 이징 지연시간(속시이지)
+  -> 두가지 속성값 변경을 애니메이션 해주는 속성 
+  시간만 사용하면 모든 속성변경을 애니메이션 함
+  시간은 초단위 s를 사용하여 표시함*/
+  transition: 0.5s;
+
+}
+
+/* 박스에 오버시 닥스보이기 */
+.absimg:hover img:last-child{
+  opacity: 1;
+}
 
     </style>
 </head>
 <body>
 
-   <div class="bx" id="r1">r1</div>
-   <div class="bx" id="s1">s1</div>
-   <div class="bx" id="a1">a1</div>
-   <div class="bx" id="r2">r2</div>
-   <div class="bx" id="s2">s2</div>
-   <div class="bx" id="a2">a2</div>
+   <div class="bx" id="r1">01.r1</div>
+   <div class="bx" id="s1">02.s1</div>
+   <div class="bx" id="a1" title="나는 젠틀앱솔루트다">03.a1</div>
+   <div class="bx" id="r2">04.r2</div>
+   <div class="bx" id="s2">05.s2</div>
+   <div class="bx" id="a2" title="나는 보이는 화면이 기준이다 부모가 없어서">06.a2</div>
+
+<!-- 앱솔루트 : 판타롱스타킹 -->
+
+<div class="a5" title="앱솔루트 판타롱 스타킹">
+  <img src="./images/ab2.jpg" alt="타노스">
+
+</div>
+
+<!-- 앱솔루트끼리는 서로 겹친다 -->
+<div class="absimg" title="앱솔루트끼리는 겹친다">
+  <img src="./images/ab3.jpg" alt="토르">
+  <img src="./images/ab4.jpg" alt="닥스">
+</div>
 
 
 <!-- 부모를 찾는 앱솔루트 -->
@@ -295,9 +364,9 @@
         <div class="bx2 s7">s7
             <div class="bx2 s8">s8
 
-            <div class="abs a3">a3</div>
-            <div class="abs a4">a4</div>
-            <span class="spabs">
+            <div class="abs a3" title="나는 젠틀앱솔루트">a3</div>
+            <div class="abs a4" title="나는 부모찾아 올라간다">a4</div>
+            <span class="spabs" title="자동블록전환">
                 나는 span앱솔루트다
             </span>
 
