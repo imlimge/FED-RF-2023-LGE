@@ -14,15 +14,12 @@
                 list-style: none;
                 /* 블릿없앰 */
             }
-          
-
             /* 가상요소로 플롯해제 */
             .bx::after{
                 content: '';
                 display: block;
                 clear: both;
             }
-
             .bx li{
                 width: 33.333%;
                 /* 가로크기 3등분 */
@@ -51,7 +48,7 @@
             /* 글자관련 클래스 */
             /* 클래스명은 숫자를 뒤에 쓸 수 있으나
             숫자로 시작할 수 없다(숫자로 시작하면 적용안됨!) */
-          .fcls1{
+            .fcls1{
                 font-weight: bold;
                 color: red;
                 font-size: 24px;
@@ -100,12 +97,6 @@
             #bd4{
                 border: 10px dotted darkgreen;
             }
-
-
-
-
-
-
             
 
             /* 
@@ -147,15 +138,12 @@
             <li class="fcls1 bd3" id="bd4">클래스적용4</li>
             <li class="fcls2">클래스적용5</li>
             <li class="fcls3">클래스적용6</li>
-            <li class="fcls1 bd1 bd2 ">클래스적용7</li>
+            <li class="fcls1 bd3 bd2">클래스적용7</li>
             <li class="fcls2">클래스적용8</li>
-            <li class="fcls">클래스적용9</li>
+            <li class="fcls3">클래스적용9</li>
         </ul>
 
         <!--  하단컨텐츠박스 -->
-        <div class="mybx" style="height: 200px;background: pink;
-        border: 10px dotted darkmagenta;font-size: 40px;text-align: center;
-        line-height: 200px;">내가누구게???</div>
-
+        <div class="mybx" style="height: 200px;background: pink;border: 10px dotted darkmagenta;font-size: 40px;text-align: center;line-height: 200px;">내가누구게???</div>
     </body>
 </html>
