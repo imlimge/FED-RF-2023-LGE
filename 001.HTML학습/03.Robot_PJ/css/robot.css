@@ -22,7 +22,7 @@ html, body, h1, h2, h3, ul, ol{
 body{
 
     /* 전체 배경이미지 */
-    background: url(../images/bg.jpg) no-repeat fixed top/cover;
+    background: #000 url(../images/bg.jpg) no-repeat fixed top/cover;
 
     
 }
@@ -47,6 +47,48 @@ body *{
 
 /******** 1. 상단영역 ********/
 /* 1-1.로고 */
+.logo{
+    /* 픽스드 포지션 */
+    position: fixed;
+    /* 화면정중앙이동! calc()로! */
+    top: calc(50% - 200px/2);
+    left: calc(50% - 200px/2);
+
+    width: 200px;
+    height: 200px;
+
+    /* 배경이미지 */
+    background: pink url(../images/robot_03.png) no-repeat center/160px;
+
+    border-radius: 50%;
+    border: 2px solid #ccc;
+
+    /* 텍스트 */
+    text-align: center;
+    /* line-height: 200px; */
+    color: aquamarine;
+    /* font: 스두크/줄체 */
+    font: 45px/200px 'Orbitron';
+    /* 글자그림자 */
+    text-shadow: 2px 2px 5px #000;
+
+    /* 박스그림자
+    - 밝은 색을 사용하면 glow효과! */
+    box-shadow: 
+    inset 0 0 20px 5px #000,
+    0 0 20px 5px aquamarine;
+    /* 박스그림자에만 spread설정있음
+    x y blur spread color */
+
+    /* 트랜스폼 크기조정 */
+    transform: scale(2);
+  
+
+    z-index: 99;
+    /* 가장위! */
+}
+
+
 /* 1-2.링크타이틀 */
 /* 1-3.탑이동버튼 */
 /******** 2. 메인영역 ********/
@@ -59,10 +101,25 @@ body *{
 /* } */
 /* 2-1.로봇박스 */
 .box-robot{
+
+    position: fixed;
+    width: 100%; 
+    
+    /*갑자기 포지션을 fixed를 줄 때 전체 몸체가 줄어들면 width 100%을 넣으면 됨*/
+
+
     /* 패딩: 위, 아래 */
     padding: 200px 0 600px;
     /* 마진탑 */
     /* margin-top: 30px; */
+
+    /* 처음에 트랜스폼 변경 설정 */
+    /* transform:  translate(100%, -28%) scale(0.2); 
+    아래와 위치 비슷함 뭘 먼저 쓰느냐에 따라서 수치가 달라짐*/
+
+    transform: translate(29%, -9%) scale(0.2);
+
+
 }
 
 
@@ -274,10 +331,22 @@ body *{
     width: 50px;
     height: 200px;
     border-radius: 20%;
+    transform-origin: left top;
 }
 
+/* 왼팔 */
+.arm1{
+    left: -70px;
+    
+}
+/* 오른팔 */
+.arm2{
+    right: -70px;
+}
+
+
 /* 팔하단부분 공통 */
-.arm span{
+.arm span {
     position: absolute;
     width: 80%;
     height: 80%;
@@ -286,6 +355,22 @@ body *{
     /* 부모는 .arm */
     border-radius: 20%;
 
+}
+
+/* 가상요소  관절 */
+.arm::after{
+    content:'';
+    width: 40px;
+    height: 40px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 173px;
+    left: 2px;
+    background-image: linear-gradient(to right,#ccc,#393939);
+    box-shadow: inset 0 0 5px #000;
+    z-index: 1;
+    
 }
 
 /* 가상요소로 손만들기 */
@@ -362,15 +447,6 @@ body *{
 
 
 
-/* 왼팔 */
-.arm1{
-    left: -70px;
-}
-/* 오른팔 */
-.arm2{
-    right: -70px;
-}
-
 
 
 
@@ -383,6 +459,10 @@ body *{
     width: 80px;
     height: 250px;
     border-radius: 20%;
+
+    /* 애니를 위한 트랜스폼 기준축 변경 */
+    transform-origin: top;
+  
 }
 /* 왼다리 */
 .leg1{
@@ -420,7 +500,48 @@ right: 10px;
 }
 
 /* TV */
+.tv{
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    z-index: 10;
 
+    width: 180px;
+    height: 125px;
+
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #000;
+
+    background: url(../images/tv.jpg) no-repeat 0/100%;
+
+    transition: 1.2s ease-in-out;
+}
+
+.screen{
+    position: absolute;
+    top: 8px;
+    left: 9px;
+    /* 부모는 .tv */
+    width: 128px;
+    height: 98px;
+    border-radius: 15px;
+    background-color: #000;
+
+    overflow: hidden;
+}
+
+#mv{
+    position: absolute;
+    top: -4px;
+    left: -19px;
+    width: 173px;
+    height: 100px;
+    /* 부모는 .screen */
+
+    border: none;
+
+}
 /* 2-2.로봇설명박스 */
 /******** 3. 하단영역 ********/
 /* 3-1.회사정보 */
