@@ -538,7 +538,8 @@ right: 10px;
     width: 173px;
     height: 100px;
     /* 부모는 .screen */
-
+    
+    /* 아이프레임 기본보더 없앰 */
     border: none;
 
 }
