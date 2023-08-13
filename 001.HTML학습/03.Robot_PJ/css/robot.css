@@ -516,6 +516,16 @@ right: 10px;
     background: url(../images/tv.jpg) no-repeat 0/100%;
 
     transition: 1.2s ease-in-out;
+    
+    z-index: 99999
+    ;
+
+}
+
+/* TV가 커지는 클래스 */
+.tv.on{
+    transform: translateX(-50%) scale(5);
+
 }
 
 .screen{
@@ -543,6 +553,20 @@ right: 10px;
     border: none;
 
 }
+
+/* 동영상 선택버튼박스 */
+.box-btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 90px;
+}
+
+.box-btn button{
+    width: 100%;
+}
+
 /* 2-2.로봇설명박스 */
 /******** 3. 하단영역 ********/
 /* 3-1.회사정보 */
