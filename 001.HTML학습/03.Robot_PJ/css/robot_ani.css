@@ -80,15 +80,15 @@
 
   /* from{} - 첫상태 이미 설정해서 생략 */
   90%{
-  top: 10px;
-  left: 10px;
+  top: 50px;
+  left: 50px;
   transform: scale(1);
 
   }
 
   100%{
-    top: 10px;
-    left: 10px;
+    top: 50px;
+    left: 50px;
     /* 처음회전상태 추가 */
     transform: scale(1) rotate(-25deg);
   }
@@ -118,9 +118,8 @@
 /* 로봇 위치/크기변경 애니 */
 @keyframes robot-ani {
   to{
-    transform: scale(0.6) translate(0, 0);
+      transform: translate(0,-20%) scale(.6);
   }
-  
 }
 
 /* 로봇 애니 호출 */
