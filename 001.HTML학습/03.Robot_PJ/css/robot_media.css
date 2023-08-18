@@ -1,3 +1,47 @@
 @charset "utf-8";
 
 /* Robot PJ 미디어쿼리 CSS - robot_media.css */
+
+/* 800px 이하 미디어 쿼리 시작 */
+@media screen and (max-width:800px) {
+  .desc{
+    
+
+    /* 다단설정 */
+    /* 다중열개수 */
+    column-count: 2;
+}
+
+}
+/* 800px 이하 미디어 쿼리 끝 */
+
+
+/* 500px 이하 미디어 쿼리 시작 */
+@media screen and (max-width:500px) {
+  .desc{
+    
+
+    /* 다단설정 */
+    /* 다중열개수 */
+    column-count: 1;
+}
+
+
+
+.btn-top{
+  width: 80px;
+  height: 80px;
+  bottom: 31px;
+  right: 33px;
+  }
+
+
+
+.btn-top a{
+  font: 30px/ 75px 'Black Ops One';
+  }
+}
+
+/* 500px 이하 미디어 쿼리 끝 */
+
+
