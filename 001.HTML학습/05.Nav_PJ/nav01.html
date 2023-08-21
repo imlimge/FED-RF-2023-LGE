@@ -80,18 +80,7 @@
             }
 
 
-            /* 메인영역 */
-            .main-area {
-                max-width: 1000px;
-                min-height: 600px;
-                line-height: 600px;
-                text-align: center;
-                font-size: 2.5vw;
-                margin: 0 auto;
 
-                border: 3px dashed lightgreen;
-                border-radius: 50px;
-            }
 
             /* 서브메뉴 */
             .sub-menu{
@@ -107,8 +96,62 @@
               left: 50%;
               transform: translateX(-50%);
 
+              /* 숨기기: 높이값0 */
+              height: 0;
+              /* 넘치는 요소 숨기기 */
+              overflow: hidden;
+
+              /* 트랜지션 */
+              transition: .4s ease-in-out;
+
+              /* 투명하게 */
+              opacity: 0;
 
             }
+
+            /* 상위메뉴 li에 마우스 오버시 서브메뉴 보이기 애니 공통(투명도)*/
+            .gnb>ul>li:hover .sub-menu{
+              /* height:calc(40px*5); */
+              /* height: auto; 
+              -자동 높이값은 애니메이션 불가 */
+
+              opacity: 1;
+            }
+
+
+            /* 서브메뉴별 개수로 높이값 차등 설정 */
+            /* .gnb>ul>li:nth-child(1) .sub-menu{
+              height:calc(40px*5); 
+            }
+            .gnb>ul>li:nth-child(2) .sub-menu{
+              height:calc(40px*3); 
+            }
+            .gnb>ul>li:nth-child(3) .sub-menu{
+              height:calc(40px*1); 
+            }
+            .gnb>ul>li:nth-child(4) .sub-menu{
+              height:calc(40px*1); 
+            }
+            .gnb>ul>li:nth-child(5) .sub-menu{
+              height:calc(40px*3); 
+            } */
+
+            
+            /* 클래스로 만들어서 아래 li요소에 각각 설정하기 */
+
+            .gnb>ul>li.m5 .sub-menu{
+            height:calc(40px*5);
+            }
+            .gnb>ul>li.m3 .sub-menu{
+            height:calc(40px*3);
+            }
+            .gnb>ul>li.m1 .sub-menu{
+            height: 40px;;
+            }
+
+
+
+
 
             /* 서브메뉴 li */
             .sub-menu li{
@@ -130,7 +173,7 @@
               line-height: 40px;
               font-size: min(14px, 1.2vw);
               /* 트랜지션 */
-              transition: .3s;
+              transition: .2s;
               /* 반투명 */
               opacity: .7;
             }
@@ -140,6 +183,21 @@
               font-weight: bold;
               opacity: 1;
               transform: scale(1.1);
+
+            }
+
+            
+            /* 메인영역 */
+            .main-area {
+                max-width: 1000px;
+                min-height: 600px;
+                line-height: 600px;
+                text-align: center;
+                font-size: 2.5vw;
+                margin: 100px auto;
+
+                border: 3px dashed lightgreen;
+                border-radius: 50px;
             }
 
         </style>
@@ -162,8 +220,9 @@
                 <!-- 네비게이션박스 -->
                 <nav class="gnb">
                     <ul>
-                        <li>
+                        <li class="m5">
                             <a href="#"> Vision Processor </a>
+                            <!-- 서브메뉴 -->
                             <div class="sub-menu">
                               <ol>
                                 <li>
@@ -184,20 +243,74 @@
                               </ol>
                             </div>
                         </li>
-                        <li>
+                        <li class="m3">
                             <a href="#"> ADAS Processor </a>
+                            <!-- 서브메뉴 -->
+                            <div class="sub-menu">
+                              <ol>
+                                <li>
+                                  <a href="#">RVC</a>
+                                </li>
+                                <li>
+                                  <a href="#">In-cabin</a>
+                                </li>
+                                <li>
+                                  <a href="#">FVC</a>
+                                </li>
+                                
+                              </ol>
+                            </div>
                         </li>
-                        <li>
+                        <li class="m1">
                             <a href="#"> AHD™ </a>
+                            <!-- 서브메뉴 -->
+                            <div class="sub-menu">
+                              <ol>
+                                <li>
+                                  <a href="#">RVC</a>
+                                </li>
+                               
+                              </ol>
+                            </div>
                         </li>
-                        <li>
+                        <li class="m1">
                             <a href="#"> News </a>
+                            <!-- 서브메뉴 -->
+                            <div class="sub-menu">
+                              <ol>
+                                 <li>
+                                  <a href="#">E-mirror</a>
+                                </li>
+                              </ol>
+                            </div>
                         </li>
-                        <li>
+                        <li class="m3">
                             <a href="#"> About Us </a>
+                            <!-- 서브메뉴 -->
+                            <div class="sub-menu">
+                              <ol>
+                                <li>
+                                  <a href="#">RVC</a>
+                                </li>
+                                <li>
+                                  <a href="#">In-cabin</a>
+                                </li>
+                                <li>
+                                  <a href="#">FVC</a>
+                                </li>
+                              </ol>
+                            </div>
                         </li>
-                        <li>
+                        <li class="m1">
                             <a href="#"> Career </a>
+                            <!-- 서브메뉴 -->
+                            <div class="sub-menu">
+                              <ol>
+                                <li>
+                                  <a href="#">E-mirror</a>
+                                </li>
+                              </ol>
+                            </div>
                         </li>
                     </ul>
                 </nav>
