@@ -26,14 +26,104 @@
             // 2-2. 출력요소 : #jexp
             var jexp = document.querySelector('#jexp');
 
+            // 2-3. 칭찬스티커 : .jshow
+            var jshow = document.querySelector('.jshow');
 
-            //onsole.log('요소확인' , jumsu, jexp);
+            console.log('요소확인' , jumsu, jexp. jshow);
 
 
             // 3. 입력값 읽어오기 //////
             var score = jumsu.value;
             //value속성 - 입력된 값을 읽기/쓰기
             console.log('입력된값:', score);
+
+
+
+
+
+            /************************************ 
+                [ 입력값 유효성 검사하기 ]
+
+                  1. 위치 : 입력값 읽은 후 메시지 만들기전
+                  2. 검상내용 : 
+                    (1) 빈값인지 여부검사  
+                    (2) 숫자인지 여부검사
+                    (3) 숫자범위 검사 (0~100)
+            ************************************/
+
+            // 매번 검사 후 메시지넣고 포커스넣고 return 
+            //같은 일을 하므로 메시지만 변경할 수 있게 함수를 만들어 준다
+
+            var validateFn = function(txt){   /* txt-메세지 */
+                // 1. 메시지 출력하기
+                jexp.innerText = txt;
+                console.log(txt);
+
+
+                // 2. 기존 메세지 지우기
+                // 대상: #jumsu -> jumsu변수
+                // input요소.value = 값
+                // 빈 값을 넣으므로 값이 지워짐
+                jumsu.value='';
+
+                // 3. 포커스 입력창에 주기
+                // input요소.focus()
+                jumsu.focus();
+
+                // 4. 글자색초기화
+                // 대상: jexp
+                jexp.style.color = '#000';
+
+
+                // 5. 칭찬스티커 배경위치 초기화
+                // 대상: jshow
+                jshow.style.backgroundPosition = '-50% 0%';
+
+
+            }; //////////// validateFn함수 ////////////
+
+
+
+            // (1) 빈값인지 여부검사 
+            // 스페이스 문자도 공백문자로 취급하므로 이것을 제거하여 검사한다
+            // 제거메서드 : 트림() -> trim() : 앞뒤공백제거
+
+            if(score.trim()==''){
+              
+                //1. 메시지 처리하게
+                validateFn('값을 꼭 입력하세요');
+
+                // 함수를 나가라! 리턴  return
+                // 리턴은 함수를 나가는것
+                // 함수 내의 리턴 아래쪽 코드는 실행하지 않음
+                // 따라서 위치가 매우 중요하다
+                // return 값 - 리턴시 뒤에 값을 쓰면 호출한 곳을 갈 때 값을 가져갈 수 있다
+                return;
+
+            } /////// if ////////
+
+
+            // (2)숫자인지 여부검사
+            // 숫자인지 여부 검사 JS 내장함수 -> isNaN()
+            // is Not a Number? -> 숫자가 아닌가? -> isNaN
+            // 결과값으로 숫자가 아니면 true 
+            // flase면 숫자
+            console.log('숫자가아닌가?', isNaN(score));
+            if(isNaN(score)){
+                validateFn('숫자만 입력하세요');
+                return;
+
+            }///// if /////////
+
+
+            // (3) 숫자범위 검사 (0~100)
+            // 조건 : 0미만 이거나 100초과 (둘 중 하나 걸려야 되니까 or)
+            if(score < 0 || score > 100 ){
+                validateFn('0~100 사이의 값을 입력하세요');
+                return;
+
+            } ////// if ////////
+
 
 
             // 4. 메시지 만들기 //////
@@ -48,36 +138,41 @@
             // 글자색 변수
             var fontColor;
 
+            // 위치변수
+            var bgPosition;
+
 
             // if문을 셋트로 작성 시 구간처리 불필요
             if(score >= 90){
                 message = '매우잘함';
                 fontColor = 'blue';
+                bgPosition = '100% 50%';
             }///if/////
             else if (score >= 80){
                 message = '잘함';
                 fontColor = 'green';
+                bgPosition = '0% 100%';
             }
             else if (score >= 70){
                 message = '보통';
                 fontColor = 'purple';
-
+                bgPosition = '50% 50%';
             }
             else if (score >= 60){
                 message = '노력요함';
                 fontColor = 'orange;'
-
+                bgPosition = '100% 100%';
             }
 
             else {
                 message = '재시험';
                 fontColor = 'red';
-        
+                bgPosition = '100% 0%';
             }
           
             // 메시지 완성하기 : 평가결과는 ~~
             message = '평가결과는' + message
-            console.log('결과:', message, fontColor);
+            console.log('결과:', message, fontColor, bgPosition);
 
             
             // 5. 메세지 출력하게 //////
@@ -94,6 +189,13 @@
             // 6. 출력 글자색 변경하기 //////
             // 대상 : #jexp -> jexp변수
             jexp.style.color = fontColor;
+
+
+            // 7. 칭찬스티커 배경 이미지 위치 변경하기//////
+            // 대상 : .jshow -> jshow변수에 담음
+            // document.querySelector('.jshow') 여기서 해도 되는데 상단에 하는게 좋다
+            jshow.style.backgroundPosition = bgPosition;
+
 
            
         }///////////jumsu함수//////////////   
@@ -148,6 +250,11 @@
 
        *************************************************/
 
+
+        
+
+
+
         </script>
         <style>
             h1{
@@ -163,13 +270,49 @@
                 text-align: center;
                 background-image: linear-gradient(to bottom, lightgreen, lightsalmon);
             }
+
+
+            /* if문 박스 */
+            .bx-if{
+                position: relative;
+                /* 부모자격- .jshow의 부모자격을 주기위함 */
+            }
+        
+
+            /* 칭찬스티커 박스 */
+            .jshow{
+                position: absolute;
+                top: 5vw;
+                left: 51vw;
+                /* 위치 부모는? .bx */
+
+                width: 15vw;
+                height: 15vw;
+                /* outline: 2px solid red; */
+                background: url(./images/ifshow.jpg) no-repeat;
+                /* 배경위치 : 처음에 안보임 */
+                background-position: -50% 0%;
+                /* 배경크기 */
+                background-size: 300%;
+                /* 트랜지션 : 배경위치만  */
+                transition:  background-position 1s;;
+
+
+            }
+
+
         </style>
         
     </head>
     <body>
         <h1 class="tit">JS 제어문</h1>
         <hr />
-        <!-- if문 연습 -->
+
+
+<!-- if문 연습 -->
+
+<div class="bx-if">
+
         <h2 class="tit">if문 연습</h2>
         <h3 id="jexp">평가출력</h3>
         <label for="jumsu">점수입력:</label>
@@ -208,6 +351,16 @@
         - placeholder  -> 안내문구출력
         - maxlength -> 최대입력 글자수 제한
      -->
+
+
+
+     <!-- 칭찬스티커 박스 -->
+     <div class="jshow"></div>
+
+
+    </div>
+
+
 
 
         <br /><br />
