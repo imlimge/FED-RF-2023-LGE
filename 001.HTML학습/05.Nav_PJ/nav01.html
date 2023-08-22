@@ -4,210 +4,22 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>1. 가로네비 서브별 드롭다운 세로형</title>
+        <!-- 폰트어썸 CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <!-- 외부 CSS -->
+    <link rel="stylesheet" href="./css/nav01.css">
 
-        <style>
-            html,
-            body,
-            h1 {
-                margin: 0;
-                padding: 0;
-            }
-            h1.tit {
-                text-align: center;
-                padding: 20px;
-            }
-            body {
-                color: #fff;
-                background: #0b144e url(./images/nav1bg.png) no-repeat fixed center/cover;
-            }
-
-            /* ul,ol 초기화 : 3無 */
-            ul,
-            ol {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
-
-            /* 클리어설정 가상요소 - .clb가 설정된 요소는 clear가 셋팅됨 */
-            ul::after,
-            ol::after,
-            .clb::after {
-                content: "";
-                display: block;
-                clear: both;
-            }
-
-            /* 공통클래스 */
-            .part-box {
-                float: left;
-                /* 옆으로 흐르게 */
-            }
-
-            /* 메인로고 */
-            .logo {
-                line-height: 80px;
-            }
-
-            /* 로고 이미지 */
-            .logo img{
-              width: min(137px, 14vw);
-            }
-
-
-            /* 네비게이션 박스 */
-            .gnb {
-                padding: 0 min(100px, 8vw);
-            }
-
-
-            /* 최상위 직계 li만 적용 */
-            .gnb>ul>li {
-              position: relative;
-              /* 부모자격 - .gnb li가 .sub-menu의 부모가됨 */
-                float: left;
-                /* 나는 왼쪽 너는 오른쪽으로 올라와 */
-            }
-
-
-            /* 네비게이션 링크 */
-            .gnb a {
-                color: #fff;
-                text-decoration: none;
-                font-size: min(18px, 1.8vw);
-                padding: 0 min(32px, 1.5vw);
-                line-height: 80px;
-            }
-
-
-
-
-            /* 서브메뉴 */
-            .sub-menu{
-              position: absolute;
-              width: min(200px, 17vw);
-              border-radius: 15px;
-              background-color: rgba(0, 0, 128, 0.607);
-
-              /* 박스 글로우 효과 */
-              box-shadow: inset 0 0 5px lightblue;
-
-              /* 가로방향 메뉴 정중앙 이동 */
-              left: 50%;
-              transform: translateX(-50%);
-
-              /* 숨기기: 높이값0 */
-              height: 0;
-              /* 넘치는 요소 숨기기 */
-              overflow: hidden;
-
-              /* 트랜지션 */
-              transition: .4s ease-in-out;
-
-              /* 투명하게 */
-              opacity: 0;
-
-            }
-
-            /* 상위메뉴 li에 마우스 오버시 서브메뉴 보이기 애니 공통(투명도)*/
-            .gnb>ul>li:hover .sub-menu{
-              /* height:calc(40px*5); */
-              /* height: auto; 
-              -자동 높이값은 애니메이션 불가 */
-
-              opacity: 1;
-            }
-
-
-            /* 서브메뉴별 개수로 높이값 차등 설정 */
-            /* .gnb>ul>li:nth-child(1) .sub-menu{
-              height:calc(40px*5); 
-            }
-            .gnb>ul>li:nth-child(2) .sub-menu{
-              height:calc(40px*3); 
-            }
-            .gnb>ul>li:nth-child(3) .sub-menu{
-              height:calc(40px*1); 
-            }
-            .gnb>ul>li:nth-child(4) .sub-menu{
-              height:calc(40px*1); 
-            }
-            .gnb>ul>li:nth-child(5) .sub-menu{
-              height:calc(40px*3); 
-            } */
-
-            
-            /* 클래스로 만들어서 아래 li요소에 각각 설정하기 */
-
-            .gnb>ul>li.m5 .sub-menu{
-            height:calc(40px*5);
-            }
-            .gnb>ul>li.m3 .sub-menu{
-            height:calc(40px*3);
-            }
-            .gnb>ul>li.m1 .sub-menu{
-            height: 40px;;
-            }
-
-
-
-
-
-            /* 서브메뉴 li */
-            .sub-menu li{
-              /* width: 100%; */
-              /* float 설정이 있어도 한줄에 하나씩 (한줄에 2개 줄려면 50%)
-              - float 설정이 없으면 안줘도 됨 */
-              text-align: center;
-
-            }
-
-            /* 서브메뉴 a 
-            - 높이값 0으로 숨길 때 숨길 박스에 보더나 패딩이 있으면 완전히 숨길 수 없다 
-            따라서 보더, 패딩은 없어야 함*/
-            .sub-menu a{
-              display: block;
-              width: 100%;
-              height: 100%;
-              padding: 0;
-              line-height: 40px;
-              font-size: min(14px, 1.2vw);
-              /* 트랜지션 */
-              transition: .2s;
-              /* 반투명 */
-              opacity: .7;
-            }
-
-            /* 서브 오버시 효과 */
-            .sub-menu a:hover{
-              font-weight: bold;
-              opacity: 1;
-              transform: scale(1.1);
-
-            }
-
-            
-            /* 메인영역 */
-            .main-area {
-                max-width: 1000px;
-                min-height: 600px;
-                line-height: 600px;
-                text-align: center;
-                font-size: 2.5vw;
-                margin: 100px auto;
-
-                border: 3px dashed lightgreen;
-                border-radius: 50px;
-            }
-
-        </style>
     </head>
     <body>
         <h1 class="tit">1. 가로네비 서브별 드롭다운 세로형</h1>
 
         <!-- 상단영역 -->
-        <header class="top-area clb">
-            <div class="part-box">
+        <header class="top-area">
+
+          <div class="inbox clb">
+
+         
+            <div class="part-box col-2">
                 <!-- 로고박스 -->
                 <h1 class="logo">
                     <a href="#">
@@ -216,10 +28,10 @@
                 </h1>
             </div>
 
-            <div class="part-box">
+            <div class="part-box col-8">
                 <!-- 네비게이션박스 -->
                 <nav class="gnb">
-                    <ul>
+                    <ul class="line-ani">
                         <li class="m5">
                             <a href="#"> Vision Processor </a>
                             <!-- 서브메뉴 -->
@@ -315,25 +127,32 @@
                     </ul>
                 </nav>
             </div>
-            <div class="part-box"></div>
 
-            <!-- 
-Vision Processor
-RVC
-In-cabin
-FVC
-SVM
-E-mirror
-ADAS Processor
-AHD™
-News
-About Us
-Career
+            <!-- 언어선택, 사이트맵 버튼 -->
+            <div class="part-box col-2">
+              <ul class="top-menu line-ani">
+                <li>
+                  <a href="#">Kor</a>
+                </li>
+                <li>
+                  <a href="#">Eng</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-solid fa-grip fa-bounce"></i></a>
+                </li>
+              </ul>
 
-     -->
+            </div>
+          
+          </div><!-- in-box -->
+
+
+
+
         </header>
 
         <!-- 컨텐츠영역 -->
         <main class="main-area">여기에 내용이 들어갑니다</main>
+    
     </body>
 </html>
