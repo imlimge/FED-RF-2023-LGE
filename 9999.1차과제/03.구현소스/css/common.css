@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+/* 버거킹 : 공통 CSS - common.css */
+
+
+
+body *{
+  outline: 1px dashed #999;
+}
+
+
+a {
+font-family: 'Black Han Sans', sans-serif;
+font-family: 'Noto Sans KR', sans-serif;
+
+}

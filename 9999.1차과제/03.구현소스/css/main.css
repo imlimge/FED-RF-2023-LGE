@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* 버거킹 : 메인페이지 CSS - main.css */
+
+
+@import url(./reset.css);
+@import url(./common.css);
+@import url(./core.css);
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;500;900&display=swap');
+
+.gnb-box{
+  position: relative;
+  max-width: 80%;
+  margin: 26px auto;
+
+ 
+
+}
+
+.gnb{
+ 
+  display: flex;
+  height: 52px;
+ 
+}
+
+.gnb a{
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  font-size: 0.9rem;
+  display:block;
+}
+
+
+.gnb-box li{
+display: inline-block;
+flex: 1;
+background-color: #d0021b;
+text-align: center;
+line-height: 52px;
+
+
+}
+
+.gnb-box li:hover{
+background-color: #bb0a1f;
+transition: background-color .2s ease-in ;
+}
+
+.gnb-box li:nth-child(4){
+
+flex: .8;
+
+}
+
+.nav-logo {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 80px;
+height: 80px;
+background-color: #d0021b;
+text-align: center;
+border-radius: 10px;
+
+}
+
+
+.nav-logo:hover {
+
+
+}
+
+
+.nav-logo img{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 60px;
+
+}
+
