@@ -88,6 +88,7 @@ transform: translate(-50%, -50%) scale(1.2);
 }
 
 
+
 .banner{
   position: absolute;
   top: 0;
@@ -95,7 +96,30 @@ transform: translate(-50%, -50%) scale(1.2);
   width: 100%;
   background-color: #bb0a1f ;
 
-  /* overflow: hidden;  >> 배너밖으로 나가면 햄버거 안보이는지 확인*/
+ 
+}
+
+
+.banner_back img{
+  position: absolute;
+  width: 600px;
+  margin: 0 auto;
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+/* 
+.banner{
+  position: relative;
+  top: -150px;
+  height: 85vh;
+  width: 100%;
+  background-color: #bb0a1f ;
+
+   overflow: hidden;
 }
 
 
@@ -111,27 +135,102 @@ transform: translate(-50%, -50%) scale(1.2);
 }
 
 .banner_burgerImg{
-  
-  position: absolute;
 
-  transform-origin: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+ 
 
-  width: 300px;
-  
 }
+
+.burger_sticky{
+
+  position: sticky;
+  top: 0;
+  text-align: center;
+  margin-top: 300px;
+}
+
+
 
 .banner_burgerImg img{
 
 
+}
+
+
+
+
+.burger_sticky:nth-child(9){
+  top:104px
+}
+.burger_sticky:nth-child(8){
+  top: calc(104px*2)
+}
+.burger_sticky:nth-child(7){
+  top: calc(104px*3)
+}
+.burger_sticky:nth-child(6){
+  top: calc(104px*3)
+}
+.burger_sticky:nth-child(5){
+  top: calc(104px*3)
+}
+.burger_sticky:nth-child(4){
+  top: calc(104px*3)
+}
+.burger_sticky:nth-child(3){
+  top: calc(104px*3)
+}
+.burger_sticky:nth-child(2){
+  top: calc(104px*3)
+}
+.burger_sticky:nth-child(1){
+  top: calc(104px*3)
+}
+
+
+
+
+
+.banner{
   position: absolute;
   top: 0;
-  left: 0;
-  transform: translate(-50%);
+  height: 80vh;
+  width: 100%;
+  background-color: #bb0a1f ;
 
-  }
+ 
+}
+
+
+.banner_back img{
+  position: absolute;
+  width: 600px;
+  margin: 0 auto;
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.banner_burgerImg{
+  position: absolute;
+  width: 600px;  
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.banner_burgerImg img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
 
 .banner_burgerImg img:nth-child(9){
   transform: translateY(-80%);
@@ -160,3 +259,4 @@ transform: translate(-50%, -50%) scale(1.2);
 .banner_burgerImg img:nth-child(1){
   transform: translateY(145%);
 }
+ */
