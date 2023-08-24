@@ -7,8 +7,11 @@
 @import url(./core.css);
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;500;900&display=swap');
 
+
+
 .gnb-box{
-  position: relative;
+  position: sticky;
+  top: 40px;
   max-width: 80%;
   margin: 26px auto;
 
@@ -64,12 +67,12 @@ background-color: #d0021b;
 text-align: center;
 border-radius: 10px;
 box-shadow: 3px 3px 7px #35262680;
-transition: .4s ;
+/* transition: .5s;  >> 내려갈때도 주고싶은데 트랜스폼 위치때문에.. */
 }
 
 
 .nav-logo:hover {
-transition: .3s ease-in;
+transition: .3s ease-in-out;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%) scale(1.2);
@@ -87,29 +90,98 @@ transform: translate(-50%, -50%) scale(1.2);
 
 }
 
-
-
-.banner{
+/* 배너 배경 색 >> 네비 뒤에 색을 주기위해 따로 빼둔 배너컬러 */
+.banner_back_color{
   position: absolute;
   top: 0;
+  background-color: #bb0a1f ;
   height: 80vh;
   width: 100%;
-  background-color: #bb0a1f ;
-
  
 }
 
 
-.banner_back img{
-  position: absolute;
-  width: 600px;
+/* 배너 파트 */
+.banner{
+ position: relative;
+ width: 80vw;
+ height: 600px;
+ margin: 0 auto;
+
+}
+
+/* 배너 글자 이미지 */
+.banner_back{
+  position: relative;
+  width: 80vw;
   margin: 0 auto;
-  
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   
 }
+
+.banner_back img{
+  width: 80vw;
+  
+  transition: top 3s ease-in;
+
+  
+}
+
+/* 배너 버거 이미지 */
+.banner_burgerImg{
+  position: absolute;
+  margin: 0 auto;
+  width:80vw;  
+  height: 400px;
+  top: 10%;
+
+  
+}
+
+
+.banner_burgerImg img{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+
+}
+
+
+
+
+.banner_burgerImg img:nth-child(9){
+    top: -130%;
+  
+ 
+}
+
+.banner_burgerImg img:nth-child(8){
+  top: -85.7%;
+
+}
+.banner_burgerImg img:nth-child(7){
+  top: -67.7%;
+}
+.banner_burgerImg img:nth-child(6){
+  top: -47.7%;
+}
+.banner_burgerImg img:nth-child(5){
+  top: -26.7%;
+}
+.banner_burgerImg img:nth-child(4){
+  top: -0.3%;
+}
+.banner_burgerImg img:nth-child(3){
+  top: 24.3%;
+}
+.banner_burgerImg img:nth-child(2){
+  top: 57.3%;
+}
+.banner_burgerImg img:nth-child(1){
+  top: 94.3%;
+}
+
+
 
 /* 
 .banner{
