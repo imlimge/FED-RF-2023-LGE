@@ -4,14 +4,16 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>버거킹</title>
-        <!-- 메인CSS  -->
-        <link rel="stylesheet" href="./CSS/main.css">
+        <!-- 메인 CSS  -->
+        <link rel="stylesheet" href="./CSS/main.css" />
+        <!-- 외부 JS  -->
+        <script type="module" src="./JS/main.js" defer></script>
     </head>
     <body>
         <!-- 상단영역 -->
         <header id="header">
             <!-- 1. 네비게이션 -->
-            
+
             <nav class="gnb-box">
                 <ul class="gnb">
                     <!-- 왼쪽메뉴 -->
@@ -24,10 +26,8 @@
                     <li>
                         <a href="#">이벤트</a>
                     </li>
-                    <!-- 가운데 -->
-                    <li>
-                       
-                    </li>
+                    <!-- 가운데 빈공간-->
+                    <li></li>
                     <!-- 오른쪽 메뉴 -->
                     <li>
                         <a href="#">브랜드스토리</a>
@@ -39,10 +39,38 @@
                         <a href="#">딜리버리</a>
                     </li>
                 </ul>
+                <!-- 네비 가운데 로고 -->
+                <a class="nav-logo" href="#">
+                    <img src="./images/01.top-navigation/logo_header.gif" alt="버거킹 네비게이션 로고" />
+                </a>
+                </nav>
+            <!--  2. 배너 파트  -->
+            <div class="banner">
+                <section>
 
-                <a class="nav-logo" href="#"> <img src="./images/01.top-navigation/logo_header.gif" alt="버거킹 네비게이션 로고" /> </a>
-            </nav>
+                    <!-- 배너배경 -->
+                    <div class="banner_back">
+                        <img src="./images/03.main/01.banner/img_burgerking_whiteletter.png" alt="배너배경">
 
+                    </div> 
+                    <!-- 배너 햄버거 이미지 -->
+                    <div class="banner_burgerImg">
+                  
+                      <img src="./images/03.main/01.banner/burger_img (9).png" alt="배너 버거이미지9">
+                      <img src="./images/03.main/01.banner/burger_img (8).png" alt="배너 버거이미지8">
+                      <img src="./images/03.main/01.banner/burger_img (7).png" alt="배너 버거이미지7">
+                      <img src="./images/03.main/01.banner/burger_img (6).png" alt="배너 버거이미지6">
+                      <img src="./images/03.main/01.banner/burger_img (5).png" alt="배너 버거이미지5">
+                      <img src="./images/03.main/01.banner/burger_img (4).png" alt="배너 버거이미지4">
+                      <img src="./images/03.main/01.banner/burger_img (3).png" alt="배너 버거이미지3">
+                      <img src="./images/03.main/01.banner/burger_img (2).png" alt="배너 버거이미지2">
+                      <img src="./images/03.main/01.banner/burger_img (1).png" alt="배너 버거이미지1">
+                    </div>
+               
 
-    
+                </section>
         </header>
+    
+    
+    </body>
+</html>

@@ -12,7 +12,7 @@
   max-width: 80%;
   margin: 26px auto;
 
- 
+ z-index: 10;
 
 }
 
@@ -20,7 +20,7 @@
  
   display: flex;
   height: 52px;
- 
+  box-shadow: 3px 3px 7px #35262680;
 }
 
 .gnb a{
@@ -49,7 +49,7 @@ transition: background-color .2s ease-in ;
 
 .gnb-box li:nth-child(4){
 
-flex: .8;
+flex: .6;
 
 }
 
@@ -63,11 +63,16 @@ height: 80px;
 background-color: #d0021b;
 text-align: center;
 border-radius: 10px;
-
+box-shadow: 3px 3px 7px #35262680;
+transition: .4s ;
 }
 
 
 .nav-logo:hover {
+transition: .3s ease-in;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scale(1.2);
 
 
 }
@@ -82,3 +87,76 @@ border-radius: 10px;
 
 }
 
+
+.banner{
+  position: absolute;
+  top: 0;
+  height: 80vh;
+  width: 100%;
+  background-color: #bb0a1f ;
+
+  /* overflow: hidden;  >> 배너밖으로 나가면 햄버거 안보이는지 확인*/
+}
+
+
+.banner_back img{
+  position: absolute;
+  width: 600px;
+  margin: 0 auto;
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.banner_burgerImg{
+  
+  position: absolute;
+
+  transform-origin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 300px;
+  
+}
+
+.banner_burgerImg img{
+
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%);
+
+  }
+
+.banner_burgerImg img:nth-child(9){
+  transform: translateY(-80%);
+}
+.banner_burgerImg img:nth-child(8){
+  transform: translateY(-35%);
+}
+.banner_burgerImg img:nth-child(7){
+  transform: translateY(-15%);
+}
+.banner_burgerImg img:nth-child(6){
+  transform: translateY(35%);
+}
+.banner_burgerImg img:nth-child(5){
+  transform: translateY(5%);
+}
+.banner_burgerImg img:nth-child(4){
+  transform: translateY(65%);
+}
+.banner_burgerImg img:nth-child(3){
+  transform: translateY(65%);
+}
+.banner_burgerImg img:nth-child(2){
+  transform: translateY(135%);
+}
+.banner_burgerImg img:nth-child(1){
+  transform: translateY(145%);
+}
