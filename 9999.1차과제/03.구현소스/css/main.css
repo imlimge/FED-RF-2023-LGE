@@ -9,6 +9,7 @@
 
 
 
+/*********************** 네비게이션************************/
 .gnb-box{
   position: sticky;
   top: 40px;
@@ -90,6 +91,9 @@ transform: translate(-50%, -50%) scale(1.2);
 
 }
 
+
+/*********************** 배너************************/
+
 /* 배너 배경 색 >> 네비 뒤에 색을 주기위해 따로 빼둔 배너컬러 */
 .banner-back-color{
   position: absolute;
@@ -108,6 +112,7 @@ transform: translate(-50%, -50%) scale(1.2);
  height: 600px;
  margin: 0 auto;
 
+
 }
 
 /* 배너 글자 이미지 : 자식*/
@@ -118,6 +123,8 @@ transform: translate(-50%, -50%) scale(1.2);
   top: 50%;
   
 }
+
+
 
 .banner-back img{
   width: 80vw;
@@ -133,7 +140,7 @@ transform: translate(-50%, -50%) scale(1.2);
   margin: 0 auto;
   width:80vw;  
   height: 400px;
-  top: 10%;
+  top: 27%;
 
   
 }
@@ -150,9 +157,8 @@ transform: translate(-50%, -50%) scale(1.2);
 
 
 .banner-burgerImg img:nth-child(9){
-    top: -130%;
-  
- 
+  top: -130%;
+   
 }
 
 .banner-burgerImg img:nth-child(8){
@@ -181,6 +187,37 @@ transform: translate(-50%, -50%) scale(1.2);
   top: 94.3%;
 }
 
+
+/*********************** 슬라이드 광고 ************************/
+
+.slide-wrap{
+  overflow: hidden;
+  
+}
+
+.slide{
+  position: relative;
+  top: 30%;
+  left: 380px;
+
+  height: 400px;
+  width: 1223px;
+
+
+}
+
+.slide-img{
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+}
+
+.slide img{
+  width: 828px;
+
+
+}
 
 
 /* 
