@@ -91,7 +91,7 @@ transform: translate(-50%, -50%) scale(1.2);
 }
 
 /* 배너 배경 색 >> 네비 뒤에 색을 주기위해 따로 빼둔 배너컬러 */
-.banner_back_color{
+.banner-back-color{
   position: absolute;
   top: 0;
   background-color: #bb0a1f ;
@@ -101,7 +101,7 @@ transform: translate(-50%, -50%) scale(1.2);
 }
 
 
-/* 배너 파트 */
+/* 배너 파트 : 부모 */
 .banner{
  position: relative;
  width: 80vw;
@@ -110,16 +110,16 @@ transform: translate(-50%, -50%) scale(1.2);
 
 }
 
-/* 배너 글자 이미지 */
-.banner_back{
-  position: relative;
+/* 배너 글자 이미지 : 자식*/
+.banner-back{
+  position: absolute;
   width: 80vw;
   margin: 0 auto;
   top: 50%;
   
 }
 
-.banner_back img{
+.banner-back img{
   width: 80vw;
   
   transition: top 3s ease-in;
@@ -127,8 +127,8 @@ transform: translate(-50%, -50%) scale(1.2);
   
 }
 
-/* 배너 버거 이미지 */
-.banner_burgerImg{
+/* 배너 버거 이미지 : 자식 */
+.banner-burgerImg{
   position: absolute;
   margin: 0 auto;
   width:80vw;  
@@ -139,8 +139,8 @@ transform: translate(-50%, -50%) scale(1.2);
 }
 
 
-.banner_burgerImg img{
-  position: relative;
+.banner-burgerImg img{
+ position: relative;
   display: block;
   margin: 0 auto;
 
@@ -149,35 +149,35 @@ transform: translate(-50%, -50%) scale(1.2);
 
 
 
-.banner_burgerImg img:nth-child(9){
+.banner-burgerImg img:nth-child(9){
     top: -130%;
   
  
 }
 
-.banner_burgerImg img:nth-child(8){
+.banner-burgerImg img:nth-child(8){
   top: -85.7%;
 
 }
-.banner_burgerImg img:nth-child(7){
+.banner-burgerImg img:nth-child(7){
   top: -67.7%;
 }
-.banner_burgerImg img:nth-child(6){
+.banner-burgerImg img:nth-child(6){
   top: -47.7%;
 }
-.banner_burgerImg img:nth-child(5){
+.banner-burgerImg img:nth-child(5){
   top: -26.7%;
 }
-.banner_burgerImg img:nth-child(4){
+.banner-burgerImg img:nth-child(4){
   top: -0.3%;
 }
-.banner_burgerImg img:nth-child(3){
+.banner-burgerImg img:nth-child(3){
   top: 24.3%;
 }
-.banner_burgerImg img:nth-child(2){
+.banner-burgerImg img:nth-child(2){
   top: 57.3%;
 }
-.banner_burgerImg img:nth-child(1){
+.banner-burgerImg img:nth-child(1){
   top: 94.3%;
 }
 
@@ -195,7 +195,7 @@ transform: translate(-50%, -50%) scale(1.2);
 }
 
 
-.banner_back img{
+.banner-back img{
   position: absolute;
   width: 600px;
   margin: 0 auto;
@@ -206,7 +206,7 @@ transform: translate(-50%, -50%) scale(1.2);
   
 }
 
-.banner_burgerImg{
+.banner-burgerImg{
 
   width: 600px;
   height: 600px;
@@ -214,7 +214,7 @@ transform: translate(-50%, -50%) scale(1.2);
 
 }
 
-.burger_sticky{
+.burger-sticky{
 
   position: sticky;
   top: 0;
@@ -224,7 +224,7 @@ transform: translate(-50%, -50%) scale(1.2);
 
 
 
-.banner_burgerImg img{
+.banner-burgerImg img{
 
 
 }
@@ -232,31 +232,31 @@ transform: translate(-50%, -50%) scale(1.2);
 
 
 
-.burger_sticky:nth-child(9){
+.burger-sticky:nth-child(9){
   top:104px
 }
-.burger_sticky:nth-child(8){
+.burger-sticky:nth-child(8){
   top: calc(104px*2)
 }
-.burger_sticky:nth-child(7){
+.burger-sticky:nth-child(7){
   top: calc(104px*3)
 }
-.burger_sticky:nth-child(6){
+.burger-sticky:nth-child(6){
   top: calc(104px*3)
 }
-.burger_sticky:nth-child(5){
+.burger-sticky:nth-child(5){
   top: calc(104px*3)
 }
-.burger_sticky:nth-child(4){
+.burger-sticky:nth-child(4){
   top: calc(104px*3)
 }
-.burger_sticky:nth-child(3){
+.burger-sticky:nth-child(3){
   top: calc(104px*3)
 }
-.burger_sticky:nth-child(2){
+.burger-sticky:nth-child(2){
   top: calc(104px*3)
 }
-.burger_sticky:nth-child(1){
+.burger-sticky:nth-child(1){
   top: calc(104px*3)
 }
 
@@ -275,7 +275,7 @@ transform: translate(-50%, -50%) scale(1.2);
 }
 
 
-.banner_back img{
+.banner-back img{
   position: absolute;
   width: 600px;
   margin: 0 auto;
@@ -286,7 +286,7 @@ transform: translate(-50%, -50%) scale(1.2);
   
 }
 
-.banner_burgerImg{
+.banner-burgerImg{
   position: absolute;
   width: 600px;  
   height: 600px;
@@ -294,7 +294,7 @@ transform: translate(-50%, -50%) scale(1.2);
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.banner_burgerImg img{
+.banner-burgerImg img{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -304,31 +304,31 @@ transform: translate(-50%, -50%) scale(1.2);
 
 
 
-.banner_burgerImg img:nth-child(9){
+.banner-burgerImg img:nth-child(9){
   transform: translateY(-80%);
 }
-.banner_burgerImg img:nth-child(8){
+.banner-burgerImg img:nth-child(8){
   transform: translateY(-35%);
 }
-.banner_burgerImg img:nth-child(7){
+.banner-burgerImg img:nth-child(7){
   transform: translateY(-15%);
 }
-.banner_burgerImg img:nth-child(6){
+.banner-burgerImg img:nth-child(6){
   transform: translateY(35%);
 }
-.banner_burgerImg img:nth-child(5){
+.banner-burgerImg img:nth-child(5){
   transform: translateY(5%);
 }
-.banner_burgerImg img:nth-child(4){
+.banner-burgerImg img:nth-child(4){
   transform: translateY(65%);
 }
-.banner_burgerImg img:nth-child(3){
+.banner-burgerImg img:nth-child(3){
   transform: translateY(65%);
 }
-.banner_burgerImg img:nth-child(2){
+.banner-burgerImg img:nth-child(2){
   transform: translateY(135%);
 }
-.banner_burgerImg img:nth-child(1){
+.banner-burgerImg img:nth-child(1){
   transform: translateY(145%);
 }
  */
