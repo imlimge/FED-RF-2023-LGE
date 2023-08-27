@@ -14,7 +14,7 @@
   position: sticky;
   top: 40px;
   max-width: 80%;
-  margin: 26px auto;
+  margin: 47px auto;
 
  z-index: 10;
 
@@ -99,7 +99,7 @@ transform: translate(-50%, -50%) scale(1.2);
   position: absolute;
   top: 0;
   background-color: #bb0a1f ;
-  height: 80vh;
+  height: 1100px;
   width: 100%;
  
 }
@@ -191,33 +191,140 @@ transform: translate(-50%, -50%) scale(1.2);
 /*********************** 슬라이드 광고 ************************/
 
 .slide-wrap{
-  overflow: hidden;
+  position: relative;
+  top: 32%;
+
   
 }
 
-.slide{
-  position: relative;
-  top: 30%;
-  left: 380px;
-
-  height: 400px;
-  width: 1223px;
-
+.slide-part1{
+  position: absolute;
+  right: 0;
+  height: 320px;
+  width: 80%;
+  overflow: hidden;
 
 }
 
 .slide-img{
-  width: 100%;
-  height: 100%;
+   height: 100%;
   display: flex;
+  
+}
+
+
+.slide-part2{
+  position: absolute;
+  right: 0;
+  height: 320px;
+  width: 80%;
+
 
 }
 
-.slide img{
-  width: 828px;
-
-
+.slide-wrap .scroll{
+  position: absolute;
+  background-color: #d3d3d3;
+  width: 323px;
+  height: 10px;
+  top: 348px;
+  border-radius: 10px;
 }
+
+
+
+/*********************** 광고박스 공통 ************************/
+
+.ad-outbox{
+  position: absolute;
+  height: 800px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.bg-txt{
+  position: absolute;
+  font-size: 17rem;
+
+  top: 100px;
+  right: 0;
+  color: #f7f7f7;
+  text-align: right;
+  font-family: Black Han Sans;
+  
+}
+
+
+
+.ad-inbox{
+  position: absolute;
+  height: 800px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+ flex-wrap: nowrap;
+}
+
+.video{
+  position: absolute;
+  height: 800px;
+  width: 650px;
+  overflow: hidden;
+  margin: auto 0;
+
+flex-shrink: 0;
+  
+}
+
+
+
+.content{
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  right: 0;
+  padding: 80px 100px 80px 0;
+  box-sizing: border-box;
+
+flex-shrink: 0;
+}
+
+
+.sub-title{
+font-size: 2rem;
+margin-bottom: 20px;
+}
+
+.title{
+  font-size: 4rem;
+  font-weight: bold;
+  line-height: 4rem;
+}
+
+.article{
+  padding: 80px 80px 80px 0;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+.view-button{
+color: #fff;
+text-align: center;
+background-image:url(../images/00.common/button-red.svg) ;
+display: inline-block;
+background-size: 100% 100%;
+background-repeat: no-repeat;
+background-position: top left;
+min-width: 258px;
+width: auto;
+overflow: hidden;
+padding: 0.9em;
+font-size: 22px;
+line-height: 1.55em;
+}
+
+
 
 
 /* 
