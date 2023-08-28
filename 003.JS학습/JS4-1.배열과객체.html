@@ -32,6 +32,7 @@
                 line-height: 84px;
                 margin: 5px auto;
                 font-size: 24px;
+
             }
         </style>
         <!-- JS코드구역 -->
@@ -213,7 +214,254 @@
                 // -> 배열메서드는 중요하므로 별도의 창에 있음
 
 
-            } ////////// loadFn 함수 ///////////
+          
+
+
+
+
+            /******************************************** 
+                        [ 객체(Object) 란? ]
+
+                - 일반적으로 JS에서 객체란 속성과 메서드를
+                가지는 프로그램 단위체
+                - 속성은 명사적 특징, 메서드는 동사적 특징
+                객체예)
+                https://www.w3schools.com/js/js_objects.asp
+                - 자동차의 명사적특징: 핸들, 백미러, 트렁크, 바퀴 등
+                - 자동차의 동사적특징: 운전하다, 멈추다, 주차하다 등
+
+                (참고: 브라우저에 이미 만들어져 있는 객체들)
+                -> 내장객체라고함!
+                -> 브라우저 내장객체-> 봄(BOM:Browser Object Model)
+                -> https://www.w3schools.com/js/js_window.asp
+
+                window : 윈도우(브라우저화면) 표시 관련객체
+                document : 문서구조에 관련된 객체
+                Array : 배열객체
+                Object : 객체를 만들기 위한 객체
+                Date : 날짜객체
+                Math : 수학객체
+                ___________________________________
+
+                ->>> 내장객체 중 객체를 만들기위한 객체인 Object를
+                사용하여 객체를 만들어보자!
+
+                [ 객체의 선언의 2가지 방식 ]
+                1. new 키워드 선언방식
+                - new Object()
+
+                2. 리터럴 선언방식(객체리터럴)
+                - 변수 = {}
+
+                [ 객체의 할당 ]
+                - 중괄호{}를 사용하여 할당코딩을 함
+                - {속성명:값,속성명:값,...}
+                - 여러값을 셋팅할때 콤마로 구분한다
+                - 배열과 비교해서 이해하기 쉽고 호출하기 쉽다!
+                - 객체 스타일로 데이터 구조를 만들고
+                이런 파일로 DB와 데이터 통신을 한다!
+                이 파일의 이름은? 제이슨(JSON:확장자.json)
+
+                [ 객체의 호출 ]
+                - 객체명[속성명]
+                또는
+                - 객체명.속성명
+
+            ********************************************/
+
+            // 객체를 선언하여 생성
+            //new Object()를 사용하여 생성
+            // 배열과 마찬가지로 객체는 형식이 변경되지 않도록 let보다는 const를 많이 씀
+
+
+            const SSG = new Object({
+                "너의 이름은?":"라떼",
+                생일:"1999년 9월 9일",
+                키:"166cm",
+                몸무게:"660ml",
+                혈액형:"F형",
+                성별:"커피",
+                대표작:"커피커피,라떼라떼",
+                소속사:"라라라엔터",
+                비밀번호:"3333",
+                팬레터:function(){
+                    //변경대상. style
+                    let mycss = target[3].style;
+
+
+                    //1. 메시지 띄우기
+                    alert("커피마신다");
+                   
+                    //2. 배경이미지 넣기
+                    mycss.background = 'url(https://health.chosun.com/site/data/img_dir/2023/02/02/2023020202137_0.jpg) repeat-x top/auto 100%';
+                    //3. 글자색
+                    mycss.color = '#fff';
+                    mycss.textShadow = '0 0 5px #000';
+                    //4. 글자내용변경
+                    target[3].innerText = '라떼는 아이스지';
+                    //6. 줄간격
+                    mycss.lineHeight = '84px';
+                    //7. 박스크게하기
+                    mycss.transform = 'scale(0.8)';
+                    //8. 트랜지션
+                    mycss.transition = '1s ease-out 1s';
+
+
+                }///팬레터 함수
+
+            });
+
+            //객체확인
+            console.log('라떼객체:',SSG);
+
+
+            //객체 출력하기
+            //출력대상: target[3]
+            target[3].innerHTML =`
+            당신이 좋아하는 커피는? 
+            ${SSG["너의 이름은?"]}
+            /몸무게는?${SSG.몸무게} <br>
+            /성별은?${SSG.성별}
+            /대표작은?${SSG.대표작}
+            /혈액형은?${SSG["혈액형"]}
+            `;
+
+            target[3].style.lineHeight = '40px';
+
+            //객체에 셋팅된 함수를 보통 '메서드'라고 부른다
+            //이 메서드를 호출해 보자
+            target[3].onclick = SSG['팬레터']
+
+            //title속성 넣기
+            target[3].title = `
+            여기를 클릭하여 ${SSG["너의 이름은?"]}팬레터를 확인하세요!
+            `;
+
+            // 손가락 표시
+            target[3].style.cursor = 'pointer';
+
+
+
+
+            /*************************************** 
+                [ new 키워드 없이 바로 객체 생성하기 ] 
+                -> 객체 리터럴 (추천방식!)
+
+                - 방법: 변수 선언 후 이퀄 뒤에 바로 중괄호 사용!
+                예) let obj = {속성명:값,속성명:값,...};
+
+                [ 객체의 속성 셋팅시 문자형 또는 변수형 사용하기 ]
+                
+                1. 문자형 속성 - 따옴표로 싸는 방법
+
+                예) let obj = {"나는나":"호호호","너는너":"하하하"}
+                -> 문자형 속성의 객체 호출시
+                객체명[문자형속성명]
+                예) obj["나는나"]
+
+                2. 변수형 속성 - 따옴표로 안싸는 방법
+                예) let obj = {name:"김수현",tall:"186cm"};
+                -> 변수형 속성의 객체 호출시
+                객체명.속성명
+                예) obj.name
+
+                또는
+
+                객체명["속성명"]
+                예) obj["name"]
+                -> 반드시 변수형 속성명을 따옴표로 싸서
+                문자형으로 표시해야함!
+                obj[name] -> 에러남!
+
+                -> 만약 문자형으로 설정된 경우에도
+                변수형으로 사용될 수 있는 문자면 변수형호출가능!
+                예) var obj = {"하하하":"나나나"}
+                    obj["하하하"] 또는 obj.하하하
+
+            ***************************************/
+
+            
+            // 객체 생성하기 - 객체리터럴
+            const GU = {
+                name:'맥주',
+                tall:'50cm',
+                weight:'500ml',
+                com:'기네스',
+                work:'치킨, 피자',
+                
+                
+                msgFn:function(txt){   //팬레터내용
+
+                    let mycss = target[4].style;
+
+                    
+                    // 1.메시지 띄우기   
+                    alert('팬레터:'+txt);
+                    // alert은 ,문법이 없음.  alert('팬레터:',txt); 이면 안나온다
+                    // +로 사용한다
+
+                 
+
+                    mycss.background = 'url(https://wimg.mk.co.kr/meet/neds/2017/07/image_readtop_2017_458108_14994612642948149.jpg) repeat-x top/auto 100%';
+                    //3. 글자색
+                    mycss.color = '#fff';
+                    mycss.textShadow = '0 0 5px #000';
+                    //4. 글자내용변경
+                    target[4].innerText = '기네스를먹자';
+                    //6. 줄간격
+                    mycss.lineHeight = '84px';
+                    //7. 박스크게하기
+                    mycss.height = '100px';
+                    //8. 트랜지션
+                    mycss.transition = '2s ease-out 1s';
+
+                }////msgFn함수/////
+
+
+
+
+
+            }; //////// GU 객체 ////////////////
+
+            // 객체확인
+            console.log('GU객체',GU);
+
+
+            // 출력대상: target[4]
+            //줄간격
+            target[4].style.lineHeight = '24px';
+            
+            //내용출력
+            target[4].innerHTML = `
+            저는${GU.name}인데요 키는${GU.tall}이고요 몸무게는 ${GU.weight}이에여<br>
+            뭐하냐면 ${GU.work}합니다
+
+            `;
+            //title속성 넣기
+            target[4].title = `
+            여기를 클릭하여 ${GU["name"]}팬레터를 확인하세요!
+            `;
+
+            // 손가락 표시
+            target[4].style.cursor = 'pointer';
+
+            target[4].onclick = function(){
+                //실행코드 구역에서 객체 메서드를 호출
+                //전달값도 여기서 보내준다
+                GU.msgFn('\n하하하하하하하\n맥주파티');
+                //\n은 alert창에서 줄바꿈해줌
+                mycss.background
+
+
+
+          
+            };////click이벤트함수 /////
+            
+          
+        } ////////// loadFn 함수 ///////////
+
+
+
         </script>
     </head>
 
