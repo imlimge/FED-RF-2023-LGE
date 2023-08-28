@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>JS4-1. 배열변수와 객체</title>
         <style>
+
+            /* 동영상 주변 암전효과 박스 */
             body::before {
                 content: "";
                 display: none;
@@ -15,9 +17,14 @@
                 height: 100vh;
                 background-color: rgba(0, 0, 0, 0.592);
             }
+
+            /* body에 클래스 on 설정시 보임 */
             body.on::before {
                 display: block;
             }
+
+
+
             h1 {
                 text-align: center;
             }
@@ -35,9 +42,16 @@
 
             }
         </style>
-        <!-- JS코드구역 -->
+        <!-- 객체 js 불러오기 -->
 
+        <script src="./JS/JS4-1.object.js"></script>
+
+        <!-- JS코드구역 -->
         <script>
+           
+
+
+
             // 로딩구역//////////////
 
             window.addEventListener("DOMContentLoaded", loadFn);
@@ -394,7 +408,7 @@
 
                     let mycss = target[4].style;
 
-                    
+
                     // 1.메시지 띄우기   
                     alert('팬레터:'+txt);
                     // alert은 ,문법이 없음.  alert('팬레터:',txt); 이면 안나온다
@@ -457,10 +471,231 @@
           
             };////click이벤트함수 /////
             
+
+            /********************************************  
+                [미션: 내가 만든 객체 활용하기]
+                1. 주제: 영화정보
+                2. 조건: 객체의 변수명을 자신만의 이름으로 작성
+                3. 객체를 공유
+            ********************************************/
+
+
+            // 자신만의 오브젝트 
+
+            let lke_obj = {};
+            // 오브젝트 형만 만들고 할당은 아래에서
+            // 1. 영화제목
+            lke_obj.title = 'WALL·E';
+            // 2. 감독
+            lke_obj.director = '앤드루 스탠튼';
+            // 3. 배우
+            lke_obj.actor = '벤 버트, 엘리사 나이트외';
+            // 4. 장르
+            lke_obj.genre = '애니메이션';
+            // 5. 관람가
+            lke_obj.ratings = '전체관람가';
+            // 6. 예고편
+            lke_obj.trailer = function(){
+                console.log('예고편:','3Mi62VKDhm0');
+                
+                //플레이어함수 호출
+                playMovie('3Mi62VKDhm0');
+
+
+
+            }/// trailer 함수 /////
+            
+
+
+
+
+            //객체확인
+            console.log('나의객체:',lke_obj);
+
+            // 화면에 정보를 보여주는 함수
+            const showMovieInfo = function(){
+                // 함수호출확인
+                console.log('영화정보!');
+
+                // 줄간격조정
+                target[5].style.lineHeight ='34px';
+                // 손가락모양
+                target[5].style.cursor = 'pointer';
+                // 글자크기
+                target[5].style.fontSize = '14px';
+
+                //1. 대상선정: target[5]
+                //2. 내용넣기
+                target[5].innerHTML = `
+                    ★ 영화명 : ${lke_obj.title}
+                    ☆ 감독 : ${lke_obj.director}<br>
+                    ★ 배우 : ${lke_obj.actor}
+                    ☆ 장르 : ${lke_obj.genre}
+                    ★ 등급 : ${lke_obj.ratings}
+                   
+
+                `;
+
+                //툴팁 보이기
+                target[5].title = `클릭하시면 ${lke_obj.title}예고편을 보실 수 있습니다`;
+              
+            
+                // 예고편 메서드 호출
+                target[5].onclick = lke_obj.trailer;
+
+            } //////// showMovieInfo 함수 /////////
+
+            showMovieInfo();
+
+
+
+
+       
+            //초이스버튼 링크걸기
+            //대상선정: .choice button
+            let choice = document.querySelectorAll('.choice button');
+            console.log('초이스:',choice);
+
+            // 초이스 개수
+            let choice_cnt = choice.length;
+            
+            // for문으로 버튼들을 click 이벤트 설정함
+            for(let i=0;i<choice_cnt;i++){
+
+                choice[i].onclick = function(){
+                    //1. 버튼텍스트
+                    let btxt = this.innerText;
+                    console.log('난누구',btxt);
+
+
+                    //할당 전 이전 영화객체
+                    console.log("이전객체,",lke_obj);
+
+
+                    //2.버튼텍스트에 해당하는 객체를 기존객체에 덮어쓰기
+                    switch(btxt){
+                        case "임경은초이스":
+                        lke_obj = lke_obj;
+                        break;  /* 나 = 나 라서 다른거 누른순간 덮어쓴게나옴 */
+
+                        case "선생님초이스":
+                        lke_obj = tom_obj;
+                        break;
+
+                        case "이조은초이스":
+                        lke_obj = zoe_obj;
+                        break;
+
+                        case "이동엽초이스":
+                        lke_obj = nick_obj;
+                        break;
+
+                        case "신용진초이스":
+                        lke_obj = shin_Obj;
+                        break;
+
+                        case "최수진초이스":
+                        lke_obj = csj_obj;
+                        break;
+
+                    }/// switch //////
+
+                      //할당 후 이전 영화객체
+                      console.log("이후객체:",lke_obj);
+
+
+                    //3.객체 셋팅함수 호출
+                    showMovieInfo();
+
+
+                }; //// click 이벤트함수 ////
+                 }////////////for ///////////////////
+
           
-        } ////////// loadFn 함수 ///////////
+                } ////////// loadFn 함수 ///////////
 
 
+
+            /***************************************
+              함수명: playMovie
+              기능: 영화예고편 화면 띄우기
+            ***************************************/
+            function playMovie(mcode){   //mcode - 영화아이디
+                //함수호출 및 전달값확인
+                console.log('난진짜',mcode);
+
+                // 1.동영상 박스 대상선정: #mvbox
+                let mvbox = document.querySelector('#mvbox');
+
+                // 2. 영화박스에 아이프레임 넣기
+                mvbox.innerHTML = `
+                    <div id="mv">
+                        <!--유튜브 아이프레임 -->
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${mcode}?autoplay=1" allow="autoplay"></iframe>
+                    
+                    <!--닫기버튼-->
+                    <button class="cbtn">×</button>
+                </div>
+                `;
+
+                // 3. 삽입된 동영상 박스 CSS 설정하기
+                let mv = document.querySelector('#mv');
+                let css = mv.style;
+
+                css.position = 'fixed';
+                css.top="50%";
+                css.left="50%";
+                css.transform = 'translate(-50%,-50%)';
+                css.width = '700px';
+                css.height = '450px';
+                css.backgroundColor = '#000';
+
+
+                // 4. 닫기버튼 CSS 셋팅하기
+                let cbtn = document.querySelector('.cbtn');
+                cbtn.style.cssText= `
+                    position:absoulte;
+                    top:0;
+                    right:-70px;
+                    width:50px;
+                    height:50px;
+                    border:none;
+                    color:#fff;
+                    background-color:blue;
+                    font-size:40px;
+                    font-weight:bold;
+                    border-radius:50%;
+                    cursor : pointer;
+                    line-height:50px;
+
+                `;
+
+                //아이프레임 보더 없앰
+                mv.querySelector('iframe').style.border = 'none';
+
+                // 5. 닫기버튼 클릭시 #mv 제거하기
+                    cbtn.onclick = function(){
+                        mv.remove();
+                        //remove()는 DOM메서드로 선택요소를 제거함
+                        document.body.classList.remove('on');
+
+                    };///click 이벤트함수 //////
+
+
+                // 6. body요소에 클래스 on 주기
+                // 동영상 배경 암전효과
+                document.body.classList.add('on');
+
+            }/////////playMovie 함수///////////////
+
+     
+
+
+
+  
+
+
+        
 
         </script>
     </head>
@@ -474,5 +709,29 @@
         <div class="cont"></div>
         <div class="cont"></div>
         <div class="cont"></div>
+        <div class="cont choice">
+            <!-- 영화초이스 -->
+            <button>임경은초이스</button>
+            <button>선생님초이스</button>
+            <button>이조은초이스</button>
+            <button>이동엽초이스</button>
+            <button>신용진초이스</button>
+            <button>최수진초이스</button><br>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button><br>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button>
+            <button>초이스</button><br>
+        </div>
+        <!-- 영화 예고편동영상용 박스 -->
+        <aside id="mvbox"></aside>
+
     </body>
 </html>
