@@ -2,6 +2,30 @@
 
 
 
+//임경은 오브젝트   >> 나로 다시 돌아오는 오브젝트. 같은거 복사해서 이름만 다르게!
+const lim_obj = {};
+// 오브젝트 형만 만들고 할당은 아래에서
+// 1. 영화제목
+lim_obj.title = "WALL·E";
+// 2. 감독
+lim_obj.director = "앤드루 스탠튼";
+// 3. 배우
+lim_obj.actor = "벤 버트, 엘리사 나이트외";
+// 4. 장르
+lim_obj.genre = "애니메이션";
+// 5. 관람가
+lim_obj.ratings = "전체관람가";
+// 6. 예고편
+lim_obj.trailer = function () {
+    console.log("예고편:", "3Mi62VKDhm0");
+
+    //플레이어함수 호출
+    playMovie("3Mi62VKDhm0");
+}; /// trailer 함수 /////
+
+
+
+
 //임경은 오브젝트
 const lke_obj = {};
 // 오브젝트 형만 만들고 할당은 아래에서
