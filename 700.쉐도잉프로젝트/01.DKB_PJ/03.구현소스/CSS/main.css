@@ -56,7 +56,7 @@ body > div > * {
   width: 100%; 
   margin: 0 auto;
 
-
+  gap: 7px;
 
 }
 
@@ -73,6 +73,13 @@ body > div > * {
 }
 
 
+/* 개별 상위박스 오버시 컨텐트 박스 설명보이기 */
+.cat-box article:hover.cat-content{
+  height: 200%;
+}
+
+
+
 
 /* 캐릭터 컨텐츠박스 */
 .cat-content{
@@ -80,13 +87,20 @@ body > div > * {
   bottom: 0;
 
   width: 100%;
-  height: 200%;
+  height: 95%;
 
   display: flex;
   flex-direction: column;
  
+  /* 트랜지션 */
+  transition: height .4s ease-in-out;
+
 }
 
+/* 개별 상위박스 오버시 컨텐트 박스 설명보이기 */
+.cat-box article:hover .cat-content{
+  height: 200%;
+}
 
 
 
@@ -135,8 +149,38 @@ body > div > * {
   display: none;
 }
 
+/* 캐릭터 설명박스 배경 */
+.desc-box{
+  background: url(../images/eachBG.jpg) no-repeat bottom/cover;
+  
+  /* 스크롤바 생성 */
+  overflow: auto;
+  height: 50%;
+  border-radius: 10px 5px 5px 10px;
 
+}
 
+/* 캐릭터 타이틀 */
+.desc-box h3{
+  font-family: 'Gugi';
+  font-size: min(2.4rem, 1.7vw);
+  font-weight: normal;
+  white-space: nowrap;
+  padding: 15px 0 5px;
+  letter-spacing: -1px;
+
+}
+
+/* 캐릭터 설명박스 글 */
+.desc-box p{
+  font-family: 'Single Day','ZCOOL KuaiLe';
+  font-size: min(1.8rem, 1.3vw);
+  line-height: 1.6;
+  padding: min(1vw,1.5rem);
+  text-align: justify;
+
+ 
+}
 
 /************ 3. 도깨비메뉴박스 ************/
 #dokebi-menu{
