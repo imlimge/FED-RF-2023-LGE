@@ -1,4 +1,4 @@
-// 큐브 애니 JS //////////////
+// 큐브 애니 JS2 //////////////
 
 /************************************* 
     [구현내용]
@@ -34,6 +34,7 @@ function loadFn(){
     
     //1-2. 변경대상: .cube
     const cube = qs('.cube');
+    const cube2 = qs('.cube2');
 
 
     
@@ -51,6 +52,7 @@ function loadFn(){
         //2. 변경내용: 클래스 on 없으면 넣고 있으면 빼기
         //classList.toggle(클래스명)
          cube.classList.toggle('on');
+         cube2.classList.toggle('on');
 
         
         //3. 텍스트 읽어오기 (버튼글자변경위해)
