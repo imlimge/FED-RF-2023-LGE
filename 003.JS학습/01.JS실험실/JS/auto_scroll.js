@@ -249,5 +249,11 @@ function movePage(dir){  //dir은 방향값(1- 아래 , 0- 위)
   // 3. 페이지 이동하기 ///
   window.scrollTo(0,window.innerHeight*pg_num);
 
+// offsetTop은 선택요소의 top위치값 리턴함
+  
+window.scrollTo(0,qsa('.page')[pg_num].offsetTop);
+console.log('여기야!',qsa('.page')[pg_num].offsetTop);
+
+
 
 } /////movePage 함수 ///////////
