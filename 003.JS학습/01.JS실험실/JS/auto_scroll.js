@@ -27,6 +27,10 @@ let sts_wheel = 0;
 // 1-3. 전체페이지수
 let total_pg;
 
+// 1-4. 전체 .page요소
+let ele_page;
+
+
 
 // 새로고침 시 첫페이지로 리셋하기
 // 브라우저 스크롤바 위치 캐싱때문에 함
@@ -59,6 +63,8 @@ const qsa = x => document.querySelectorAll(x);
 function loadFn(){
   //호출확인
   // console.log('로딩완료');
+
+  ele_page = qsa('.page');
 
   //전체페이지수 할당
   total_pg = qsa('.page').length;
@@ -251,8 +257,8 @@ function movePage(dir){  //dir은 방향값(1- 아래 , 0- 위)
 
 // offsetTop은 선택요소의 top위치값 리턴함
   
-window.scrollTo(0,qsa('.page')[pg_num].offsetTop);
-console.log('여기야!',qsa('.page')[pg_num].offsetTop);
+window.scrollTo(0,ele_page[pg_num].offsetTop);
+console.log('여기야!',ele_page[pg_num].offsetTop);
 
 
 
