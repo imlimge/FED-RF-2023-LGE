@@ -11,6 +11,65 @@
 const qs = x => document.querySelector(x);
 const qsa = x => document.querySelectorAll(x);
 
+
+// 새로고침 시 맨위로 이동
+setTimeout(()=>{window.scrollTo(0,0)},500);
+
+
+
+window.addEventListener('wheel',(e)=>{
+    // 기본기능 막기 : preventDefault()
+    e.preventDefault();
+    // 이벤트 호출확인
+    console.log('휠~~~',e.wheelDelta);
+    // event.wheelDelta 는 휠방향알림(마이너스 아랫방향)
+    // 휠방향 분기
+    // 페이지 이동하기 : scrollTo(x스크롤위치값,y스크롤위치값)
+    window.scrollTo(0,window.innerHeight*(e.wheelDelta<0?1:0));
+    // window.innerHeight*(e.wheelDelta<0?1:0)
+    // 윈도우높이값 * 음수명 1곱하고 양수면 0곱함
+    // 아랫방향은 윈도우높이값만큼 가고 윗방향은 위치값 0임!
+
+    // 두번째 페이지일때 동영상 플레이 하기
+    if(e.wheelDelta<0){  //아래로 내려갈 때
+        qs('.trailer-box iframe').setAttribute('src','https://www.youtube.com/embed/Ko2NWhXI9e8?autoplay=1')
+    } /////if/////
+
+    else{ // 위로 올라갈 때
+        qs('.trailer-box iframe').setAttribute('src','https://www.youtube.com/embed/Ko2NWhXI9e8')
+    }////else ///
+
+},{passive:false});
+
+
+
+
+
+// passive:false 설정값 변경을 해야
+// window,document,body 이 세가지 중요객체에 대하여
+// 막기설정을 할 수 있다!(모바일때문 passsive:true로 기본값 바뀜)
+
+// 추가 : 위의 기능 자동 스크롤 이동시
+// 유튜브 동영상 박스위에서 스크롤하면 자동스크롤 기능이 안됨!
+// 따라서 유튜브 박스 영역에서 wheel하면 휠을 막아줘야함!
+// 이벤트는 위로 전달되므로 (이벤트버블링) 이를 막아준다!
+// 막는방법은 
+// 그만해 stop!
+// 전파를 propagation ->>> event.stopPropagation()
+// qs('.trailer-box').addEventListener('wheel',
+// function(e){
+//     e.stopPropagation();
+//     e.preventDefault();
+//     console.log('하하');
+// });
+
+// 초기 데이터 셋팅하기
+// 데이터 : 어벤저스 데이터 - data.js > character
+
+// console.log(character);
+
+
+
 // 어벤저스 캐릭터 박스 셋팅하기
 // 1. 대상선정 : .avengers-box
 
