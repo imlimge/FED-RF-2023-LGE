@@ -254,7 +254,171 @@
 
                 }//////linkFn함수/////////
 
+                /************************************************** 
+                
+                    [ 요소의 생성, 삭제, 이동하기 ]
 
+                    1. 맨뒤 생성 혹은 맨뒤 이동
+                    -> 선택요소.appendChild(요소)
+
+                    2. 특정위치에 요소 넣기 혹은 이동
+                    -> 선택요소.insertBefore(넣을놈,넣을놈전놈)
+
+                    3. 요소의 삭제
+                    -> 선택요소.remove()
+
+                    4. 새로운 요소 생성 (메모리상에 생성함)
+                    -> document.createElement(태그명)
+
+                    5. 요소에 새로운 속성넣기 (메모리상에 생성함)
+                    -> document.createAttribute(속성명)
+
+                    6. 생성된 속성에 값넣기
+                    -> 생성된속성.value = 값
+
+                    7. 요소의 새로운 속성 넣기
+                    -> 선택요소.setAttributeNode(새로운속성)
+
+                **************************************************/
+
+
+                ///////////새리스트 요소 생성하기 //////////
+                //이벤트 종류: click
+                //이벤트 대상: .nbt
+                //변경대상 :#div02 ul
+                //////////////////////////////////////////
+                // 1.대상선정
+                // 1-1. 새로생성 버튼 담기
+                const btnNew = qs('.nbt');
+                
+                // 1-2. 변경대상
+                const box2 = qs('#div02 ul');
+                console.log('새리스트생성버튼',btnNew,box2);
+
+
+
+                // 이미지 alt 설명 배열
+                const avenName = ['아이언맨','딱딱이','토르','닥스','스타로드'];
+
+
+                // 2. 이벤트 걸기
+                addEvt(btnNew,'click',makeEle);
+
+                // 3. 새요소만들기 함수
+                function makeEle(){
+                    console.log('만들어');
+
+
+                   
+
+
+                    // 1. 새로운 li를 생성하여 변수에 할당
+                    let newEle = document.createElement('li');
+
+                    // 2. 랜덤수 만들기
+                    // Math.ceil(Math.random()*최대수) 
+                    // 1~최대수까지의 랜덤수 구하기
+                    // math.ceil() 소수점 올림처리 메서드
+                    // math.random() 난수발생 메서드
+                    let rdnNum = Math.ceil(Math.random()*5);
+                    console.log(rdnNum);
+
+
+
+
+
+                    // 2. 메모리상에 생성된 li에 이미지요소 넣기
+                    newEle.innerHTML = `
+                    <img src="images/ab${rdnNum}.jpg" alt="${avenName[rdnNum-1]}"
+                    title="클릭하시면 지워집니다"
+                    >
+                    `;
+
+                    
+                    //4. 안내 타이틀 넣기 (툴팁)
+
+                    
+                    // 4. li 클릭시 li 지우기
+                    newEle.onclick = () => newEle.remove();
+
+
+
+                    // 3. 변경대상에 새로운 li 넣기
+                    // appendChild(요소)
+                    // -> 맨뒤에 새로운 요소 추가
+                    box2.appendChild(newEle);
+
+                }////makeEle함수 ///////////////// 
+
+
+                //기존에 있는 li에 지우기 넣기
+                // box2 변수아래 li
+                box2.querySelectorAll('li').forEach(ele=>{
+                    //지움설정
+                    ele.onclick = () => ele.remove();
+                    //툴팁넣기
+                    ele.querySelector('img').title = '클릭하시면 지어집니다!';
+
+                })
+
+
+                // 맨뒤이동 버튼 클릭시 //////////////
+                // 맨앞요소를 맨뒤로 이동하기 ////////////
+                // 이벤트 대상: .mvl
+                // 변경대상 : #div02 ul -> box2변수
+                
+                //1.대상선정
+                const btnMoveLast = qs('.mvl');
+
+
+                //2.이벤트 연결하기
+                addEvt(btnMoveLast,'click',moveLast);
+
+                //3. 함수만들기
+                function moveLast(){
+                    console.log('끝으로');
+                    
+                    //1.맨앞요소 선택하기
+                    let firstEle = box2.querySelectorAll('li')[0]
+
+                    //2. 맨앞요소 맨뒤로
+                    // appendChild(맨앞요소)
+                    // -> 기존요소를 선택하면 이동됨
+                    box2.appendChild(firstEle);
+
+                }///moveLast 함수 ///////////
+
+
+
+                //맨앞이동 버튼 클릭시////////////////
+                //맨뒤 li가 맨 앞으로 이동됨/////////
+                //이벤트 대상: .mvf///////////
+                // 변경대상 : #div02 ul -> box2변수
+
+                const btnMoveFirst = qs('.mvf');
+                addEvt(btnMoveFirst,'click',moveFirst);
+                
+                function moveFirst(){
+                    console.log('앞으로');
+
+                    let eles = box2.querySelectorAll('li');
+
+                    let seq = eles.length-1;
+
+                    //2.맨 뒤 li 맨 앞으로 이동
+                    //insertBefore(넣을놈,넣을놈전놈)
+                    //넣을놈: 맨뒤li -> eles[eles.length-1]
+                    //넣을놈 전놈: 맨 앞 li -> eles[0]
+                    //맨뒤 배열이나 컬렉션 번호는 [개수-1]
+                    box2.insertBefore(eles[seq],eles[0]);
+                    
+                    // box2.insertBefore(eles[3],eles[1])   얼마든지 변경 가능
+
+                }
+                /************************************************* 
+                    ※ appendChild() 와 insertBefore()는 대상을
+                    정하는 것에 따라 중간에 적용할 수 있다!
+                *************************************************/
 
             }); /////////////로드구역 //////////////////
 
