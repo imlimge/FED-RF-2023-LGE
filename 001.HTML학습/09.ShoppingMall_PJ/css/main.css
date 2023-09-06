@@ -48,7 +48,12 @@ ol {
     width: 913px;
     height: 564px;
     float: left;
-    overflow: hidden;
+
+    
+    /* overflow: hidden; */
+
+
+
     /*넘치는 자식요소 숨기기*/
     /*    border: 2px solid red;*/
     box-sizing: border-box;

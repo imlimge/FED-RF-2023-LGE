@@ -1,0 +1,333 @@
+@charset "utf-8";
+
+/* 네비게이션 유형1 : CSS flex 적용- nav01_flex.css */
+
+
+html,
+body,
+h1 {
+    margin: 0;
+    padding: 0;
+}
+h1.tit {
+    text-align: center;
+    padding: 20px;
+}
+body {
+    color: #fff;
+    background: #0b144e url(../images/nav1bg.png) no-repeat fixed center/cover;
+}
+
+/* ul,ol 초기화 : 3無 */
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* a 공통 */
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+/* 클리어설정 가상요소 - .clb가 설정된 요소는 clear가 셋팅됨 >> 플렉스 불필요
+ul::after,
+ol::after,
+.clb::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+ */
+
+
+/* 공통클래스 */
+/* 인박스 */
+.inbox{
+  max-width:1650px;
+  margin: 0 auto;
+  /* outline: 2px dashed red; */
+
+}
+
+/* 파트박스 */
+.part-box {
+    float: left;
+    /* 옆으로 흐르게 */
+}
+
+/* 메인로고 */
+.logo {
+    line-height: 80px;
+}
+
+/* 로고 이미지 */
+.logo img{
+  width: min(137px, 14vw);
+}
+
+
+/* 네비게이션 박스 */
+.gnb {
+    max-width: 858px;
+  /* outline: 3px dotted yellow; */
+  margin: 0 auto;
+
+}
+
+
+/* 리스트 부모인 ul박스가 플렉스박스 */
+.gnb > ul {
+  display: flex;
+  /* 진행방향 정렬: 중앙 */
+  justify-content: center;
+
+}
+
+
+/* 최상위 직계 li만 적용 */
+.gnb>ul>li {
+  position: relative;
+
+  /* 부모자격 - .gnb li가 .sub-menu의 부모가됨 */
+    /* float: left; ->flex에서 안씀 */
+    /* 나는 왼쪽 너는 오른쪽으로 올라와 */
+    
+    padding: 35px 0;
+}
+
+/* 네비게이션 링크 상위 a */
+.gnb>ul>li>a {
+   display: block;
+   font-size: min(18px, 1.8vw);
+   padding: 0 min(32px, 1.5vw);
+}
+
+
+
+
+/* 네비게이션 링크
+.gnb a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: min(18px, 1.8vw);
+    padding: 0 min(32px, 1.5vw);
+  
+    /* line-height: 80px; */
+
+
+
+/* 가상요소로 밑줄 만들기 - 공통클래스 독립 */
+.line-ani>li>a::after {
+  content: '';
+  display: block;
+
+  width: 0%;
+  margin-left: 100%;
+
+  height: 1px;
+  background-color: #fff;
+
+/* 트랜지션 */
+transition:.3s;
+
+
+}
+
+/* 오버시 밑줄 */
+.line-ani>li>a:hover::after {
+  width: 100%;
+  margin-left: 0%;
+
+ /* 트랜지션 : 오버시엔 왼쪽마진값은 무애니*/
+  transition: width .3s;
+
+}
+
+
+
+
+
+
+
+
+
+
+/* 서브메뉴 */
+.sub-menu{
+  position: absolute;
+  width: min(200px, 17vw);
+  border-radius: 15px;
+  background-color: rgba(0, 0, 128, 0.607);
+
+  /* 박스 글로우 효과 */
+  box-shadow: inset 0 0 5px lightblue;
+
+  /* 가로방향 메뉴 정중앙 이동 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* 숨기기: 높이값0 */
+  height: 0;
+  /* 넘치는 요소 숨기기 */
+  overflow: hidden;
+
+  /* 트랜지션 */
+  transition: .4s ease-in-out;
+
+  /* 투명하게 */
+  opacity: 0;
+
+  /* top은 현재 젠틀하다. top을 주면 부모로부터 
+  다시 수치를 크게 조정해야하므로 마진탑으로 세부 조정한다 */
+  /* top 수치가 너무 벗어나면 서브메뉴가 해지됨 */
+  margin-top: 9px;
+
+  
+
+}
+
+/* 상위메뉴 li에 마우스 오버시 서브메뉴 보이기 애니 공통(투명도)*/
+.gnb>ul>li:hover .sub-menu{
+  /* height:calc(40px*5); */
+  /* height: auto; 
+  -자동 높이값은 애니메이션 불가 */
+
+  opacity: 1;
+}
+
+
+/* 서브메뉴별 개수로 높이값 차등 설정 */
+/* .gnb>ul>li:nth-child(1) .sub-menu{
+  height:calc(40px*5); 
+}
+.gnb>ul>li:nth-child(2) .sub-menu{
+  height:calc(40px*3); 
+}
+.gnb>ul>li:nth-child(3) .sub-menu{
+  height:calc(40px*1); 
+}
+.gnb>ul>li:nth-child(4) .sub-menu{
+  height:calc(40px*1); 
+}
+.gnb>ul>li:nth-child(5) .sub-menu{
+  height:calc(40px*3); 
+} */
+
+
+/* 클래스로 만들어서 아래 li요소에 각각 설정하기 */
+
+.gnb>ul>li.m5 .sub-menu{
+height:calc(40px*5);
+}
+.gnb>ul>li.m3 .sub-menu{
+height:calc(40px*3);
+}
+.gnb>ul>li.m1 .sub-menu{
+height: 40px;;
+}
+
+
+
+
+
+/* 서브메뉴 li */
+.sub-menu li{
+  /* width: 100%; */
+  /* float 설정이 있어도 한줄에 하나씩 (한줄에 2개 줄려면 50%)
+  - float 설정이 없으면 안줘도 됨 */
+  text-align: center;
+
+}
+
+/* 서브메뉴 a 
+- 높이값 0으로 숨길 때 숨길 박스에 보더나 패딩이 있으면 완전히 숨길 수 없다 
+따라서 보더, 패딩은 없어야 함*/
+.sub-menu a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  line-height: 40px;
+  font-size: min(14px, 1.2vw);
+  /* 트랜지션 */
+  transition: .2s;
+  /* 반투명 */
+  opacity: .7;
+}
+
+/* 서브 오버시 효과 */
+.sub-menu a:hover{
+  font-weight: bold;
+  opacity: 1;
+  transform: scale(1.1);
+
+}
+
+/* 탑메뉴 */
+.top-menu li{
+  float: left;
+  padding: 29px 0 ;
+
+
+}
+
+
+/* 네비게이션 링크 상위 a */
+.top-menu li a {
+  display: block;
+  font-size: min(14px, 1.7vw);
+  padding: 0 min(12.6px, 0.7vw);
+  margin-top: 12px;
+}
+
+
+/* 마지막요소에 밑줄없애기 */
+.top-menu li:last-child a::after{
+  display: none;
+}
+
+
+
+
+
+
+
+/* 메인영역 */
+.main-area {
+    max-width: 1000px;
+    min-height: 600px;
+    line-height: 600px;
+    text-align: center;
+    font-size: 2.5vw;
+    margin: 100px auto;
+
+    border: 3px dashed lightgreen;
+    border-radius: 50px;
+}
+
+
+/* 12 그리드 클래스 : 
+한줄에 합이 12컬럼이 되도록 셋팅! */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+
+
+
+
