@@ -1,5 +1,19 @@
 //도깨비 PJ 메인 JS - main.js
 
+
+// DOM 함수 객체 //////////////
+const domFn = {
+  // 요소선택함수 ////////
+  qs: (x) => document.querySelector(x),
+  qsEl: (el, x) => el.querySelector(x),
+  qsa: (x) => document.querySelectorAll(x),
+  qsaEl: (el, x) => el.querySelectorAll(x),
+
+  // 이벤트셋팅함수
+  addEvt: (ele, evt, fn) => ele.addEventListener(evt, fn),
+}; /////// domFn 객체 /////////////
+
+
 //로딩구역 호출설정
 
 window.addEventListener('DOMContentLoaded', loadFn);
@@ -28,6 +42,48 @@ function loadFn(){
     ele.onwheel = e =>e.stopPropagation();
 
   });
+
+
+/********************************************* 
+   [현장포토파트 데이터 구성하기]
+  -배열 데이터를 이용하여 HTML코드 구성
+
+*********************************************/
+
+
+//1. 대상선정: .live-box
+const liveBox = domFn.qs('.live-box');
+console.log('대상',liveBox);
+
+
+//2. 현장포토 데이터를 기반으로 HTML 코드만들기
+let hcode = '<ul>';
+
+
+//반복코드 만들기 /////
+//현장포토 데이터 - data_drama.js 에서 가져옴
+liveData.forEach(val=>{
+  // html변수에 계속 넣기
+  hcode += 
+  `
+    <li>
+      <figure>
+        <img src="images/live_photo/${val.imgName}.jpg" 
+        alt="${val.title}">
+        <figcaption>${val.title}</figcaption>
+      </figure>
+    </li>
+  `;
+
+
+});////forEach/////
+
+hcode += '</ul>';
+
+console.log(hcode);
+
+//3. 대상박스에 html코드 넣기
+liveBox.innerHTML = hcode;
 
 
 }//////loadFn 함수///////////////////

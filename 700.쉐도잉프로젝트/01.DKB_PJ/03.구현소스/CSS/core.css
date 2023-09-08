@@ -50,6 +50,13 @@ float에 의한 망가짐 방지*/
   clear: both;
 }
 
+/* 그룹파트박스 */
+.group-part{
+  padding: 60px 0;
+}
+
+
+
 /* 파트박스 */
 .partbox {
   /* 옆으로 흐르게 */
@@ -68,6 +75,14 @@ float에 의한 망가짐 방지*/
 
 
 }
+
+/* 공통 서브타이틀 */
+.stit{
+  padding-bottom: 32px;
+  font-size: 3.8rem;
+  
+}
+
 
 
 /* 12그리드 참조  : 한줄에 합이 12컬럼이 되도록 셋팅*/
@@ -126,3 +141,5 @@ float에 의한 망가짐 방지*/
   background-color: #ddd;
   border-radius: 5px;
 }
+
+
