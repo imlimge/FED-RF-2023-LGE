@@ -107,7 +107,8 @@ function loadFn() {
         clickSts=1; //잠금
         setTimeout(()=>clickSts=0,TIME_SLIDE); //해제
 
-        console.log('나야나',this,this.classList.contains('ab2'));
+     
+        // console.log('나야나',this,this.classList.contains('ab2'));
 
         //classList.contains(클래스명)
         // 선택요소에 해당 클래스가 있으면 true 없으면 false
@@ -122,22 +123,9 @@ function loadFn() {
         //3. 버튼분기하기 '.ab2' 이면 오른쪽 버튼
         if(isRight){ //오른쪽버튼
 
-            //대상이동하기
-            slide.style.left = '-100%';
-            //트랜지션주기
-            slide.style.transition = TIME_SLIDE+'ms ease-in-out';
-            // 이동시간 후 맨앞 li요소 잘라서 맨 뒤로 이동하기
-            //appendChild(요소)
-            setTimeout(()=>{
-                // 맨앞 li 맨뒤로 이동
-                slide.appendChild(eachOne[0]);
-                // slide left값 0
-                slide.style.left = '0';
-                // 트랜지션 없애기
-                slide.style.transition = 'none';
-            }, TIME_SLIDE);
+            rightSlide();
 
-        } ///if////////
+        }///if /////////////
 
         else{ //왼쪽버튼
             //1. 맨뒤 li 맨앞으로 이동
@@ -165,10 +153,45 @@ function loadFn() {
 
         } ////else//////
 
+        // 4. 블릿순번 변경 함수 호출
+        chgIndic(isRight);  //방향값을 보냄
+
+        // 5. 자동넘김 멈춤함수 호출하기
+        clearAuto();
+
+     
+        }///goSilde함수 ////////
 
 
 
-        //4. 슬라이드 순번과 일치하는 블릿에 클래스 넣기
+        //슬라이드 오른쪽 방향 함수////
+        function rightSlide(){
+
+            //대상이동하기
+            slide.style.left = '-100%';
+            //트랜지션주기
+            slide.style.transition = TIME_SLIDE+'ms ease-in-out';
+            // 이동시간 후 맨앞 li요소 잘라서 맨 뒤로 이동하기
+            //appendChild(요소)
+            setTimeout(()=>{
+                // 맨앞 li 맨뒤로 이동
+                slide.appendChild(slide.querySelectorAll('li')[0]);
+                // slide left값 0
+                slide.style.left = '0';
+                // 트랜지션 없애기
+                slide.style.transition = 'none';
+            }, TIME_SLIDE);
+
+           }////rightSlide함수///
+
+
+
+ 
+
+    //블릿순번 변경 함수///
+    function chgIndic(isRight){ // isright(0왼쪽/1오른쪽)
+
+        // 슬라이드 순번과 일치하는 블릿에 클래스 넣기
         // 대상 : .indic li -> indic변수
         // 맨앞 슬라이드 li의 'data-seq'값 읽어오기
         // isRight값이 true이면 오른쪽 버튼이고 순번은 [1]
@@ -188,7 +211,69 @@ function loadFn() {
 
         }); /////////////forEach///////////
 
-    }///goSilde함수 ////////
+        
+    }/////chgIndic함수//////
+
+
+    /*************************************** 
+        자동넘기기 기능구현
+        ->일정 시간 간격으로 오른쪽 버튼 클릭
+        ->사용 JS내장함수 : setInterVal()
+        ->버튼클릭 실행 메서드 : click()
+        대상: 오른쪽버튼 - .ab2 -> abtn[1]
+    
+    ***************************************/
+    //인터발변수
+    let autoI;
+    //인터발 타이밍 함수를 변수에 할당 후 
+    //clearInterVal (할당변수)해야 멈출 수 있다
+
+    //타임아웃변수
+    let autoT;
+    //타임아웃 함수도 마찬가지임
+    // clearTimeout(할당변수) 해야 실행 쓰나미를 막을 수 있다
+
+
+
+    //인터발호출 함수
+    function slideAuto(){
+        autoI = setInterval(() => {
+            // 오른쪽 이동 슬라이드 함수 호출
+            rightSlide();
+            // 블릿변경함수호출( 오른쪽은 1)
+            chgIndic(1);
+
+
+            // console.log('실행');
+            // 오른쪽버튼 클릭이벤트 강제발생
+            // 선택요소.click()
+            // abtn[1].click();
+     
+        }, 3000);
+
+    }///slideAuto함수/////
+
+    // 인터발함수 최초 호출
+    slideAuto();
+  
+
+    // 버튼을 클릭할 경우를 구분하여  자동넘김을 멈춰준다
+    function clearAuto(){
+        console.log('멈춤');
+
+         //자동넘김 지우기
+        //clearInterval(인터발할당변수)
+
+        //1.인터발 지우기
+        clearInterval(autoI)
+        //2.타임아웃 지우기 (재실행호출 쓰나미 방지)
+        clearTimeout(autoT);
+        //일정시간 후 다시 인터발호출 셋팅하기
+        autoT = setTimeout(slideAuto,2000);
+        //결과적으로 5초후 인터발재실행은 하나만 남는다
+        
+    }///clearAuto함수/////
+
 
 
 } //////////////// loadFn 함수 ///////////////
