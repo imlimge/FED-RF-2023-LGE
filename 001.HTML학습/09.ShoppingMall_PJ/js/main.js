@@ -90,7 +90,7 @@ function loadFn() {
     forEach((ele,idx)=>{ele.setAttribute('data-seq',idx)});
     //setAttribute(속성명,속성값) -> 속성셋팅 JS내장 메서드
 
-    console.log(ele,idx);
+    // console.log(ele,idx);
 
 
     // 2. 이벤트 설정하기
