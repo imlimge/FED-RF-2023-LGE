@@ -90,7 +90,7 @@ function loadFn() {
     forEach((ele,idx)=>{ele.setAttribute('data-seq',idx)});
     //setAttribute(속성명,속성값) -> 속성셋팅 JS내장 메서드
 
-    // console.log(ele,idx);
+    console.log(ele,idx);
 
 
     // 2. 이벤트 설정하기
@@ -265,7 +265,7 @@ function loadFn() {
         //clearInterval(인터발할당변수)
 
         //1.인터발 지우기
-        clearInterval(autoI)
+        clearInterval(autoI);
         //2.타임아웃 지우기 (재실행호출 쓰나미 방지)
         clearTimeout(autoT);
         //일정시간 후 다시 인터발호출 셋팅하기
