@@ -1,5 +1,39 @@
 // 자동스크롤 JS - auto_scroll.js
 
+
+
+
+// 이벤트 연결함수 //////////////////////
+
+
+
+
+// DOM 함수 객체 //////////////
+const domFn = {
+  // 요소선택함수 ////////
+  qs: (x) => document.querySelector(x),
+  qsEl: (el, x) => el.querySelector(x),
+  qsa: (x) => document.querySelectorAll(x),
+  qsaEl: (el, x) => el.querySelectorAll(x),
+
+  // 이벤트셋팅함수
+  addEvt: (ele, evt, fn) => ele.addEventListener(evt, fn),
+}; /////// domFn 객체 /////////////
+
+
+
+// 이벤트 등록하기 //////////////////////
+// 대상: window
+
+domFn.addEvt(window,'wheel',wheelFn);
+domFn.addEvt(window,'DOMContentLoaded',wheelFn);
+
+
+// window.addEventListener('wheel',wheelFn);
+// window.addEventListener('DOMContentLoaded', loadFn);
+
+
+
 /************************************************** 
 
   [ 자동스크롤 기능정의 ]
@@ -41,19 +75,7 @@ setTimeout(()=>{window.scrollTo(0,0)},500);
 
 
 
-// 2. 이벤트 등록하기 //////////////////////
-// 대상: window
-window.addEventListener('wheel',wheelFn);
-window.addEventListener('DOMContentLoaded', loadFn);
 
-
-
-
-// 3.이벤트 연결함수 //////////////////////
-
-// DOM 선택함수
-const qs = x => document.querySelector(x);
-const qsa = x => document.querySelectorAll(x);
 
 
 /************************************  
@@ -62,13 +84,13 @@ const qsa = x => document.querySelectorAll(x);
 ************************************/
 function loadFn(){
   //호출확인
-  // console.log('로딩완료');
+  // // console.log('로딩완료');
 
-  ele_page = qsa('.page');
+  ele_page = domfn.qsa('.page');
 
   //전체페이지수 할당
-  total_pg = qsa('.page').length;
-  console.log('전체페이지수:',total_pg);
+  total_pg = domfn.qsa('.page').length;
+  // console.log('전체페이지수:',total_pg);
 
 
 
@@ -85,7 +107,7 @@ function loadFn(){
 **************************************/
 function wheelFn(e){ // e 이벤트 전단별수(자동 - 아무이름 가능인데 보통 e evt 사용)
   // 함수 호출 확인
-  console.log('휠');
+  // console.log('휠');
   
   
   // 0. 광휠금지설정
@@ -95,13 +117,13 @@ function wheelFn(e){ // e 이벤트 전단별수(자동 - 아무이름 가능인
 
 
 
-  console.log('휠작동');
+  // console.log('휠작동');
 
 
   // 1. 휠방향에 따른 페이지변수 변경하기
   // 휠방향은 wheelDelta로 알아냄
   let delta = e.wheelDelta;
-  console.log('휠델타',delta);
+  // console.log('휠델타',delta);
   
   
   // 음수(-)는 아랫방향, 양수(+)는 윗방향
@@ -116,7 +138,7 @@ function wheelFn(e){ // e 이벤트 전단별수(자동 - 아무이름 가능인
   
 
   //전체 페이지번호 확인
-  console.log('페이지번호:',pg_num);
+  // console.log('페이지번호:',pg_num);
 
 
 
@@ -131,7 +153,115 @@ function wheelFn(e){ // e 이벤트 전단별수(자동 - 아무이름 가능인
 
   window.scrollTo(0,window.innerHeight*pg_num);
 
+   // 3. 메뉴변경함수 호출 : 페이지 변수 변경 후 
+   chgMenu();
+
+
+
 }////// wheelFn함수 /////////////////////
+
+
+// 메뉴변경 대상 : .gnb li / .indic li
+const gnbList = domFn.qsa('.gnb li');
+const indicList = domFn.qsa('.indic li');
+
+//메뉴처리 대상요소 배열로 묶어주기
+const menuGrp = [gnbList,indicList];
+
+/************************************** 
+  함수명: chgMenu
+  기능: 마우스 휠/메뉴클릭 시 멘
+**************************************/
+
+function chgMenu(){
+
+  //호출확인
+ console.log('바꿔',pg_num);
+
+ //메뉴 li를 순회하여 해당순번(pg_num)에 .on넣기
+ //나머지는 .on빼기
+
+
+  //1. 내부 함수만들기/////
+  const comFn = (a) => {    //a - 메뉴리스트요소
+      a.forEach((ele,idx)=>{
+      
+        if(idx==pg_num)
+          ele.classList.add('on');
+        else
+          ele.classList.remove('on');
+          })
+  };////comFn내부함수/////
+
+
+  //2. 처리할 요소 배열 불러오기 : menuGrp
+
+
+menuGrp.forEach(val=>comFn(val));
+
+/*  
+배열로 묶기 전
+
+comFn(gnbList);
+comFn(indicList);
+*/
+
+
+/* 
+내부함수 만들기 전 코드
+
+gnbList.forEach((ele,idx)=>{
+   
+    if(idx==pg_num)
+      ele.classList.add('on');
+    else
+      ele.classList.remove('on');
+ })
+
+ indicList.forEach((ele,idx)=>{
+   
+    if(idx==pg_num)
+      ele.classList.add('on');
+    else
+      ele.classList.remove('on');
+ })
+ */
+
+}///// chgMenu함수 /////////////////////
+
+
+
+
+// [ GNB li를 클릭 시 메뉴 변경하기 ]
+//pg_num을 업데이트 후 chgMenu()함수를 호출한다
+
+
+//메뉴그룹 배열만큼 클릭 기능 만들기//////////////
+//for of문 사용
+
+for(let x of menuGrp){  //x - gnbList, indicList 순회
+
+  
+  x.forEach((ele,idx)=>{
+    domFn.addEvt(ele,'click',()=>{
+  
+      console.log('전',pg_num);
+  
+      // 1. 전역 페이지 변수 업데이트하기
+      pg_num = idx; // 메뉴순번으로 업뎃
+      
+      // 2. 메뉴변경함수 호출
+      chgMenu();
+      
+  
+      console.log('후',pg_num);
+    });///// addEvt //////////
+  
+  });///////// forEach ///////////////
+
+}//// for of //////////////  
+
+
 
 
 
@@ -192,7 +322,7 @@ function touchStart(e){  //e - 이벤트 전달변수
 
 
   // 함수호출 확인
-  console.log('터치시작',pos_start, '/결과',result);
+  // // console.log('터치시작',pos_start, '/결과',result);
 
 
 // return값이 차가 0이면 함수 나감
@@ -223,12 +353,16 @@ function touchEnd(e){  //e - 이벤트 전달변수
 
 
   // 함수호출 확인
-  console.log('터치끝',pos_end);
+  // console.log('터치끝',pos_end);
 
 
-
+ 
 
 } /// mobileFn 함수 /////////////////////////
+
+
+
+
 
 
 
@@ -236,7 +370,7 @@ function touchEnd(e){  //e - 이벤트 전달변수
 
 function movePage(dir){  //dir은 방향값(1- 아래 , 0- 위)
   //함수호출
-  console.log('이동방향',dir);
+  // console.log('이동방향',dir);
 
 
 
@@ -258,8 +392,10 @@ function movePage(dir){  //dir은 방향값(1- 아래 , 0- 위)
 // offsetTop은 선택요소의 top위치값 리턴함
   
 window.scrollTo(0,ele_page[pg_num].offsetTop);
-console.log('여기야!',ele_page[pg_num].offsetTop);
+// console.log('여기야!',ele_page[pg_num].offsetTop);
 
 
 
 } /////movePage 함수 ///////////
+
+
