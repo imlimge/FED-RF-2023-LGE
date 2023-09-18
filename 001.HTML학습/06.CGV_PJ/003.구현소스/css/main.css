@@ -322,7 +322,7 @@ body{
     transition: top .4s ease-out;
 
     font-family: 'Cute Font', cursive;
-    font-size: min(1vw,14px);
+    font-size: 3.2vw;
 
     /* 줄바꿈방지 */
     white-space: nowrap;
@@ -333,7 +333,7 @@ body{
 
 /* 영화정보박스 제목만 변경 */
 .mv-info li:first-child{
-    font-size: min(1.1vw,17pX);
+    font-size: 3.5vw;
     color: aqua;
    
 }
@@ -351,6 +351,7 @@ body{
     height: 100%;
     flex-direction: column;
 }
+
 
 
 
