@@ -41,7 +41,7 @@ function showSub(){
   // 1. 서브메뉴 유무 판별하기
   // -> .smenu가 하위에 있는지 여부를 알아내기
   let isSub = domFn.qsEl(this,'.smenu');
-  // console.log('서브결과',isSub);
+  console.log('서브결과',isSub);
 
 
 
@@ -51,7 +51,7 @@ function showSub(){
     // 2. 서브메뉴 내부 ol박스 높이값 읽기
     let hv = domFn.qsEl(isSub,'ol').clientHeight;
     
-    // console.log('처리해봐',hv);
+    console.log('처리해봐',hv);
 
 
     //3. 현재 li의 높이값 적용하기
