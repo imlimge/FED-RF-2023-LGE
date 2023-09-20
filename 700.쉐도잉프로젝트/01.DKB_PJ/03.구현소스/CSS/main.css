@@ -9,7 +9,7 @@
 
 
 body * {
-  /* outline: 2px dashed #ccc; */
+  outline: 1px dashed #ccc;
 }
 
 body > div > * {
@@ -285,16 +285,13 @@ margin-left: 3px;
 
 
 
-/*************** 현장포토 ***************/
-/* .main .group-part-03 .partbox{
-  height: 300px;
-}
- */
+/*************** 그리드 박스 공통파트 ***************/
 
+/* 현장포토(.live-box) / 대표이미지(.poster-box) */
 
 
 /* 현장포토 그리드 구성박스 */
-.live-box ul{    
+.grid-box ul{    
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-column-gap: 24px;
@@ -303,17 +300,27 @@ margin-left: 3px;
 
 
 /* 현장포토 이미지 공통 */
-.live-box img {
+.grid-box img {
   width: 100%;
   border-radius: 10px;
 }
 
 
 /* 현장포토 이미지 설명 타이틀 */
-.live-box figcaption{
+.grid-box figcaption{
   font-size: 2rem;
   font-weight: 500;
   padding-top: 14px;
+}
+
+
+/* 대표이미지 박스 조정 */
+.poster-box ul{
+  grid-template-rows: repeat(2,min(16.5vw,238px));
+  /* min()으로 최대 사이즈 지정, 작아질 때 화면맞춤(vw) 
+  -> 결과적으로 일정한 높이값을 줌으로 해서 첫번째 줄의 이미지가 큰 박스가 아래쪽으로 나가있고
+  두번째줄은 박스크기에 맞게 바로 첫번째 박스 아래에 위치하게 됨*/
+  
 }
 
 
@@ -321,6 +328,8 @@ margin-left: 3px;
 .main .group-part-04 .partbox{
   height: 542px;
 }
+
+
 
 /*************** 최신동영상 ***************/
 .main .group-part-05 .partbox{

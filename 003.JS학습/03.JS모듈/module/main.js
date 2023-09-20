@@ -24,7 +24,7 @@ import msgFn from './msg_format.js';
 // console.log(mTitle,sTitle,personInfo,mvData);
 console.log(a,sTit,pInfo,mv,msgFn,dFn);
 
-
+const qsaEl = (el, x) => el.querySelectorAll(x);
 
 /*************************************************** 
     
