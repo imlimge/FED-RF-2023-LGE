@@ -133,8 +133,8 @@ ol::after,
   height: 1px;
   background-color: #fff;
 
-/* 트랜지션 */
-transition:.3s;
+  transition:.3s;
+  
 
 
 }
@@ -143,9 +143,9 @@ transition:.3s;
 .line-ani>li>a:hover::after {
   width: 100%;
   margin-left: 0%;
+  transition: width .3s;
 
  /* 트랜지션 : 오버시엔 왼쪽마진값은 무애니*/
-  transition: width .3s;
 
 }
 

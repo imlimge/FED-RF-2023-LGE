@@ -26,6 +26,12 @@ body > div > * {
 
 
 
+
+
+
+
+
+
 /************ 2. 캐릭터소개영역 ************/
 #banner{
   background: url(../images/bg_mainvisual2.jpg) no-repeat center/cover ;
@@ -269,19 +275,90 @@ margin-left: 3px;
 
 
 
-
-/*************** 방송편성 소개 ***************/
-.main .group-part-01 .partbox{
+/*************** 방송편성 소개 파트 ***************/
+.main .intro-part .partbox{
   height: 455px;
 }
 
-/*************** 미리보기 ***************/
-.main .group-part-02 .partbox{
-  height: 298px;
+/* 서브타이틀 */
+.intro-part .stit{
+  padding-bottom: 0;
+}
+
+
+.intro-des{
+  font-size: 2.5rem;
+  display: flex;
+}
+
+.intro-des h3{
+  margin-right: 10px;
+}
+
+.intro-des ul{
+  display: flex;
+  gap: 0 15px;
+}
+
+
+/* 설명박스 */
+.intro-txt{
+  padding: 20px;
+  font-size: 2.2rem;
+  line-height: 2;
+  color: #555;
+
+}
+
+/* 인트로 버튼 */
+.intro-btn{
+  padding: 30px;
 }
 
 
 
+.intro-mv-img{
+  aspect-ratio: 2.5/1;
+}
+
+.intro-mv-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+/*************** 미리보기  preview-part ***************/
+.main .preview-part .partbox{
+  height: 298px;
+
+}
+
+.preview-part .partbox{
+  padding: 15px;
+  color: #888;
+  cursor: pointer;
+}
+.preview-part .partbox:hover{
+  padding: 15px;
+  color: #222;
+}
+
+/* 각 미리보기 타이틀 */
+.preview-box h3{
+  font-size: 2rem;
+}
+/* 각 미리보기 내용박스 */
+.preview-box p{
+  font-size: 1.5rem;
+  line-height: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+
+}
 
 
 

@@ -115,6 +115,7 @@ function loadFn() {
 
         //1. 오른쪽 버튼 여부 알아내기
         let isRight = this.classList.contains('ab2');
+        console.log('디스디스',this);
 
         //2. 슬라이드 li 새로 읽기
         let eachOne = slide.querySelectorAll('li');
