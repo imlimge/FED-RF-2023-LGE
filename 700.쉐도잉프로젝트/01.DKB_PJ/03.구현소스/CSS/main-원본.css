@@ -227,6 +227,15 @@ body > div > * {
     padding-top: 14px;
 }
 
+/* 대표이미지 박스 조정 */
+.poster-box ul{
+  grid-template-rows: repeat(2,min(16.5vw,238px));
+  /* min()으로 최대 사이즈 지정, 작아질 때 화면맞춤(vw) 
+  -> 결과적으로 일정한 높이값을 줌으로 해서 첫번째 줄의 이미지가 큰 박스가 아래쪽으로 나가있고
+  두번째줄은 박스크기에 맞게 바로 첫번째 박스 아래에 위치하게 됨*/
+  
+}
+
 
 /*********** 대표이미지파트 ***********/
 .main .group-part-04 .partbox {
@@ -236,3 +245,5 @@ body > div > * {
 .main .group-part-05 .partbox {
     height: 376px;
 }
+
+

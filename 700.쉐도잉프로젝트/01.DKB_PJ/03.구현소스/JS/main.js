@@ -7,11 +7,11 @@
   //부드러운 스크롤
   import {startSS,setPos} from './smoothScroll23.js';
   //데이터 모듈
-  import {gridData,gnbData,previewData} from './data_drama.js';
+  import {gridData,gnbData,previewData,clipData} from './data_drama.js';
 
 
 
-  startSS();
+  // startSS();
 
   // 0. 새로고치면 스크롤바 위치캐싱후 맨위로 이동
 setTimeout(() => {
@@ -59,7 +59,7 @@ dFn.addEvt(window, "keyup", () => setPos(window.scrollY));
 
 //1. 대상선정: grid-box (.live-box/.poster-box)
 const gridBox = dFn.qsa('.grid-box');
-console.log('대상',gridBox);
+// console.log('대상',gridBox);
 
 
 
@@ -122,7 +122,7 @@ function makeGird(ele,idx){ //ele-대상요소 / idx-순번 (데이터순번)
 
 const gnbList = dFn.qsa('.gnb>ul>li');
 
-console.log('메뉴',gnbList,'데이터',gnbData);
+// console.log('메뉴',gnbList,'데이터',gnbData);
 
 // 2. 대상에 하위메뉴 태그 만들기
 gnbList.forEach(ele=>{
@@ -144,7 +144,7 @@ gnbList.forEach(ele=>{
   if(gData){  //데이터 없으면 undefined ->false처리
     
     
-    console.log('만들어',atxt)    // >> 위에는 다 나왔다가 여기서는 하위메뉴가 있는거만 나왔음
+    // console.log('만들어',atxt)    // >> 위에는 다 나왔다가 여기서는 하위메뉴가 있는거만 나왔음
 
     ele.innerHTML += 
         
@@ -219,7 +219,7 @@ function outFn(){
 
 // 1. 대상설정하기
 const mvBox = dFn.qs('.intro-mv-img');
-console.log(mvBox);
+// console.log(mvBox);
 // 2. 이벤트 설정
 
 
@@ -264,7 +264,7 @@ previewData.sort((x,y)=>{
 
 });
 
-console.log(preNewData);
+// console.log(preNewData);
 
 
 
@@ -272,7 +272,7 @@ console.log(preNewData);
 // 대상선정: 
 
 const preBox = dFn.qsa('.preview-box>div');
-console.log(preBox);
+// console.log(preBox);
 
 preBox.forEach((ele,idx)=>{
   ele.innerHTML =`
@@ -284,4 +284,35 @@ preBox.forEach((ele,idx)=>{
   ; 
 
 
-})
+})//////////////forEach/////
+
+
+
+////////////////////////////////////////////////////
+/////////////최신동영상 영역 데이터 뿌리기///////////
+// 대상: .clip-box
+const clipBox = dFn.qs('.clip-box');
+console.log(clipBox);
+
+
+// 생성할 데이터
+let clipCode ='';
+
+
+//데이터 매칭하여 태그만들기
+//배열데이터 이므로 forEach사용
+clipData.forEach(val=>{
+  clipCode +=`
+  <li>
+  <iframe src="https://www.youtube.com/embed/${val.mvid}"></iframe>
+  <h4>${val.subtit}</h4>
+  <h3>${val.title}</h3>
+  </li>
+
+  `;
+
+});////
+
+clipBox.innerHTML = `<ul>${clipCode}</ul>`;
+
+console.log(clipCode);
