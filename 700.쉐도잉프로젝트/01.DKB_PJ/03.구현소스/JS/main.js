@@ -304,9 +304,11 @@ let clipCode ='';
 clipData.forEach(val=>{
   clipCode +=`
   <li>
-  <iframe src="https://www.youtube.com/embed/${val.mvid}"></iframe>
-  <h4>${val.subtit}</h4>
-  <h3>${val.title}</h3>
+    <div class="clip-mv-box">
+      <img src="./images/clip_img/${val.idx}.jpg" alt="${val.subtit}">
+    </div>
+      <h4>${val.subtit}</h4>
+      <h3>${val.title}</h3>
   </li>
 
   `;
