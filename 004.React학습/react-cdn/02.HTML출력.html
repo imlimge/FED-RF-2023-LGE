@@ -19,7 +19,9 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <!-- 나의 JSX -->
-    <script src="./js/02.HTML출력.jsx" type="text/babel"></script>
+    <script src="./js/02.HTML출력.js" type="text/babel"></script>
+    <!-- <script src="./js/02.HTML출력.js" type="text/babel"></script>
+    확장자가 js여도 잘 됨 -->
     <style>
       h1 {
         text-align: center;
@@ -39,6 +41,13 @@
       /* JS 순수문법으로 비교하여 찍기 */
       //map.join('')으로 찍어야 콤마 없어짐
       //태그를 백틱으로 싸고 ${}로 변수삽입한다
+
+      //리액트와 비교
+      //map은 join()없이도 태그로만 출력됨(리액트 자체변환)
+      //이 map은 순수 JS맵이 아닌 리액트용 map메서드임
+      //태그를 그대로 사용할 수 있고 변수삽입 시 중괄호만 씀
+      //참고) JS파일 확장자가 jsx인데 그냥 js로 써도 jsx문법 사용 됨
+      //-> 결론: 리액트 JS 확장자는 .js/.jsx 모두 OK
 
       // 배열 데이터 생성하기
       const data2 = [
