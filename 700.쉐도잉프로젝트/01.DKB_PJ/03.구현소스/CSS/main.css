@@ -9,11 +9,11 @@
 
 
 body * {
-  outline: 1px dashed #ccc;
+  /* outline: 1px dashed #ccc; */
 }
 
 body > div > * {
-  outline-color: red;
+  /* outline-color: red; */
 }
 
 
@@ -74,7 +74,7 @@ body > div > * {
   width: calc(95%/4);
   /* 개별박스 비율설정: height설정 안 함 */
   aspect-ratio: 2/1.2;
-  outline: 2px dashed blue;
+  /* outline: 2px dashed blue; */
 
 }
 
