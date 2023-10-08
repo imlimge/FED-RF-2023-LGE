@@ -9,11 +9,11 @@
 
 
 body * {
-  outline: 1px dashed #ccc;
+  /* outline: 1px dashed #ccc; */
 }
 
 body > div > * {
-  outline-color: red;
+  /* outline-color: red; */
 }
 
 
@@ -74,7 +74,7 @@ body > div > * {
   width: calc(95%/4);
   /* 개별박스 비율설정: height설정 안 함 */
   aspect-ratio: 2/1.2;
-  outline: 2px dashed blue;
+  /* outline: 2px dashed blue; */
 
 }
 
@@ -419,10 +419,13 @@ margin-left: 3px;
 
 
 .clip-box ul {
+  position: relative;
+  left: 0;
+  /* 이동초기값 */
   display: flex;
   gap: 0 2%;
-  left: 0;
-  position: relative;
+  /* 트랜지션 */
+  transition: left .4s ease-in-out;
 }
 
 .clip-box li {

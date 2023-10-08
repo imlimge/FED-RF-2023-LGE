@@ -1,6 +1,7 @@
 // 01.시작하기 리액트 JS
 
 /* 
+<<<<<<< HEAD
 
   html 태그와 JS문법을 따옴표없이 사용하는 JSX문법을 사용한다!
   JSX(Javascript XML) 문법을 쓰는 파일은 .js대신 .jsx확장자사용!
@@ -40,6 +41,43 @@ function MyFirstReact(){
   );
 }///////// MyFirstReact 생성자 함수 ///////////
 
+=======
+    html 태그와 JS문법을 따옴표없이 사용하는 JSX문법을 사용한다!
+    JSX(Javascript XML) 문법을 쓰는 파일은 .js대신 .jsx확장자사용!
+    -> return 키워드 사용은 따옴표없이 바로 소괄호롤 묶어사용
+    (소괄호 생략 가능!)
+
+    [[ 주의사항 ]]
+    1. 함수를 만들경우 반드시 대문자로 시작해야 호출됨!(정해진규칙)
+    2. 홀로태그를 사용할때는 마지막에 스스로 닫기를 꼭 해줌!(/>)
+    3. 함수 내부의 리턴값으로 만든 요소는 반드시 최상위요소가 하나여여함!
+*/
+
+// 생성자 함수를 만들어서 사용한다!
+// 대문자로 시작하는 이름을 사용한다!
+function MyFirstReact() {
+  // return () 시작소괄호는 반드시 return문 뒤에 쓸 것
+  return (
+    <div>
+      <h1>잘해보자! 리액트!!!</h1>
+      <h2>
+        [ 리액트란? ] <br />
+        <br />
+        # 프론트엔드 JS 라이브러리다! # 사용자 UI의 구성요소를 빌드하기 위한도구{" "}
+        <br />
+        [ 작동원리 ] <br />
+        <br />
+        # 가상돔(Virtual DOM)을 사용하여 최소의 html리소스를 사용함으로 <br />
+        빠르고 쉽게 UI화면의 구성한다! <br />
+        # 가상돔은 실제DOM을 변경하기전에 메모리상에서 구성하는 가짜 DOM이다!{" "}
+        <br />
+        # 변경사항을 한번에 구성하여 반영하기 위한도구다! <br />
+        # 리액트는 변경하고자 하는 부분만 업데이트 가능함! <br />
+      </h2>
+    </div>
+  );
+} ///////// MyFirstReact 생성자함수 ///////////
+>>>>>>> 250b1ab80c59d6fa14f79304092cc97acfae6af4
 
 // 리액트 html대상요소에 삽입하기
 /* 
@@ -57,5 +95,9 @@ function MyFirstReact(){
     document.querySelector("#root")
 */
 
+<<<<<<< HEAD
 ReactDOM.render(<MyFirstReact />,
 document.querySelector('#mydiv'));
+=======
+ReactDOM.render(<MyFirstReact />, document.querySelector("#mydiv"));
+>>>>>>> 250b1ab80c59d6fa14f79304092cc97acfae6af4

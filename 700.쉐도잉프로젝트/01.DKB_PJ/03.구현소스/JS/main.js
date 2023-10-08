@@ -7,7 +7,7 @@
   //부드러운 스크롤
   import {startSS,setPos} from './smoothScroll23.js';
   //데이터 모듈
-  import {gridData,gnbData,previewData,clipData} from './data_drama.js';
+  import {gridData,gnbData,previewData,clipData,linkData} from './data_drama.js';
 
 
 
@@ -102,11 +102,6 @@ function makeGird(ele,idx){ //ele-대상요소 / idx-순번 (데이터순번)
 
  
 }///makeGird함수////////
-
-
-
-
-
 
 
 
@@ -318,3 +313,164 @@ clipData.forEach(val=>{
 clipBox.innerHTML = `<ul>${clipCode}</ul>`;
 
 console.log(clipCode);
+
+
+// 코드 넣기
+clipBox.innerHTML = `<ul>${clipCode}</ul>`;
+
+//////// 최신동영상 파트 이동기능 구현 //////////////
+// 1. 요구사항 : 버튼 한번에 한 영상씩 이동
+//              양쪽끝에가면 이동중단 해당방향 버튼 사라짐!
+
+// 2. 대상선정
+// 2-1. 이벤트 대상 : .btn-box button
+const btnClip = dFn.qsa(".btn-box button");
+
+// 2-2. 변경대상 : .clip-box ul
+const clipList = dFn.qs(".clip-box ul");
+
+// 3. 변수셋팅 ////////////////////////
+// 3-1.리스트 개수
+const CNT_LIST = dFn.qsaEl(clipList, "li").length;
+// 3-2.화면당 리스트노출 개수
+const LIMIT_LIST = 4;
+// 3-3.이동 한계수
+const LIMIT_MOVE = CNT_LIST - LIMIT_LIST;
+// 3-4.이동 단위수 : 간격이동까지 고려한 한번에 이동할 단위 -25.5%
+const BLOCK_NUM = 25.5;
+// 3-5.이동회수 : 단위만큼 이동할 횟수
+let mvNum = 0;
+
+// console.log(btnClip,clipList,'이동 한계수:',LIMIT_MOVE);
+
+// 4. 이벤트 셋팅하기 ///////////////
+btnClip.forEach((ele) => {
+  dFn.addEvt(ele, "click", moveClip);
+}); //////////// forEach ///////////
+
+// 5. 함수 만들기 ////////////////
+function moveClip() {
+  // 1. 오른쪽 버튼 여부
+  let isR = this.classList.contains("fa-chevron-right");
+  console.log("나야나!", isR);
+  // 2. 버튼별 이동분기
+  if (isR) {
+    // 오른쪽버튼
+    // 이동한계수를 체크하여 이동수를 증가시킴
+    mvNum++;
+    // 마지막한계수를 넘어가면 마지막 수에 고정!
+    if (mvNum > LIMIT_MOVE){ 
+      // 마지막수 고정
+      mvNum = LIMIT_MOVE;
+      // 마지막버튼 숨기기
+      btnClip[1].style.display = 'none';
+    }
+    else{
+      // 첫번째버튼 보이기
+      btnClip[0].style.display = 'block';
+    }
+  } //////// if ////////
+  else {
+    // 왼쪽버튼
+    // 이동한계수를 체크하여 이동수를 감소시킴
+    mvNum--;
+    // 첫번째한계수를 넘어가면 0에 고정!
+    if (mvNum < 0){ 
+      // 0에 고정
+      mvNum = 0;
+      // 첫번째버튼 숨기기
+      btnClip[0].style.display = 'none';
+    }
+    else{
+      // 마지막버튼 보이기
+      btnClip[1].style.display = 'block';
+    }
+  } //////// if ////////
+
+  // 3. 이동반영하기 : - (단위수*이동수) %
+  clipList.style.left = -(BLOCK_NUM * mvNum) + "%";
+} /////////// moveClip 함수 //////////
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+////하단링크 콤보 박스 바인딩하기/////////////////
+/////////////////////////////////////////////////
+
+//1. 요구사항 - 콤보박스에 맞는 데이터를 바인딩한다
+//2. 데이터 - linkData
+
+
+// console.log('하단콤보박스',linkData);
+
+
+//3. 대상선정 : 바인딩할 콤보박스
+// #brand, #corp
+const brandBox = dFn.qs('#brand');
+const corpBox = dFn.qs('#corp');
+// console.log('콤보박스',brandBox,corpBox);
+
+// 4. 데이터 바인딩하기
+//4-1. 브랜드 바로가기 콤보박스 : 단순바인딩(option만)
+// 데이터 대상: linkData.brand
+
+// 내부초기화
+console.log('브랜드',linkData.brand);
+
+
+brandBox.innerHTML ='';
+// 설정
+linkData.brand.forEach(val=>{
+
+  brandBox.innerHTML += `<option value="${val}">${val}</option>`;
+
+});/////////forEach//////////
+
+// 4-2. 계열사 바로가기 콤보박스 : 복합바인딩(optgroup>option)
+//데이터 대상:linkData.corp
+//데이터는 객체형이므로 속성만 모아 배열로 변환하여 forEach를 사용한다
+// console.log('계열사',linkData.corp);
+// console.log('계열사 Object.keys ',Object.keys(linkData.corp));
+
+
+const corpData = Object.keys(linkData.corp);
+// console.log('계열사 Object.keys', corpData);
+
+corpBox.innerHTML ='';
+
+
+corpData.forEach(val=>{
+
+  corpBox.innerHTML += `
+    <optgroup label="${val}">
+    ${linkData.corp[val].map(v=>`<option value="${v}">${v}</option>`).join('')
+  }
+    </optgroup>
+    `;
+
+});/////////forEach///////////
+
+
+
+//내부의 option요소는 배열데이터 .map().join('')을 사용
+//map() 메서드 리마인딩
+//map()은 배열을 재구성하여 다시 같은 자리에 리턴하여
+//만들어진 새로운 배열을 변수에 담거나 그 자리에 리턴한다
+//이 떄 배열값을 문자열 값으로 변환하는 join()을 사용하여
+//연결자를 빈값으로 처리하면 배여르이 구분자 콤마가 없는
+//태그로만 연결된 순수한 태그 결과 문자열이 만들어진다
+
+/*************************************************** 
+  [ 복합바인딩 요소 구성형식 ]
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+***************************************************/
+
+
+
+
