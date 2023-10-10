@@ -1,12 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title> 태그 선택자  </title>
-<!-- jQuery library 가장위에 있어야함!!! -->
-<script src="../jquery-3.6.3.min.js"></script>
-	<script>
-    /************************************************* 
+  <head>
+    <meta charset="utf-8" />
+    <title>태그 선택자</title>
+    <!-- jQuery library 가장위에 있어야함!!! -->
+    <script src="../jquery-3.6.3.min.js"></script>
+    <script>
+      /************************************************* 
       [ 제이쿼리 라이브러리 사용법 ]
       
       1. 제이쿼리 함수 호출하기
@@ -26,7 +26,7 @@
       (1) 단일속성만 변경
         -> css(속성명,값) 
         -> 속성명은 문자형(따옴표사용)만 가능!
-        예) $(".my").css("border","1px solid red")
+        예) $(".my").css("border","1px solid red") 
       (2) 다중속성 변경
         -> css({속성명:값,속성명:값,...})
         -> 속성명은 변수형 / 문자형 모두 사용가능함!
@@ -63,42 +63,40 @@
 
     
     *************************************************/
-	
-	
-			
-	
-	</script>
-	
-	
-	
-	
-	
-	
-</head>
-  
-<body>
 
-<div id="container">
+      $(() => {
+        // 미션: header태그의 h2를 클릭하면 큰제목 배경색을 노란색으로 변경하시오.
+        // 추가미션: 동시에 nav태그의 배경색은 녹색, 테두리는 2px 빨간색선, 글자크기는 40px, 글자색은 파란색으로 변경하시오.
+        $("header h2").click(() => {
+          $("h2").css({ backgroundColor: "yellow" });
+          $("nav").css({
+            backgroundColor: "green",
+            border: "2px solid red",
+            fontSize: "40px",
+            color: "blue",
+            transition: "2s ease-in-out",
+          });
+        });
+      }); ////////////////// JQB ////////////////////
+    </script>
+  </head>
 
- <header>
-   <h2> 여기를 클릭하시오~!!! </h2>
- </header>
+  <body>
+    <div id="container">
+      <header>
+        <h2>여기를 클릭하시오~!!!</h2>
+      </header>
 
- <nav>
-   <ul class="list">
-   <li id="first">One</li>
-   <li id="second">Two</li>
-   <li id="third">Three</li>
-  </ul>
- </nav>
+      <nav>
+        <ul class="list">
+          <li id="first">One</li>
+          <li id="second">Two</li>
+          <li id="third">Three</li>
+        </ul>
+      </nav>
+    </div>
 
-</div>
-
-<!---------- jQuery code Start ---------->
-<script>
-
-</script>
-
-</body>
+    <!---------- jQuery code Start ---------->
+    <script></script>
+  </body>
 </html>
-
