@@ -114,6 +114,50 @@ body.on::after {
 }
 
 
+
+.spani1{
+    position: relative;
+    width: 100px;
+    height: 176px;
+    margin: 0 auto;
+    margin-top: 25px;
+
+    background: url(../images/spAni03.png) no-repeat;
+    background-size: auto 100%;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: spani1 1s steps(8) infinite;
+
+
+    /* outline: 5px solid red; */
+
+    transform: scale(.3);
+    transform-origin: top;
+}
+
+
+
+
+
+
+/* 걷는존 키프레임 */
+@keyframes spani1 {
+    to{
+        background-position-x: -797px;
+    }
+    /* 배경이미지 x축 이동일 경우
+    줄였을때 이미지 전체 가로크기를
+    마이너스 값으로 써주면된다! */
+}
+
+
+
+
+
+
+
+
+
 /* 2-2.GNB */
 .gnb{
     position: absolute;
