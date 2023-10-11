@@ -9,6 +9,15 @@ import tData from './data/com_module.js';
 console.log(dFn,tData);
 
 
+// 부드러운 스크롤 모듈
+// import { startSS, setPos } from "./smoothScroll23.js";
+
+// [1]부드러운 스크롤 적용 //////////
+// startSS();
+
+
+// [2]상단 하단 공통모듈넣기
+
 // 대상 선정: .common-area
 const comArea = dFn.qsa('.common-area');
 
