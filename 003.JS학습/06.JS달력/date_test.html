@@ -12,13 +12,13 @@
   // 날짜찍기 형식변경 (yyyy-mm-dd시간)
   const fm = x => `${test.getFullYear()}-${
 
- test.getMonth()+1 <10?
-  '0' + (test.getMonth()+1):
-  test.getMonth()+1 }-${
+ x.getMonth()+1 <10?
+  '0' + (x.getMonth()+1):
+  x.getMonth()+1 }-${
 
-  test.getDate() <10? 
-  '0' + test.getDate():
-  test.getDate()}(${week[test.getDay()]})`;
+  x.getDate() <10? 
+  '0' + x.getDate():
+  x.getDate()}(${week[x.getDay()]})`;
 
 
   // 요일변경 배열
@@ -40,7 +40,7 @@
   // 4. 현재달 끝날짜
 
   // -> 전달 끝날짜, 첫날짜 아라오기
-  // new Date(년도,월,0-현재달 끝날짜 / 1-다음달 첫날짜)
+  // new Date(년도,월,옵션:0-현재달 끝날짜 / 1-다음달 첫날짜)
 
 
   //let test = new Date(2023,2,1);  // 3월 첫날
