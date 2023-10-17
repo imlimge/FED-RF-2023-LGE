@@ -503,3 +503,16 @@ position: relative;
 .btn-box button:last-child{
   right: -25px;
 }
+
+/* 서브컨텐츠 박스 */
+.sub-cont{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 9999999;
+  overflow: hidden;
+  display: none;
+}
