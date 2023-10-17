@@ -225,7 +225,7 @@ function showMv(){
   if(stsShowMv) return; // 돌아가!
   stsShowMv = 1; // 한번만실행
 
-  console.log('보여줘~!!!!!');
+  //console.log('보여줘~!!!!!');
   // 동영상 넣기
   // 대상: 나자신(.intro-mv-img)
   this.innerHTML = `
@@ -287,7 +287,7 @@ preBox.forEach((ele,idx)=>{
 /////////////최신동영상 영역 데이터 뿌리기///////////
 // 대상: .clip-box
 const clipBox = dFn.qs('.clip-box');
-console.log(clipBox);
+//console.log(clipBox);
 
 
 // 생성할 데이터
@@ -312,7 +312,7 @@ clipData.forEach(val=>{
 
 clipBox.innerHTML = `<ul>${clipCode}</ul>`;
 
-console.log(clipCode);
+//console.log(clipCode);
 
 
 // 코드 넣기
@@ -352,7 +352,7 @@ btnClip.forEach((ele) => {
 function moveClip() {
   // 1. 오른쪽 버튼 여부
   let isR = this.classList.contains("fa-chevron-right");
-  console.log("나야나!", isR);
+  //console.log("나야나!", isR);
   // 2. 버튼별 이동분기
   if (isR) {
     // 오른쪽버튼
@@ -418,7 +418,7 @@ const corpBox = dFn.qs('#corp');
 // 데이터 대상: linkData.brand
 
 // 내부초기화
-console.log('브랜드',linkData.brand);
+//console.log('브랜드',linkData.brand);
 
 
 brandBox.innerHTML ='';
@@ -472,5 +472,44 @@ corpData.forEach(val=>{
 ***************************************************/
 
 
+// 제이쿼리로 기능구현하기 ////
+// 1. 서브컨텐츠 보이기 기능구현 ///
+// (1)대상 선정
+// 이벤트대상: .sub-view-box 하위 .partbox 또는 li
+const subViewBox = $('.sub-view-box .partbox,.sub-view-box li');
+//console.log('subViewBox',subViewBox)
+// 변경대상 : .sub-cont
+const subContBox = $('.sub-cont')
+console.log(subContBox)
 
 
+
+
+// (2)이벤트 함수 만들기
+subViewBox.click(function(){
+console.log('dd',this);
+
+//제목읽어오기
+let subTit = $(this).parents('.sub-view-box').prev().text();
+// 나자신.부모들(특서정클래스).이전형제().글자읽기();
+
+let subItem = $(this).text();
+
+
+//1. 서브박스 내용넣기
+subContBox.html(`
+  <button class = "cbtn">×</button>
+  <div class="sub-inbox">
+  <h1>${subTit}</h1>
+  <div class="sub-item">
+    ${subItem}
+  </div>
+  </div>
+`);
+
+//2. 닫기버튼 이벤트 설정
+$('.cbtn').click(()=>subContBox.hide())
+/// 999. 서브박스 보이기
+subContBox.show();
+
+}); // click//

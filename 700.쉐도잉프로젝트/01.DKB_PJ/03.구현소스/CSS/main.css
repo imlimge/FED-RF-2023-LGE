@@ -512,7 +512,41 @@ position: relative;
   width: 100vw;
   height: 100vh;
   background-color: #000;
+  color:#fff;
+
   z-index: 9999999;
   overflow: hidden;
   display: none;
+}
+
+.sub-cont a{
+  color: #fff;
+}
+
+.cbtn{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background: none;
+  border: none;
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+/* 제목박스 */
+.sub-inbox{
+  outline: 2px dotted yellow;
+  min-height: 100vh;
+}
+
+.sub-inbox h1{
+text-align: center;
+font-size: 4rem;
+}
+
+/* 내용박스 */
+.sub-item{
+  font-size: 3rem;
 }
