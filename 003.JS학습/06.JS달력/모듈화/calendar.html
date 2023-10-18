@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>달력 구현</title>
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="./css/calendar.css" />
+    <!-- 메인 JS -->
+    <script type="module" src="./js/main.js"></script>
+    <style>
+      .dalcom {
+        display: flex;
+      }
+      .dalcom > div {
+        flex: 1;
+        height: 50px;
+        border: 3px dotted orangered;
+      }
+      .calendar{
+        transform: scale(.6);
+        transform-origin: left top;
+      }
+      /* CSS자체로 달력보이기 : input 포커스 가상클래스
+      ==> 그러나 너무 빨리 사라져서 이벤트 정보처리가 되기전에 없어지므로 CSS에서는 하지못함*/
+      /* .dalcom input:focus+div>.calendar{
+        display: block;
+      } */
+
+
+    </style>
+  </head>
+  <body>
+    <h1>달력 컴포넌트 활용</h1>
+    <div class="dalcom">
+      <div>
+        <!-- readonly는 읽기전용 -->
+        <input type=" text"  readonly/>
+        <div class="dalcom1"></div>
+      </div>
+
+      <div>
+        <input type=" text" readonly />
+        <div class="dalcom2"></div>
+      </div>
+    </div>
+  </body>
+</html>
