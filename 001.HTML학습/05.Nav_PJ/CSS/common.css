@@ -8,6 +8,8 @@
 body{
   background-image: linear-gradient(to bottom, yellow,pink);
   height: 100vh;
+
+  overflow-x: hidden;
 }
 
 
@@ -23,7 +25,7 @@ body{
 /* 1.상단영역 */
 #top-area{
   background: #000;
-
+  
 }
 
 /* 상단속박스 */
@@ -70,7 +72,7 @@ body{
   position: absolute;
   left: 0;
   width: 100%;
-
+  
  
   
   /* 부모는? .top-area*/
@@ -80,6 +82,8 @@ body{
   background-color: #fff;
 
   transition: .4s ease-in-out;
+
+  z-index: 999;
 
 }
 
