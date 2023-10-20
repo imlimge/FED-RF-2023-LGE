@@ -1,6 +1,12 @@
 @charset "utf-8";
 /* 01.공유신발 CSS - gong.css */
 
+body{
+  overflow-y: scroll;
+  /* t스크롤이 없어도 스크롤바 트랙이 나와있어서 새로 스크롤바 트랙
+  생성 시 화면이 약가 ㄴ옆으로 움직이는 문제 해결 */
+}
+
 /* 대상박스 */
 #root {
   width: 700px;
