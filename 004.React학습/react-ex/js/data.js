@@ -1,3 +1,5 @@
+// [vans신발 데이터]
+
 export default [
 
 {
@@ -134,3 +136,7 @@ export default [
 }
 
 ]
+
+
+
+
