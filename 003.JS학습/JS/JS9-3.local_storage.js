@@ -2,7 +2,7 @@
 
 // DOM 메서드
 import dFn from "./dom.js";
-// console.log(dFn);
+// //console.log(dFn);
 
 
 /*************************************************************** 
@@ -57,7 +57,7 @@ import dFn from "./dom.js";
 // [ 1. 로컬 스토리지 연습 ]
 // 1. 버튼 기능 이벤트 대상: .loacl-box button
 const btnLocal =dFn.qsa('.local-box button');
-// console.log('대상',btnLocal);
+// //console.log('대상',btnLocal);
 
 // 2. 버튼에 이벤트 설정
 btnLocal.forEach(ele=>dFn.addEvt(ele,'click',localSFn));
@@ -69,7 +69,7 @@ dFn.qsa('.local ol li').forEach((ele,idx)=>{
   const keyName = ['lname','lrole','lcat'];
   ele.onclick = function(){
     //개별 로컬 스토리지 키삭제
-    console.log('삭제할키',keyName[idx]);
+   // //console.log('삭제할키',keyName[idx]);
     localStorage.removeItem(keyName[idx]);
  }; ///click ////
 }); //// forEach /////
@@ -79,28 +79,28 @@ dFn.qsa('.local ol li').forEach((ele,idx)=>{
 function localSFn(){
   //1. 버튼 텍스트 읽기
   let btxt = this.innerText;
-  console.log('로컬스:',btxt);
+  ////console.log('로컬스:',btxt);
 
   //2. 버튼별 기능 분기하기
   if(btxt == '처음'){
     // 로컬스토리지 읽기 : localStorage.getItem(키명)
-    console.log('로컬쓰 lname:',localStorage.getItem('lname'));
+   // //console.log('로컬쓰 lname:',localStorage.getItem('lname'));
     // 만약 값이 셋팅 안됐으면 null값이 나옴
     // 로컬 스토리지 셋팅 : localStorage.setItem(키명, 값)
     localStorage.setItem('lname','이정재');
     localStorage.setItem('lrole','박평호역');
     localStorage.setItem('lcat','조직내 스파이를 색출하는 해외팀 안기부팀장');
-    // console.log('로컬쓰 lname2:',localStorage.setItem('lname','라라랄'));
+    // //console.log('로컬쓰 lname2:',localStorage.setItem('lname','라라랄'));
     
 
     // 로컬스토리지.key(순번) -> 키 이름을 리턴함
-    console.log('두번째(1) 키명은?', localStorage.key(1),
-    '\n전체개수:',localStorage.length);
+    ////console.log('두번째(1) 키명은?', localStorage.key(1),
+    //'\n전체개수:',localStorage.length);
 
     
-    console.log('로컬쓰 lname:',localStorage.getItem('lname'));
-    console.log('로컬쓰 lrole:',localStorage.getItem('lrole'));
-    console.log('로컬쓰 lcat:',localStorage.getItem('lcat'));
+   // //console.log('로컬쓰 lname:',localStorage.getItem('lname'));
+    //console.log('로컬쓰 lrole:',localStorage.getItem('lrole'));
+    //console.log('로컬쓰 lcat:',localStorage.getItem('lcat'));
 
 
   } /// if: 처음 ///
@@ -199,7 +199,7 @@ function bindData(){
   
   // 로컬스토리지 데이터 : 문자형 (string)
   let localData = localStorage.getItem('minfo');
-  console.log(localData,"데이터형",typeof localData);
+  //console.log(localData,"데이터형",typeof localData);
   
   // 바인딩 데이터 변수
   let bindCode = '';
@@ -209,9 +209,7 @@ function bindData(){
      // 문자형을 배열로 형변환해야함
     // 로컬스토리지 데이터 배열객체형 변환 -> JSON.parse(문자형배열객체)
     localData = JSON.parse(localData);
-    console.log(localData,
-      "데이터형",typeof localData,
-      '배열인가?',Array.isArray(localData));
+    //console.log(localData, "데이터형",typeof localData,'배열인가?',Array.isArray(localData));
 
 
     // 배열이니까 map()사용하여 태그만들기
@@ -339,7 +337,7 @@ function insData(){
 
 
 
-  console.log('정렬결과',orgData,'마지막idx값',lastArr);
+  //console.log('정렬결과',orgData,'마지막idx값',lastArr);
 
   //입력된 데이터 추가하기 : 배열 push() 메서드
   //자동 증가번호는 배열개수 + 1
@@ -350,7 +348,7 @@ function insData(){
   localStorage.setItem('minfo',JSON.stringify(orgData));
 
 
-  console.log('입력',orgData);
+  //console.log('입력',orgData);
   
 
 
@@ -358,7 +356,7 @@ function insData(){
   bindData();
 
   // 수정 선택박스 업데이트
-  // bindMod();
+  bindMod();
 
 
 } // insData 함수 ///
@@ -368,7 +366,7 @@ function insData(){
 
 //삭제처리함수
 function delRec(idx){
-  console.log('지울순번은',idx);
+  //console.log('지울순번은',idx);
 
   // a요소 기본이동막기
   event.preventDefault();
@@ -387,7 +385,7 @@ function delRec(idx){
 
     if(confirm('정말 지우나')){
       orgData.splice(idx,1);
-      console.log('제거후배열:',orgData);
+      //console.log('제거후배열:',orgData);
     } /// if ////
 
 
@@ -407,8 +405,20 @@ function delRec(idx){
 
 
 //데이터 수정하여 반영하기
-// 1. 선택박스 대상선정: .sel
+//
+// 1. 대상선정: 
+// 1-1. 선택박스 : .sel
 const modSel = dFn.qs('#sel');
+// 제목입력박스
+const modTit = dFn.qs('#tit2');
+// 내용입력박스
+const modCont = dFn.qs('#cont2');
+// 수정버튼
+const moBtn = dFn.qs('#mobtn');
+
+
+ 
+
 // 2. 데이터 바인딩하기
 // 바인딩 함수 만들어서 사용
 function bindMod(){
@@ -444,14 +454,140 @@ bindMod();
 
 
 
+// 3. 선택항목 변경 이벤트 설정하기
+dFn.addEvt(modSel,'change',setMod);
+
+
+
+//->내가 수정버튼 시도하려고 idx숫자뽑은거
+//let iii = 0;
+
+
+
+// 4. 수정데이터 
+function setMod(){
+
+  //0.선택한 옵션값
+  let optVal= this.value;
+  if(optVal=='show') return;
+  console.log('수정셋업:',this.value)
+  // 1. 해당 idx의 값을 가지는 배열값을 선택
+
+
+
+ //로컬쓰가져오기
+  let orgData = localStorage.getItem('minfo');
+
+  //만약 minfo로컬쓰가 null이면 빈 배열로 생성하기
+  if(!orgData) {
+    //빈배열로 생성하기
+    localStorage.setItem('minfo','[]');
+    //초기 로컬스 재할당
+    orgData = localStorage.getItem('minfo');
+  };
+
+  //제이슨파싱
+  orgData = JSON.parse(orgData);
+
+  // 1-3. 해당 아이디 배열값 찾기 : 배열 find() 메서드
+  let selRec = orgData.find(v=>{
+    if(v.idx==optVal) return true;
+  })
+
+  console.log('선택배열값',selRec);
+
+ /*  
+ 변수 = 배열.find(v=>{
+    if(v.idx==인덱스값) return true;
+  })
+  -> 값이 있는 배열을 만나면 바로 순회를 마침
+  배열값을 변수에 저장함
+ */
+
+
+  modTit.value = selRec.tit;
+  modCont.value = selRec.cont;
+
+  //->내가 수정버튼 시도하려고 idx숫자뽑은거
+  //iii = selRec.idx;
+
+  console.log(modTit.value,modCont.value);
+
+}; //./ setMod 함수 //
+
+
+
+// 5. 수정버튼 클릭 이벤트 설정하기
+
+dFn.addEvt(moBtn,'click',modifyData);
+
+
+// 6. 수정내용 반영 함수 만들기
+function modifyData(){
+  if(modSel.value=='show') return;
+  console.log('수정버튼');
+  
+  
+  // 현재 선택한 배열의 유일한 값 idx 읽기
+  // 현재 선택된 수정선택박스의 value값
+  let selIdx = modSel.value;
+  
+  console.log(selIdx,modTit.value,modCont.value);
+
+
+  //로컬쓰가져오기
+  let orgData = localStorage.getItem('minfo');
+
+  //만약 minfo로컬쓰가 null이면 빈 배열로 생성하기
+  if(!orgData) {
+    //빈배열로 생성하기
+    localStorage.setItem('minfo','[]');
+    //초기 로컬스 재할당
+    orgData = localStorage.getItem('minfo');
+  };
+
+  //제이슨파싱 ( 문자>배열)
+  orgData = JSON.parse(orgData);
+
+  // 1-3. 해당 아이디 배열값 찾기 : 배열 find() 메서드
+  // find()로 찾아서 해당값을 직접 업데이트한다
+  orgData.find(v=>{
+    if(v.idx==selIdx){// 고유 idx값인 경우 입력값으로 업데이트
+      
+    // 선택 배열값인 객체의 제목과 내용을 다시넣고 업데이트
+    v.tit = modTit.value;
+    v.cont = modCont.value;
+    }    
+ 
+  })
+  
+  console.log('변경후 데이터',orgData);
+
+
+  localStorage.setItem('minfo',JSON.stringify(orgData));
+
+
+  bindData();
+
+  bindMod();
 
 
 
 
+  /*  
+  내가 해본거  == > 숫자를 iii로 할당했는데 
+  그냥 그 숫자의 배열이 추가되고 망가짐
 
+  let orgData = localStorage.getItem('minfo');
+  orgData = JSON.parse(orgData);
+  orgData.push({'idx':iii,'tit':modTit.value,'cont':modCont.value});
+  localStorage.setItem('minfo',JSON.stringify(orgData));
+  bindData();
+  bindMod();  
+  
+  */
 
-
-
+} /// modifyData 함수 ///
 
 
 
@@ -462,7 +598,7 @@ bindMod();
 // [ 2. 세션 스토리지 연습 ]
 // 1. 버튼 기능 이벤트 대상: .loacl-box button
 const btnSession =dFn.qsa('.session-box button');
-// console.log('대상',btnSession);
+// //console.log('대상',btnSession);
 
 // 2. 버튼에 이벤트 설정
 btnSession.forEach(ele=>dFn.addEvt(ele,'click',sessionSFn));
@@ -474,7 +610,7 @@ dFn.qsa('.session ol li').forEach((ele,idx)=>{
   const keyName = ['lname','lrole','lcat'];
   ele.onclick = function(){
     //개별 세션 스토리지 키삭제
-    console.log('삭제할키',keyName[idx]);
+    ////console.log('삭제할키',keyName[idx]);
     sessionStorage.removeItem(keyName[idx]);
  }; ///click ////
 }); //// forEach /////
@@ -484,23 +620,23 @@ dFn.qsa('.session ol li').forEach((ele,idx)=>{
 function sessionSFn(){
   //1. 버튼 텍스트 읽기
   let btxt = this.innerText;
-  console.log('로컬스:',btxt);
+  //console.log('로컬스:',btxt);
 
   //2. 버튼별 기능 분기하기
   if(btxt == '처음'){
     // 세션스토리지 읽기 : sessionStorage.getItem(키명)
-    console.log('세션쓰 lname:',sessionStorage.getItem('lname'));
+    //console.log('세션쓰 lname:',sessionStorage.getItem('lname'));
     // 만약 값이 셋팅 안됐으면 null값이 나옴
     // 로컬 스토리지 셋팅 : sessionStorage.setItem(키명, 값)
     sessionStorage.setItem('lname','정우성');
     sessionStorage.setItem('lrole','김정도역');
     sessionStorage.setItem('lcat','국내팀 안기부 팀장, 박평호랑 사이 나쁨');
-    // console.log('세션쓰 lname2:',sessionStorage.setItem('lname','라라랄'));
+    // //console.log('세션쓰 lname2:',sessionStorage.setItem('lname','라라랄'));
     
 
-    console.log('세션쓰 lname:',sessionStorage.getItem('lname'));
-    console.log('세션쓰 lrole:',sessionStorage.getItem('lrole'));
-    console.log('세션쓰 lcat:',sessionStorage.getItem('lcat'));
+    //console.log('세션쓰 lname:',sessionStorage.getItem('lname'));
+    //console.log('세션쓰 lrole:',sessionStorage.getItem('lrole'));
+    //console.log('세션쓰 lcat:',sessionStorage.getItem('lcat'));
 
 
   } /// if: 처음 ///
