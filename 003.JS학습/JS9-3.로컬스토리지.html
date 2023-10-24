@@ -92,7 +92,7 @@
                     <button>보여줘</button>
                     <button>전체삭제</button>
                     <button>처리</button>
-                    <button>업데이트</button>
+                  
                     <!-- 
                     <button onclick="startFn('로칼쓰')">처음</button>
                     <button onclick="showFn('.local')">보여줘</button>
@@ -115,11 +115,36 @@
                             <input type="text" id="cont" />
                         </li>
                         <li>
-                            <input type="submit" value="입력" id="sbtn" onclick="insData()" />
+                            <input type="submit" value="입력" id="sbtn"  />
                         </li>
                     </ul>
                     <!-- </form> -->
                 </div>
+
+
+                
+                <div class="mobx"></div>
+                <h2>수정할항목선택</h2>
+                <div class="mosel">
+                    <select name="sel" id="sel">
+                       
+                    </select>
+                </div>
+                <ul>
+                    <li>
+                        <label for="tit">제목</label>
+                        <input type="text" id="tit" />
+                    </li>
+                    <li>
+                        <label for="cont">내용</label>
+                        <input type="text" id="cont" />
+                    </li>
+                    <li>
+                        <input type="submit" value="수정" id="sbtn"  />
+                    </li>
+                </ul>  
+
+
             </div>
             <div class="session">
                 <h2>세션쓰님</h2>
@@ -139,8 +164,7 @@
                     <button>처음</button>
                     <button>보여줘</button>
                     <button>전체삭제</button>
-                    <button>처리</button>
-                    <button>추가</button>
+                  
 
                     <!-- 
                     <button onclick="startFn('세션쓰')">처음</button>

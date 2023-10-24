@@ -93,6 +93,11 @@ function localSFn(){
     // console.log('로컬쓰 lname2:',localStorage.setItem('lname','라라랄'));
     
 
+    // 로컬스토리지.key(순번) -> 키 이름을 리턴함
+    console.log('두번째(1) 키명은?', localStorage.key(1),
+    '\n전체개수:',localStorage.length);
+
+    
     console.log('로컬쓰 lname:',localStorage.getItem('lname'));
     console.log('로컬쓰 lrole:',localStorage.getItem('lrole'));
     console.log('로컬쓰 lcat:',localStorage.getItem('lcat'));
@@ -105,6 +110,13 @@ function localSFn(){
     //해당 url로 관리되는 로컬스토리지 모두 지움 : clear()
     localStorage.clear();
     //개별항목 지우기 : removeItem(키명)
+
+
+
+    bindData();
+
+    // 수정 선택박스 업데이트
+    bindMod();
   } /// else if : 전체삭제 ///
 
 
@@ -120,7 +132,10 @@ function localSFn(){
 
   // - 객체를 생성하여 로컬스토리지에 넣기 //
   else if(btxt = '처리'){
-    if(!localStorage.getItem('minfo')) 
+    // 로컬쓰에 minfo가 없거나 minfo값이 []배열 초기화값이면 makeObj()호출
+    if(!localStorage.getItem('minfo')||localStorage.getItem('minfo')=='[]'
+    ) 
+
     makeObj();
     
     //바인딩 함수 호출
@@ -150,14 +165,19 @@ function makeObj(){
         cont: '이정재는 진정왕이다'
       },
       {
-        idx: 2,
+        idx: 5,
         tit: '가가가',
         cont: '나나나나나'
       },
       {
-        idx: 3,
-        tit: '123123213213',
-        cont: '3543543543453543'
+        idx: 8,
+        tit: '미리셋팅ㅇㅇㅇㅇ',
+        cont: '미리셋팅ㅇㅇㅇㅇ'
+      },
+      {
+        idx: 4,
+        tit: '이거이거',
+        cont: '이거이거이거이거'
       },
     ]
 
@@ -200,12 +220,28 @@ function bindData(){
         <td>${v.idx}</td>
         <td>${v.tit}</td>
         <td>${v.cont}</td>
-        <td>
-        <a href="#" onclick="${delRec(i)}">×</a>
+        <td class="del-link">
+        <a href="#" data-idx="${i}">×</a>
         </td>
       </tr>
     `).join('');  // 태그를 연결자없는 배열전체로 저장
 
+
+
+
+      /* 
+      <tr>
+        <td>${v.idx}</td>
+        <td>${v.tit}</td>
+        <td>${v.cont}</td>
+        <td>
+        <a href="#" onclick="delRec(${i})">×</a>
+        </td>
+      </tr> */
+      // 모듈화 때문에 안됨
+      //<a href="#" onclick="delRec(${i})">×</a>
+      // 이렇게 하니까 됨
+      //<a href="#" onclick="${delRec(i)}">×</a>
 
   }/// if //// 데이터 있는 경우
   else{
@@ -237,16 +273,189 @@ function bindData(){
     // 출력하기
     dFn.qs('.board').innerHTML = hcode;
 
+    // 지우기 링크 셋팅
+    dFn.qsa('.board .del-link a')
+    .forEach(ele=>dFn.addEvt(ele,'click',()=>{
+      delRec(ele.getAttribute('data-idx'))
+    }));
+
+
 }/// bindData 함수 ////
+
+
+
+//입력처리함수 호출 이벤트 설정하기
+dFn.addEvt(dFn.qs('#sbtn'),'click',insData);
+
+
+//입력처리함수
+function insData(){
+  //입력항목 읽어오기
+  let tit = dFn.qs('#tit').value;
+  let cont = dFn.qs('#cont').value;
+  
+  //만약 하나라도 비었다면 돌아가
+  //trim()앞뒤공백제거 -> 스페이스바만 쳐도 불통과
+  if(tit.trim()=="" || cont.trim()==""){
+    alert('입력데이터가 없습니다 모두 입력하세여');
+    return;
+    
+  } /// if ///
+  
+  //입력처리하기
+  //로컬스토리지 데이터 가져오기 : minfo
+  let orgData = localStorage.getItem('minfo');
+
+  //만약 minfo로컬쓰가 null이면 빈 배열로 생성하기
+  if(!orgData) {
+    //빈배열로 생성하기
+    localStorage.setItem('minfo','[]');
+    //초기 로컬스 재할당
+    orgData = localStorage.getItem('minfo');
+  };
+
+
+
+  //제이슨파싱
+  orgData = JSON.parse(orgData);
+
+
+  //자동 증가번호 처리하기
+  //배열을 오름차순으로 정렬하여 맨끝 배열데이터의 idx값을 읽어온 후 숫자화 하여  + 1 처리함
+  //배열 오름차순처리 : 
+  // 배열.sort((a,b)=>{return a==b?0:a>b?1:-1})
+  // 배열.sort((a,b)=>{return a.idx == b.idx ? 0 : a.idx > b.idx ? 1 :-1 })
+
+
+  if(orgData.length !=0) {
+  orgData.sort((a,b)=>{
+    return a.idx == b.idx ? 0 : a.idx > b.idx ? 1 : -1
+  }); /// sort ///
+ }
+
+  //마지막 배열값 읽기
+  let lastArr = orgData.length==0?0:
+  orgData[orgData.length-1].idx;
+
+
+
+  console.log('정렬결과',orgData,'마지막idx값',lastArr);
+
+  //입력된 데이터 추가하기 : 배열 push() 메서드
+  //자동 증가번호는 배열개수 + 1
+  orgData.push({'idx':lastArr+1,'tit':tit,'cont':cont});
+
+  //배열/객체 데이터를 문자화하여 로컬쓰에 넣기
+  //JSON.stringify()
+  localStorage.setItem('minfo',JSON.stringify(orgData));
+
+
+  console.log('입력',orgData);
+  
+
+
+  //리스트 업데이트하기
+  bindData();
+
+  // 수정 선택박스 업데이트
+  // bindMod();
+
+
+} // insData 함수 ///
+
+
 
 
 //삭제처리함수
 function delRec(idx){
   console.log('지울순번은',idx);
 
+  // a요소 기본이동막기
+  event.preventDefault();
   
+    //로컬스토리지 데이터 가져오기 : minfo
+    let orgData = localStorage.getItem('minfo');
+    //제이슨파싱
+    orgData = JSON.parse(orgData);
+
+    
+    //특정 데이터 배열항목 상제
+    //splice(순번,개수) -> 특정순번부터 몇개지움
+    //여기서는 한개삭제 이므로 splice(순번,1)
+    //confirm(메시지)
+    //-> 확인/취소 중 확인 클릭 시 true 리턴 / 취소는 false
+
+    if(confirm('정말 지우나')){
+      orgData.splice(idx,1);
+      console.log('제거후배열:',orgData);
+    } /// if ////
+
+
+      localStorage.setItem('minfo',
+        JSON.stringify(orgData));
+
+    
+    
+    
+    bindData();
+
+    // 수정 선택박스 업데이트
+    bindMod();
+ 
 
 } // delRec 함수 ///
+
+
+//데이터 수정하여 반영하기
+// 1. 선택박스 대상선정: .sel
+const modSel = dFn.qs('#sel');
+// 2. 데이터 바인딩하기
+// 바인딩 함수 만들어서 사용
+function bindMod(){
+
+  //로컬쓰가져오기
+  let orgData = localStorage.getItem('minfo');
+
+  //만약 minfo로컬쓰가 null이면 빈 배열로 생성하기
+  if(!orgData) {
+    //빈배열로 생성하기
+    localStorage.setItem('minfo','[]');
+    //초기 로컬스 재할당
+    orgData = localStorage.getItem('minfo');
+  };
+
+  //제이슨파싱
+  orgData = JSON.parse(orgData);
+
+  //선택박스 초기화 : 새로업데이트 될때를 대비
+  modSel.innerHTML = ` <option value="항목선택">항목선택</option>`;
+
+  // idx로 value값을 만들고 제목으로 항목명을 만들기
+  orgData.forEach(v=>{
+    modSel.innerHTML += `
+    <option value="${v.idx}">${v.tit}</option>
+    `;
+  })
+
+} // bindMod // 
+
+//최초호출
+bindMod();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /********************************************************** */
