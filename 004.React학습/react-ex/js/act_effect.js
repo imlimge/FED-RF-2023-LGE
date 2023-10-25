@@ -7,9 +7,9 @@ function initFn(){
 
   //메인 이미지박스, 상품리스트박스 숨기기
   $('.img-box').css({opacity:0})
-  .delay(1000).fadeTo(500,1);
+  .delay(500).fadeTo(500,1);
   //fadeTo(시간,오파,이징,함수);  -> 투명도만 애니
-  $('.gwrap').hide().delay(1500).slideDown(1000);
+  $('.gwrap').hide().delay(500).slideDown(500);
 
 }////// initFn 함수 //////
 
