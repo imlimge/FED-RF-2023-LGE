@@ -14,8 +14,8 @@ $(()=>{
   const logo = $('.logo a');
   // console.log('로고:',logo);
 
-  // 1-2. GNB메뉴:.gnb a
-  const gnb = $('.gnb a');
+  // 1-2. GNB메뉴:.gnb a + 모바일 메뉴 추가
+  const gnb = $('.gnb a, .mognb a');
   // console.log('대상:',gnb);
 
   // 2. 이벤트 설정 및 이동기능 구현하기

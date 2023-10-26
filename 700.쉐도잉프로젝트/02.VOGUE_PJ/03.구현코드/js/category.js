@@ -6,12 +6,6 @@ import dFn from "./dom.js";
 import catData from './data/category_data.json' assert{type:'json'};
 console.log(catData);
 
-// 부드러운 스크롤 모듈
-import { startSS, setPos } from "./smoothScroll23.js";
-
-// 부드러운 스크롤 적용 //////////
-startSS();
-
 
 // 카테고리 페이지 기능 구현하기
 // 요구사항: url로 전달된 키값을 읽어서 
@@ -92,6 +86,15 @@ function setValue(){
   $('.cat-cont-area h2').each((idx,ele)=>{
     $(ele).html(selData.타이틀[idx]);
   }); /// each ////
+
+
+  // 5-5. 탭메뉴 타이틀 변경 
+  // 형식 : 카테고리명 | 보그 코리아 (Vogue Korea) 2023
+  // 제이쿼리 prepend() 메서드 사용
+  // -> 자식요소 또는 내용의 맨앞에 넣기
+  $('title').prepend(pm.toUpperCase() + ' | ');
+
+
 
 } //// setValue 함수 ////
 
