@@ -50,7 +50,7 @@ $(()=>{
     
   //  $('.sns a:last').before(`<헐></헐>`);
   //  $('.sns a:last').after(`<ㅋ></ㅋ>`);
-   $('.sns a:last').before(`
+   $('.sns a:last, .mosns a:last').before(`
    <a href="#" class="fi fi-laptop">
    <span class="ir">로그인</span>
   </a>
@@ -68,7 +68,7 @@ $(()=>{
   // 새로 추가된 a요소까지 다시 선택하여 
   // each() 메서드로 돌면서 글자를 읽어와서
   // title속성으로 넣는다 -> attr('title',값)
-  $('.sns a').each((idx,ele)=>{
+  $('.sns a, .mosns a').each((idx,ele)=>{
     // ele - 각 a요소
     $(ele).attr('title',$(ele).text().trim());
 
@@ -118,6 +118,17 @@ $(()=>{
       window.open(url);
     }
   }); //// click ////
+
+
+  // 모바일 메뉴박스의 sns 링크 중 4번째 요소
+  // 다음에 <br>태그 넣고 줄바꿈
+  $('.mosns a').eq(3).after('<br>');
+
+
+
+
+
+
 
 }); /// JGB /////
 
