@@ -80,7 +80,6 @@ margin-left: 3px;
 color: #999;
 }
 
-
 /* 서브메뉴 박스 */
 .smenu {
   position: absolute;
@@ -89,13 +88,17 @@ color: #999;
   background-color: #fff;
 
   /* 메뉴 숨기기 */
-  overflow: hidden ;
+  overflow: hidden;
   height: 0;
 
+  /* 트랜지션 */
   transition: .4s ease-in-out;
-
 }
 
+/* 모바일 모드에서 트랜지셔 ㄴ없애기. 제이쿼리 작동이라서 충 */
+.header.on .smenu{
+  transition: none;
+}
 
 
 /* 서브메뉴 속박스 */
@@ -110,14 +113,14 @@ aside.smbx {
 }
 
 .smbx ol {
+  /* 플렉스박스 */
   display: flex;
+  /* 랩핑박스 */
   flex-wrap: wrap;
   font-size: 1.6rem;
-  gap: 0 76px;
   line-height: 3;
-  white-space: nowrap;
+  padding-bottom: 20px;
 }
-
 .smbx ol li{
   /* 가로크기 제한 - 한줄에 4개 */
   flex-basis: 25%;
@@ -128,6 +131,25 @@ aside.smbx {
 }
 
 
+/* 모바일 햄버거 버튼 */
+.ham {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  font-size: 40px;
+  transform: scaleX(1.5);
+
+  /* 처음에 숨기기 */
+  display: none;
+}
+/* 햄버거모양 가상요소넣기 */
+.ham::before{
+  content: '≡';
+}
 
 
 
@@ -142,6 +164,10 @@ aside.smbx {
 /************ 4. 하단영역 ************/
 #footer{
   /* background-color: lightseagreen; */
+  border-top: 1 solid #ccc;
+
+  padding-bottom: 80px;
+  background: url(../images/footer_img.png);
 }
 
 .footer .partbox{
@@ -153,6 +179,7 @@ aside.smbx {
 /* 하단링크박스 */
 .info-link ul{
 display: flex;
+flex-wrap: wrap;
 gap: 0 5px;
 
 }
@@ -162,6 +189,11 @@ white-space: nowrap;
 }
 
 /* 바로가기 콤보박스 영역 */
+.combo-area{
+  text-align: right;
+}
+
+
 .combo-area select{
   width: 150px;
   height: 30px;

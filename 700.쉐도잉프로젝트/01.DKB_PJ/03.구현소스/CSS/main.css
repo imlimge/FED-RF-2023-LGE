@@ -281,6 +281,7 @@ margin-left: 3px;
 /*************** 방송편성 소개 파트 ***************/
 .main .intro-part .partbox{
   height: 455px;
+  padding: 10px;
 }
 
 /* 서브타이틀 */
@@ -346,6 +347,18 @@ margin-left: 3px;
   padding: 15px;
   color: #222;
 }
+
+
+/* 각 박스 외곽선 디자인 */
+.preview-box .partbox>div{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.504);
+}
+
 
 /* 각 미리보기 타이틀 */
 .preview-box h3{
