@@ -34,8 +34,8 @@ let winW = updateWin();
 $(window).resize(()=>{
   winW = updateWin();
   // console.log('업데이트화면 가로크기',winW)
-  firstPoint = winW / 3 ;
-  lastPoint = target.width() - winW / 3 * 2;
+  firstPoint = winW / 6 ;
+  lastPoint = winW / 6;
   console.log('업데이트화면 한계값',firstPoint,'/',lastPoint)
   
 
@@ -52,12 +52,12 @@ if(winW<500) target.css({transition:TRS_TIME_MOB});
 
 
 // 첫번째 한계값 설정하기 : 화면크기의 1/3로 설정
-let firstPoint = winW / 3 ;
+let firstPoint = winW / 6 ;
 console.log('첫번째 한계값',firstPoint)
 
 // 마지막 한계값 설정하기
 // 대상박스 width값 - 화면크기의 2/3
-let lastPoint = target.width() - winW / 3 * 2;
+let lastPoint = target.width() - winW / 6;
 console.log('마지막 한계값',lastPoint)
 
 

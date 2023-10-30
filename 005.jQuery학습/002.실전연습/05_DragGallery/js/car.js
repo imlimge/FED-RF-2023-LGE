@@ -74,7 +74,15 @@ cbx.on('mousemove touchmove', e=>{
  
   } /// if ////
 
-  
+  // x축 처음위치값 업데이트
+  point = e.pageX || e.changedTouches[0].pageX;
+    // -> 마우스다운이 아닌 마우스무브에서
+    // 처음위치값을 업데이트하면 드래그 상태일때
+    // 그대로 방향을 다시 설정하여 원하는 방향으로
+    // 이미지를 변경할 수 있다!
+
+
+
 }); //////////// mousemove /////////
 
 
@@ -85,8 +93,10 @@ cbx.on('mousedown touchstart',e=>{
   drag = 1;
 
   // x축 처음위치값 업데이트
-  point = e.pageX || e.changedTouches[0].pageX;;
+  //point = e.pageX || e.changedTouches[0].pageX;
+  // 여기다가 하면 클릭한 상태에서 드래그 시 방향이 다름
 
+  
   // 커서 움켜쥔 모양
   cbx.css({
     cursor: "grabbing",
