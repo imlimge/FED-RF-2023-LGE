@@ -14,6 +14,46 @@ Number(a.idx)==Number(b.idx)?
 // idx는 숫자데이터로 형변환 비교하여
 // a.idx>b.idx 즉 앞에것이 크면 그대로 -1, 작으면 바꾸기 1
 
+// console.log(bData)
+//원본 배열 데이터를 문자형 데이터로 변경
+let myData = JSON.stringify(bData)
+
+console.log(myData)
+
+////////////////////////////////////////////////////////////////
+//로컬 스토리지 생성하기 ///
+//이름 : boardData
+if(!localStorage.getItem('boardData')){
+  localStorage.setItem('boardData',myData)
+  
+}
+
+let useData  = JSON.parse(localStorage.getItem('boardData'))
+console.log(useData)
+
+
+
+
+// 페이징 되는 리스트 만들기 //////////////
+// 페이징의 기본 원리:
+// 1. 한페이지당 리스트수를 정하여 전체 페이지 개수 구하기
+// 2. 개수만큼 리스트에 데이터를 반복문으로 생성함
+// 3. 페이지 번호에 따라 시작번호를 업데이트 한다 
+
+// 페이징 관련 변수들 /////
+// [1] 한페이지당 리스트수 : pgBlock
+const pgBlock = 9;
+// [2] 페이지 순번 : pgNum -> 증감예정!
+let pgNum = 1;
+// [3] 전체 레코드 수 : totalCnt
+const totalCnt = bData.length;
+// [4] 페이징 블록 계산하기
+let pagingBlock = Math.floor(totalCnt/pgBlock);
+// [5] 나머지 리스트 여부 : 0이면 다음 페이지 없음!
+let addOver = totalCnt % pgBlock;
+
+
+
 // 데이터를 화면 리스트 코드로 변환하여 적용한다!
 // 대상: #board tbody
 const board = $('#board tbody');
@@ -38,7 +78,7 @@ let hcode = '';
 // 리스트 블록으로 리스트 소스 만들기
 for(let i = (pgNum-1)*pgBlock; i < pgBlock*pgNum; i++){
   // i가 전체 개수보다 같거나 크면 break (for문 나가기!)
-  console.log(i);
+  // console.log(i);
   if(i >= totalCnt) break;
 
   hcode +=
@@ -106,24 +146,6 @@ $('.paging a').click(function(e){
 
 
 
-
-// 페이징 되는 리스트 만들기 //////////////
-// 페이징의 기본 원리:
-// 1. 한페이지당 리스트수를 정하여 전체 페이지 개수 구하기
-// 2. 개수만큼 리스트에 데이터를 반복문으로 생성함
-// 3. 페이지 번호에 따라 시작번호를 업데이트 한다 
-
-// 페이징 관련 변수들 /////
-// [1] 한페이지당 리스트수 : pgBlock
-const pgBlock = 9;
-// [2] 페이지 순번 : pgNum -> 증감예정!
-let pgNum = 1;
-// [3] 전체 레코드 수 : totalCnt
-const totalCnt = bData.length;
-// [4] 페이징 블록 계산하기
-let pagingBlock = Math.floor(totalCnt/pgBlock);
-// [5] 나머지 리스트 여부 : 0이면 다음 페이지 없음!
-let addOver = totalCnt % pgBlock;
 
 ///// 여기서 부터 업데이트가 페이지별로 반복됨! ////////
 
