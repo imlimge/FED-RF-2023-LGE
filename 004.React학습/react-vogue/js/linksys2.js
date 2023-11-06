@@ -19,7 +19,7 @@ export function makeLink(){
   // console.log('로고:',logo);
 
   // 1-2. GNB메뉴:.gnb a + 모바일 메뉴 추가
-  const gnb = $('.gnb a, .mognb a');
+  // const gnb = $('.gnb a, .mognb a');
   // console.log('대상:',gnb);
 
   // 2. 이벤트 설정 및 이동기능 구현하기
@@ -27,10 +27,10 @@ export function makeLink(){
   logo.click(()=>location.href='index.html')
 
   // 2-2. gnb 메뉴 클릭 시 카테고리 서브 이동
-  gnb.click(e=>
-    location.href='category.html?cat='+
-    encodeURIComponent(
-    $(e.target).text().toLowerCase()));
+  // gnb.click(e=>
+  //   location.href='category.html?cat='+
+  //   encodeURIComponent(
+  //   $(e.target).text().toLowerCase()));
     // console.log($(e.target).text().toLowerCase()))
     // console.log($(e.target).text().toLowerCase())
     

@@ -1,7 +1,8 @@
-// 보그 PJ 링크 시스템 JS - linksys.js
+// 보그 PJ 링크 시스템 JS - linksys2.js
+// -> 카테고리 페이지용 링크시스템 JSddddddd
 
-// 제이쿼리 로드 구역 ///////////
-$(()=>{
+// 내보내기 함수로 변환하자! /////////////
+export function makeLink(){
 
     // 모든 a요소 기본이동막기
     $('a').click(e=>e.preventDefault());
@@ -11,7 +12,7 @@ $(()=>{
     // 1-1. 로고링크 : .logo a
     const logo = $('.logo a');
     // 1-2. GNB 메뉴 : .gnb a + 모바일메뉴추가 .mognb a
-    const gnb = $('.gnb a, .mognb a');
+    // -> 주석!!! const gnb = $('.gnb a, .mognb a');
     // console.log('대상:',logo,gnb);
 
     // 2. 이벤트 설정 및 이동기능 구현하기
@@ -19,13 +20,10 @@ $(()=>{
     logo.click(()=>location.href='index.html');
 
     // 2-2. gnb 메뉴 클릭시 카테고리 서브 이동
-    // 'time & gem' 특수문자 변환해서 보내기:
-    // -> encodeURIComponent(보낼문자)
-    // 그래야 받는 곳에서 decodeURIComponent()시 잘됨!
-    gnb.click(e=>
-        location.href='category.html?cat='+
-        encodeURIComponent(
-            $(e.target).text().toLowerCase()));
+    // -> 카테고리에서는 링크 안걸음!!! 주석!!!
+    // gnb.click(e=>
+    //     location.href='category.html?cat='+
+    //     $(e.target).text().toLowerCase());
         // console.log($(e.target).text().toLowerCase()))
 
     // e.target -> 이벤트발생요소(a요소)
@@ -124,4 +122,4 @@ $(()=>{
         $(".mosns a").eq(3).after('<br>');
 
 
-}); //////////// jQB ///////////////////
+} //////////// makeLink 함수 ////////////
