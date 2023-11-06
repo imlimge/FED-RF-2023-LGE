@@ -28,14 +28,14 @@ const comArea = dFn.qsa('.common-area');
 // 상단 영역
 // comArea[0].innerHTML = tData.topArea;
 // 하단 영역 html넣기 
-comArea[1].innerHTML = tData.footerArea;
+// comArea[1].innerHTML = tData.footerArea;
 
 // 모바일 메뉴 버튼 요소 추가로 넣기 .top-area 맨끝 추가
-comArea[0].innerHTML += tData.mobtn;
+// comArea[0].innerHTML += tData.mobtn;
 
 
 // 모바일 메뉴 박스 추가로 넣기 #top-area 맨끝 추가
-comArea[0].parentElement.innerHTML += tData.mobx;
+// comArea[0].parentElement.innerHTML += tData.mobx;
 
 
 // [3] 탑메뉴
