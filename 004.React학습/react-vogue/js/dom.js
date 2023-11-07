@@ -1,10 +1,8 @@
 // 공통함수 JS - dom.js
 
-
 // DOM 함수 객체 //////////////
 // const domFn = {
-// 객체를 바로 내보냄
-
+// 객체를 바로 내보냄!
 export default {
   // 요소선택함수 ////////
   qs: (x) => document.querySelector(x),
@@ -21,4 +19,3 @@ export default {
   // 옵셋탑값 반환함수
   getOT: (ele) => ele.offsetTop,
 }; /////// domFn 객체 /////////////
-

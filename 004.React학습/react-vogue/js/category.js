@@ -30,7 +30,6 @@ function MainComponent() {
   const catName = decodeURIComponent(params.get("cat"));
   // 'time & gem' decodeURIComponent로 변환!
   // -> 보내는 곳에서는 encodeURIComponent로 처리해야함!
-  console.log('dfdfd',catName)
 
   // 만약 처음 들어오는 경우 파라미터가 null이면
   // 다른 페이지 메뉴를 클릭하여 들어온 경우가 아니므로
@@ -48,8 +47,6 @@ function MainComponent() {
 
   // 카테고리 데이터 상태관리변수 만들기!
   const [nowCat, setNowCat] = React.useState(catName);
-
-  console.log('dfdfd',catName,nowCat)
 
   // 카테고리 데이터 상태관리변수 업데이트 함수
   const chgCat = (val) => {

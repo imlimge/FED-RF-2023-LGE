@@ -4,53 +4,30 @@
 
 /******* 1000px 이하 미디어쿼리 시작 *******/
 @media screen and (max-width: 1000px) {
-
-#top-area.on {
-  padding-left: 120px;
-}
-
-
-
+  /* 상단영역 */
+  #top-area.on{
+    padding-left: 120px;
+  }
 }
 /******* 1000px 이하 미디어쿼리 끝 *******/
-
-
-/******* 1000px 이하 미디어쿼리 시작 *******/
-@media screen and (max-width: 1000px) {
-
-#top-area.on {
-  padding-left: 120px;
-}
-
-
-
-}
-/******* 1000px 이하 미디어쿼리 끝 *******/
-
-
-
-
-
 
 /******* 650px 이하 미디어쿼리 시작 *******/
 @media screen and (max-width: 650px) {
+  /* 상단영역 .on적용시 조정 */
+  #top-area.on{
+    padding-left: 0px;
+  }
+  #top-area.on .logo {
+    position: static;
+    padding: 0;
+    height: auto;
+    margin-bottom: 0;
+  }
+  #top-area.on .logo img {
+    width: 132px;
+  }
 
-
-/* 상단영역 .on적용시 조정 */
-#top-area.on{
-  padding-left: 0px;
-}
-#top-area.on .logo {
-  position: static;
-  padding: 0;
-  height: auto;
-  margin-bottom: 0;
-}
-#top-area.on .logo img {
-  width: 132px;
-}
-
-/* 1. 없앨 요소들: .tmenu,.gnb */
+  /* 1. 없앨 요소들: .tmenu,.gnb */
   .tmenu,
   .gnb {
     display: none;
@@ -60,7 +37,6 @@
   .logo {
     margin-bottom: 0;
     height: auto;/* 기존높이값 해제 */
-   
   }
 
   .logo img {
@@ -157,10 +133,8 @@
     width: 200px;
   }
 
-
-
-  /* 13. 카테고리 페이지 서브 타이틀 */
-  .cat-tit .stit{
+  /* 13. 카테고리 페이지 서브 타이틀 + 일반서브타이틀 */
+  .cat-tit,.stit{
     font-size: 30px;
     padding: 25px 0 5px;
   }
