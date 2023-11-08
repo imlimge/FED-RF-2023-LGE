@@ -20,7 +20,8 @@ export default function TopArea(props) {
   // 다시 자식 컴포넌트로 함수를 만들어서 전달
   // const goFn = (v) => props.chgItem(v);
   // -> 컨텍스트 API를 사용할때는 프롭스펑션다운 불필요
-
+  
+  console.log('상단영역실행');
 
   return (
     <div id="top-area">
