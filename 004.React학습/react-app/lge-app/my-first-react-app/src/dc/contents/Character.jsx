@@ -2,11 +2,11 @@
 
 import { Banner } from "./Banner";
 
-export function Character(){
+export function Character(props){
   return(
     <>
       <h1 style={{textAlign:'center'}}>메인 페이지</h1>
-      <Banner category="CHARACTERS" />
+      <Banner category={props.cat}  />
     </>
 
   );
