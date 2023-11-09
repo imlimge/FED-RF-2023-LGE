@@ -3,14 +3,21 @@
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import { TopArea } from "./dc/TopArea";
+import { MainArea } from './dc/MainArea';
+import { FooterArea } from './dc/FooterArea';
 // css도 불러온다
-import './index.css';
+import './css/index.css';
 
 
 function App(){
   return(
+    <>
     <TopArea />
+    <MainArea />
+    <FooterArea />
+    </>
   )
 }
 
