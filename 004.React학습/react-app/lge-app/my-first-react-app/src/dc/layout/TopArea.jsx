@@ -1,12 +1,22 @@
 // 상단영역 컴포넌트 
 // GNB 데이터
 
-import { Character } from "../contents/Character";
+import { Link } from "react-router-dom";
 import { Logo } from "../contents/Logo";
 import { menu } from "../data/gnb"
 
-export function TopArea(props){
-  //chgFn 속성 - 메인함수 chgMenu() 호출
+export function TopArea(){
+/******************************************************* 
+    [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
+    1. <Link to="/경로명"></Link>
+    -> to속성의 경로는 <Route path="/경로명"> 과 일치함!
+
+    2. <Outlet />
+    -> 라우터 연결 컴포넌트 출력자리 컴포넌트
+    -> 여기서는 MainArea 컴포넌트에 출력
+*******************************************************/
+
+
 
   return(
     <>
@@ -20,10 +30,8 @@ export function TopArea(props){
           </li>
           {menu.map((v,i)=>(          
               <li key={i}> 
-              <a href="#" onClick={()=>props.chgFn(v.txt=="Home"?"main":v.txt)}> 
-            {v.txt} 
-            </a>
-            </li>)   )}
+                <Link to={v.link} >{v.txt}</Link>
+              </li>)   )}
             
         </ul>
       </nav>
@@ -36,10 +44,10 @@ export function TopArea(props){
 
 
 
-   /* 
-                map()을 사용하여 태그를 생성할 때 데이터의 유일키를 key속성으로 만들지 않으면
-                아래와 같은 에러가 발생함
-                (이유: 구별되는 항목으로 나중에 업데이트 시 이용할 수 있도록 리액트에서 강제하고 있음)
-                ==> li에 key값을 순번으로 줬다
-                Warning: Each child in a list should have a unique "key" prop.
-                */
+  /* 
+  map()을 사용하여 태그를 생성할 때 데이터의 유일키를 key속성으로 만들지 않으면
+  아래와 같은 에러가 발생함
+  (이유: 구별되는 항목으로 나중에 업데이트 시 이용할 수 있도록 리액트에서 강제하고 있음)
+  ==> li에 key값을 순번으로 줬다
+  Warning: Each child in a list should have a unique "key" prop.
+  */
