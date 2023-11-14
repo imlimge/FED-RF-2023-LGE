@@ -1,87 +1,102 @@
 //Pilot PJ 상단영역 공통 컴포넌트
 
-export function TopArea() {
+import { gnbData } from "../data/gnb";
+
+export function TopArea(props) {
+
+  // props.cat - 카테고리명
+
+  
+  //GNB 메뉴 리스트 만들기 함수
+  const makeList = (data) => {
+    return(
+      gnbData[data].map((v,i) => 
+      <li key={i}>
+        <a href="#">{v}</a>
+      </li>
+    ));
+    
+  };
+
+
+
+
+
+  
+
   return (
     <>
       <div id="top-area">
         <header className="top-area ibx">
           <h1 id="logo">
             <a href="#">
-              <img src="images/main_logo.png" alt="파일럿로고" />
+              <img src="./images/main_logo.png" alt="파일럿로고" />
             </a>
-          </h1> 
+          </h1>
           <nav className="gnb">
             <ul>
-              <li className="bld">배너순번 li 숨기기</li> 
-              <li>
-                <a href="#men">MEN</a>
-              </li> 
-              <li>
-                <a href="#women">WOMEN</a>
-              </li> 
-              <li>
-                <a href="#style">STYLE</a>
-              </li>
+              <li className="bld">배너순번 li 숨기기</li>
+              {makeList(props.cat)}
             </ul>
-          </nav> 
+          </nav>
           <div className="ham">
             <span></span> <span></span> <span></span>
-          </div> 
+          </div>
           <div className="mbox">
             <video
               src="images/disc2018.mp4"
               loop="loop"
               muted="muted"
               className="bgm"
-            ></video> 
+            ></video>
             <nav className="mlist">
               <dl>
                 <dt>
                   <a href="sub.html?cat=남성">MEN</a>
-                </dt> 
+                </dt>
                 <dd>
                   <a href="#">T-SHIRT</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">JACKET</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">TRAINING WARE</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">BEACH WARE</a>
                 </dd>
-              </dl> 
+              </dl>
               <dl>
                 <dt>
                   <a href="sub.html?cat=여성">WOMEN</a>
-                </dt> 
+                </dt>
                 <dd>
                   <a href="#">T-SHIRT</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">JACKET</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">TRAINING WARE</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">BEACH WARE</a>
                 </dd>
-              </dl> 
+              </dl>
               <dl>
                 <dt>
                   <a href="sub.html?cat=스타일">STYLE</a>
-                </dt> 
+                </dt>
                 <dd>
                   <a href="#">COLLECTION</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">SEASON AD</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">STAR &amp; NEWS</a>
-                </dd> 
+                </dd>
                 <dd>
                   <a href="#">MAIN ITEM</a>
                 </dd>

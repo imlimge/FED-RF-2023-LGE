@@ -1,10 +1,20 @@
 // 메인 페이지 컨텐츠 컴포넌트
 
+import { Banner } from "../modules/banner";
+
 export function MainCont(){
 
   return(
     <>
-      <h2>메인 컨텐츠야</h2>
+    {/* 1. 배너페이지 */}
+     <section className="page" style={{background:'lightblue'}}>
+      <Banner />
+     </section>
+
+     <section className="page" style={{background:'lightgreen'}}></section>
+     <section className="page" style={{background:'lightcoral'}}></section>
+     <section className="page" style={{background:'lightyellow'}}></section>
+     <section className="page" style={{background:'lightpink'}}></section>
     </> 
 
   )
