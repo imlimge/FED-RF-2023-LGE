@@ -33,14 +33,33 @@ export function autoScroll() {
 
   /****************************************** 
     이벤트 등록하기
+    ->> 리액트와 제이쿼리로 이벤트 설정 시 리액트와 충돌되는
+    문제가 생길 수 있음. 현재 스크롤 휠 이벤트는 설정되지만
+    휠델타값이 안찍힘 (undefined) 
+    해결은 순수한 js로 이벤트를 설정한다
+    왜? 제이쿼리로 이벤트를 설정하면
+    제이쿼리 나름의 객체가 생성되어 처리되므로
+    이것을 단순화하여 이벤트를 걸면 휠 델타값이 처리됨
+
+    -> 방향키 이벤트도 순수 JS로 걸면 된다
     ******************************************/
   // 윈도우 휠이벤트 발생시
-  $(window).on("wheel", wheelFn);
+  // $(window).on("wheel", wheelFn);
+ window.addEventListener('wheel',wheelFn); 
 
   // 키보드 이벤트발생시 업데이트
   // 1. Page Up(33) / Up Arrow (38)
   // 2. Page Down(34) / Down Arrow (40)
-  $(document).keydown((e) => {
+  // 제이쿼리 이벤트 사용 안함
+  // $(document).keydown((e) => {
+  document.addEventListener('keydown',(e) => {
+
+    // 없는거랑 뭐가달라??
+     // 광휠금지
+    if (prot[0]) return;
+    chkCrazy(0);
+
+    console.log("휠~~~~~~!");
     // 이전페이지이동
     if (e.keyCode === 33 || e.keyCode === 38) {
       pno--;
