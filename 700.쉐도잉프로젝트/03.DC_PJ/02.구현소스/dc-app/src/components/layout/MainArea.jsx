@@ -1,6 +1,6 @@
 // MainArea 컴포넌트
 
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 
 export function MainArea() {

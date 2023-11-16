@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { Logo } from "../modules/Logo";
 import { menu } from "../data/gnb";
 
-import { faSearch} from "@fortawesome/free-solid-svg-icons";
+// 폰트어썸 불러오기
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 /******************************************************* 
   [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -28,7 +30,7 @@ export function TopArea() {
             <li>
               <Logo logoStyle="top" />
             </li>
-            {/* 2. GNB 메뉴 */}
+            {/* 2. GNB메뉴 데이터기반으로 li태그 생성하기 */}
             {menu.map((v, i) => (
               <li key={i}>
                 <Link to={v.link}>{v.txt}</Link>
@@ -37,26 +39,26 @@ export function TopArea() {
                   v.sub && (
                     <div className="smenu">
                       <ol>
-                        {v.sub.map((v, i) => (
+                        {
+                          v.sub.map((v,i)=>
                           <li key={i}>
                             <Link to={v.link}>{v.txt}</Link>
-                          </li>
-                        ))}
+                          </li>)
+                        }
                       </ol>
                     </div>
                   )
                 }
               </li>
             ))}
-            {/* 3. 검색,회원가입,로그인 */}
+            {/* 3. 검색,회원가입,로그인 링크 */}
             <li style={{marginLeft:'auto'}}>
-              {/* 검색기능 링크 - 클릭 시 검색창 보이기 */}
-              <a href="#" onClick="">
-                <FontAwesomeIcon icon={faSearch} />
+              {/* 검색기능링크 - 클릭시 검색창보이기 */}
+              <a href="#">
+              <FontAwesomeIcon icon={faSearch} />
               </a>
             </li>
-
-            {/* 회원가입, 로그인은 로그인 아닌 상태일 때 나옴 */}
+            {/* 회원가입, 로그인은 로그인 아닌 상태일때 나옴 */}
             <li>
               <Link to="/member">JOIN US</Link>
             </li>
@@ -65,7 +67,7 @@ export function TopArea() {
             </li>
           </ul>
           {/* 모바일용 햄버거 버튼 */}
-          <button className="hambtn" onClick=""></button>
+          <button className="hambtn"></button>
         </nav>
       </header>
     </>
