@@ -26,7 +26,7 @@ export function MainCont() {
   return (
     <>
       {/* 1. 배너 페이지 */}
-      <section id="ban" className="page" style={{ background: "lightblue" }}>
+      <section id="ban" className="page nonesel" style={{ background: "lightblue" }}>
         <Banner />
       </section>
 
@@ -45,8 +45,24 @@ export function MainCont() {
         <FashionIntro cat="style" />
       </section>
 
-      {/* 5. 하단 공통영역 */}
-      <section className="page" style={{ background: "lightpink" }}></section>
+      {/* 메인에만 나오는 사이드 인디케이터 */}
+      <nav className="indic">
+            <ul>
+                <li className="on">
+                    <a href="#ban"><span>배너</span></a>
+                </li>
+                <li>
+                    <a href="#men"><span>남성의류</span></a>
+                </li>
+                <li>
+                    <a href="#women"><span>여성의류</span></a>
+                </li>
+                <li>
+                    <a href="#style"><span>스타일</span></a>
+                </li>
+            </ul>
+        </nav>
+   
     </>
   );
 } //////// MainCont 컴포넌트 ///////
