@@ -28,25 +28,33 @@ function App(){
 
   //랜더링 후 실행구역 ///
   useEffect(()=>{
-    $('.gnb li, .indic li').click(function(){
-      // 순번변수
-      let idx = $(this).index()
-      console.log('나아냐',idx);
-   
-      //페이지 이동
-      $("html,body").animate({
-        scrollTop:
-        ($(window).height()*idx)+"px"
-      },800,"easeInOutQuint")  ////animate/////
-  
-   //클릭된 메뉴에 class 'on' 넣기    
-//찾아서 순번을 찾는경우는 동시에 안됨
-    // $('.gnb li, .indic li').eq(idx).addClass('on').siblings().removeClass('on');
-    $('.gnb li').eq(idx).addClass('on').siblings().removeClass('on');
-    $('.indic li').eq(idx).addClass('on').siblings().removeClass('on');
+    // 햄버거 버튼 클릭 시 전체 메뉴보이기/숨기기
+    $('.ham').click(e=>{
+      // 전체메뉴 박스 : .mbox
+      $('.mbox').fadeToggle(400);   
+      // 햄버거 버튼에 클래스 on
+      $(e.currentTarget).toggleClass('on')
+      // e.target과 e.currentTarget 는 다름
+      // e.currentTarget이 햄버거 버튼 자신
+      // function 과 this 써도 된다
+      // 지금은 화살표라서 this
 
-      
-    }); 
+   // 3. 비디오 재생/멈춤 : 대상 - .bgm
+      // get(0)은 비디오컬렉션임! -> 제이쿼리용
+      const vid = $('.bgm').get(0)
+      vid.paused? vid.play() : vid.pause();
+      // console.log(vid.paused);
+      // paused 속성 : 동영상 멈춤일때 true 리턴
+      // play() 메서드 : 동영상 재생 메서드
+      // pause() 메서드 : 동영상 정지 메서드
+
+
+
+
+
+    })
+
+
 
   }); ///useEffect ///////
 

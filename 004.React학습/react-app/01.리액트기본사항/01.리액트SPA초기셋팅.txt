@@ -42,11 +42,12 @@ npm uninstall -g create-react-app
 3. 새로운 리액트 어플리케이션을 만든다!
 (npx 명령어사용!)
 
-npx create-react-app my-react-app
+npm i
 (my-react-app은 내가지은이름)
 
 -> 아래이름으로 만들음
 npx create-react-app my-first-react-app
+npx create-react-app kairos-app
 
 ______________________________________________
 
