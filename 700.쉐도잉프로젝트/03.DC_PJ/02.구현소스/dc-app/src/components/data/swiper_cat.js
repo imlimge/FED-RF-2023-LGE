@@ -1,6 +1,6 @@
 // DC PJ 캐릭터 리스트 스와이퍼 사용 데이터
 
-const catListData =[
+export const catListData =[
 
   {
     idx: "1",

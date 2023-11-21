@@ -3,6 +3,11 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from "react-router-dom";
+
+// 캐릭터 리스트 데이터 가져오기
+import { catListData } from "../data/swiper_cat";
+
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,6 +21,13 @@ import "./css/swiper_cat.css";
 import { Navigation } from "swiper/modules";
 
 export function SwiperCat() {
+
+  // 선택데이터
+  const selData = catListData;
+
+
+
+
   // 불러올 이미지 리스트
   const imgArr = [
     "dcm28",
@@ -57,10 +69,26 @@ export function SwiperCat() {
         className="mySwiper2"
       >
         {
-            imgArr.map((v,i)=>
+            selData.map((v,i)=>
+            /* idx 고유번호가 7번 이하만 출력 */
+            Number(v.idx) <= 7 && (
+
             <SwiperSlide key={i}>
-                <img src={"./images/"+v+".jpg"} alt="list image" />
+              <Link to="/detail" >
+                <section className="sw-inbox2">
+                  {/* 캐릭터이미지영역 */}
+                  <div className="cat-img2">
+                    <img src={v.tmsrc} alt={v.cname} />
+                  </div>
+                  {/* 캐릭터타이틀영역 */}
+                <div className="cat-tit2">
+                <h3>{v.cname}</h3>
+                </div>
+                </section>
+              </Link>
             </SwiperSlide>)
+            )
+          
         }        
        
       </Swiper>
