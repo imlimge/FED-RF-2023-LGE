@@ -1,6 +1,10 @@
 // 메인 페이지 JS - index.js
 import React, { useEffect, useState } from 'react';
 import ReactDOM, { createRoot } from 'react-dom/client';
+//컨텍스트 API 불러오기
+import { pCon } from './modules/PilotContext';
+
+
 import { TopArea } from './layout/TopArea';
 import { MainArea } from './layout/MainArea';
 import { FooterArea } from './layout/FooterArea';
@@ -20,10 +24,13 @@ function App(){
   // 후크상태변수 설정 : 페이지변경
   const [pgName,setPgName] = useState('main');
 
+
+
   // 페이지변경 상태변수 업데이트 함수
   const chgPgName = (txt) => {
     setPgName(txt);
   }; ///////// chgPgName 함수 //////
+
 
 
   //랜더링 후 실행구역 ///
@@ -49,26 +56,21 @@ function App(){
       // pause() 메서드 : 동영상 정지 메서드
 
 
-
-
-
     })
 
-
-
-  }); ///useEffect ///////
+  },[]); ///useEffect ///////
 
 
 
 
   //// 리턴코드 /////////
   return(
-      <>
+  <pCon.Provider value={{chgPgName}}>
         <TopArea cat={pgName} />        
         <MainArea page={pgName} />
         <FooterArea />
-      </>
-  )
+  </pCon.Provider>
+  );
 
 } ///////////// App 컴포넌트 /////////////
 

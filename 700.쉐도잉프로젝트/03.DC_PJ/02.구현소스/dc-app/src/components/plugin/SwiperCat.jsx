@@ -60,10 +60,10 @@ export function SwiperCat() {
               slidesPerView: 2,
           },
           1000: {
-              slidesPerView: 3,
+              slidesPerView: 5,
           },
           1200: {
-              slidesPerView: 4,
+              slidesPerView: 7,
           },
         }}
         className="mySwiper2"
@@ -74,7 +74,15 @@ export function SwiperCat() {
             Number(v.idx) <= 7 && (
 
             <SwiperSlide key={i}>
-              <Link to="/detail" >
+              <Link 
+              to="/detail"
+              state={{
+                cname: v.cname,
+                cdesc: v.cdesc,
+                facts: v.facts,
+              }}
+              >
+                {/* 라우터 데이터전달은 state 속성에 객체로 보낸다 */}
                 <section className="sw-inbox2">
                   {/* 캐릭터이미지영역 */}
                   <div className="cat-img2">
