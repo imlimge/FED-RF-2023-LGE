@@ -1,0 +1,1878 @@
+@charset "utf-8";
+/* 카이로스 수학학원 사이트 - 메인 css */
+
+
+@import url(./reset.css);
+@import url(./core.css);
+@import url(./ani.css);
+
+
+
+
+
+html{
+  scroll-behavior: smooth;
+}
+
+h3,h4,p{
+  color: var(--dark-color);
+}
+
+h2{
+  font-family:var(--bold-font);
+  /* color: var(--point-color); */
+  
+}
+
+h3,h4{
+  font-family: 'GowunBatang-Regular';
+}
+article,p,span{
+  font-family: 'SUIT-Regular';
+}
+
+
+
+section{
+  height: 100vh;
+  background-color: var(--bright-color);
+}
+
+
+
+/* 각 파트 제목 */
+.tit{
+  padding-left: var(--margin-left);
+  padding-right: var(--margin-right);
+  padding-top: 10vh;
+  font-size: var(--bold-font-size);
+  text-align: right;
+  color: var(--point-color);
+}
+
+
+
+.back__line{
+  width: 100%;
+  height: 100%;
+  padding: 10%;
+  box-sizing: border-box;
+  border: 1px solid var(--dark-color);
+  position: fixed;
+  background-color: transparent !important;
+  user-select: none;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+
+
+.intro,.facility,.time_table,.notice,.contact {
+  position: relative;
+  height: 100vh;
+  background-color: var(--bright-color);
+  color: var(--dark-color);
+
+}
+
+
+/*------------------- 어두운 버전 -------------------- */
+.back__line .dark{
+  border: 1px solid var(--bright-color);
+}
+
+
+.dark{
+  background-color: var(--dark-color);
+  color: var(--point-color);
+  border-color: var(--bright-color) ; 
+  
+}
+
+
+.tit2{
+  color: var(--point-color);
+}
+
+.intro.dark .intro_op span{
+  color: var(--bright-color) !important;
+}
+
+
+
+.dark .img{
+  filter: invert(1);
+  mix-blend-mode: plus-lighter;
+}
+
+
+
+.contact.dark p{
+  color: var(--bright-color);
+}
+
+.time_table.dark .time_table_content .day{
+  border: 1px solid var(--dark-color);
+}
+
+.contact.dark span{
+  color: var(--point-color);
+}
+
+.contact__time.dark::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  top: 0;
+  right: 0;
+  background-color: var(--bright-color);
+  
+}
+
+.contact__box_title.dark{
+  border: 1px solid var(--bright-color) !important;
+  color: var(--bright-color);
+
+}
+
+.footer.dark{
+  background-color: var(--dark-color);
+  color: var(--bright-color);
+}
+
+.footer.dark p{
+  color: var(--bright-color);
+}
+.footer.dark address{
+  color: var(--bright-color);
+}
+
+
+
+/*------------------- 밝은 버전 -------------------- */
+
+.bright{
+  background-color: var(--bright-color);
+  color: var(--dark-color);
+  border-color: var(--dark-color) ; 
+}
+.notice.tit{
+  background-color: var(--bright-color);
+  color: var(--dark-color);
+}
+.notice.bright{
+  background-color: var(--bright-color);
+  color: var(--dark-color);
+  border-color: var(--dark-color) ; 
+}
+.accordion h3.bright{
+  border-top: 1px solid var(--dark-color);
+}
+
+.notice__title.bright{
+  background-color: var(--bright-color);
+  border-color: var(--dark-color);
+  color: var(--dark-color);
+
+}
+
+
+.notice_content.bright{
+  background-color: var(--color4);
+}
+
+
+/* _____________________  gnb _________________________ */
+
+#header{
+  position: relative;
+  z-index: 999;
+}
+
+
+.header{ 
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+}
+
+.gnb__box{
+  height: 100%;
+  position: relative;
+}
+
+.gnb__menu {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(13, 1fr);
+  justify-items: start;
+
+}
+
+.gnb__menu li{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-color: #fff;
+
+  border-left: 1px solid var(--dark-color);
+  border-right: 2px solid var(--dark-color);
+ }
+
+ .gnb__menu li a{
+  position: absolute;
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  line-height: 1.9;
+  display: inline-block;
+  transform: rotate(358deg);
+  color: var(--dark-color);
+  /* background-color: var(--bright-color); */
+  /* outline:1px solid #000; */
+  z-index: 1;
+  /* clip-path:  polygon(100% 0%, 90% 45%, 100% 88%, 0 100%, 0 55%, 0 12%); */
+  /* top: 10px; */
+
+  font-family:var(--bold-font);
+  font-size: var(--font-size);
+
+}
+
+
+.gnb__menu li a:hover{
+  color: var(--bright-color);
+}
+
+/* 네비게이션 아이템 책갈피 모양 */
+.gnb__menu li a::before{
+  content: '';
+  /* background: url(../images/nav_w.png) no-repeat; */
+  position: absolute;
+  left: 0;
+  width: 90px;
+  height: 30px;
+  background-color: var(--bright-color);
+  /* outline: 1px solid var(--dark-color); */
+  clip-path: polygon(100% 0%, 90% 45%, 100% 88%, 0 100%, 0 55%, 0 12%);
+  z-index: -1;
+  transform: rotate(2deg);
+}
+
+
+.gnb__menu li a::after{
+  content: '';
+  /* background: url(../images/nav_w.png) no-repeat; */
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 91px;
+  height: 32px;
+  background-color: var(--dark-color);
+  /* outline: 1px solid var(--dark-color); */
+  clip-path: polygon(100% 0%, 90% 45%, 100% 88%, 0 100%, 0 55%, 0 12%);
+  z-index: -2;
+  transform: rotate(2deg);
+}
+
+
+
+/* 네비게시연 아이템 on 되어있는 상태 */
+.gnb__item.on.gnb__item::before{
+  background-color: var(--dark-color);
+}
+.gnb__item.on.gnb__item::after{
+  background-color: var(--bright-color);
+}
+
+.gnb__menu li a.gnb__item.on {
+  color: var(--dark-color);
+}
+
+
+
+.gnb__menu li a:hover::before{
+  content: '';
+  background-color: var(--dark-color);
+
+}
+
+
+.gnb__menu li a::before{
+  content: '';
+  /* background: url(../images/nav_w.png) no-repeat; */
+  position: absolute;
+  left: 0;
+  width: 90px;
+  height: 30px;
+  background-color: var(--bright-color);
+  /* outline: 1px solid var(--dark-color); */
+  clip-path: polygon(100% 0%, 90% 45%, 100% 88%, 0 100%, 0 55%, 0 12%);
+  z-index: -1;
+  transform: rotate(2deg);
+}
+
+
+.gnb__menu li a::after{
+  content: '';
+  /* background: url(../images/nav_w.png) no-repeat; */
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 91px;
+  height: 32px;
+  background-color: var(--dark-color);
+  /* outline: 1px solid var(--dark-color); */
+  clip-path: polygon(100% 0%, 90% 45%, 100% 88%, 0 100%, 0 55%, 0 12%);
+  z-index: -2;
+  transform: rotate(2deg);
+}
+
+
+
+/* 네비게시연 아이템 on 되어있는 상태 */
+.gnb__item.on.gnb__item::before{
+  background-color: var(--point-color);
+}
+.gnb__item.on.gnb__item::after{
+  background-color: var(--bright-color);
+}
+
+
+
+
+
+
+/* 챗지피티에서 응용 : 원하는 바에 가까우나 왼쪽으로 몰리는게
+ 너무 궁금하고 이게 뭐지---------------------------------------- */
+
+ /* li요소에 아래의 클래스를 추가함 */
+ .vertical-lines {
+  position: relative;
+}
+
+.vertical-lines::before,
+.vertical-lines::after {
+  content: "";
+  position: absolute;
+  width: 5%; 
+  /* 세로선의 가로폭을 설정 (전체 가로폭 대비 비율로) */
+  background-color: var(--dark-color); /* 세로선의 색상을 설정하세요. */
+  height: 100%; /* 세로선의 높이를 조절하세요. */
+}
+
+.vertical-lines::before {
+  left: 30%; 
+  /* 첫 번째 세로선의 위치를 조절 (전체 가로폭 대비 비율로) */
+}
+
+.vertical-lines::after {
+  left: 60%;
+   /* 두 번째 세로선의 위치를 조절 (전체 가로폭 대비 비율로) */
+}
+
+/* 챗지피티에서 응용---------------------------------------- */
+
+
+
+
+
+
+
+.gnb__menu li:nth-child(1){
+  order: 2;
+}
+.gnb__menu li:nth-child(2){
+  order: 1;
+}
+.gnb__menu li:nth-child(3){
+  order: 3;
+}
+.gnb__menu li:nth-child(4){
+  order: 5;
+}
+.gnb__menu li:nth-child(5){
+  order: 4;
+}
+.gnb__menu li:nth-child(6){
+  order: 6;
+}
+
+
+
+.gnb__menu li:nth-child(1) a{
+  top: 65%;
+}
+.gnb__menu li:nth-child(2) a{
+  top: 70%;
+}
+.gnb__menu li:nth-child(3) a{
+  top: 75%;
+}
+.gnb__menu li:nth-child(4) a{
+  top: 80%;
+}
+.gnb__menu li:nth-child(5) a{
+  top: 85%;
+}
+.gnb__menu li:nth-child(6) a{
+  top: 90%;
+}
+
+
+/*_________________ 모바일 네비게이션 _________________*/
+.m-header{
+  width:100%;
+  /* height: 10%; */
+  position: fixed;
+  z-index: 9999;
+  display: none;
+  top: 0;
+  left: 0;
+}
+
+.m-gnb__box{
+  width: 100%;
+  position: relative;
+}
+
+.m-gnb__menu{
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+ }
+
+ .m-gnb__menu li{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-color: #fff;
+
+  border-top: 1px solid var(--dark-color);
+  border-bottom: 2px solid var(--dark-color);
+ }
+
+ .m-gnb__menu li a{
+  position: absolute;
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  line-height: 2;
+  display: inline-block;
+  color: var(--dark-color);
+  z-index: 1;
+  font-family:var(--bold-font);
+  font-size: 1.4rem;
+  transform: rotate(52deg) scale(0.7);
+}
+
+
+.m-gnb__menu li a::before{
+  content: '';
+  /* background: url(../images/nav_w.png) no-repeat; */
+  position: absolute;
+  left: 0;
+  width: 90px;
+  height: 30px;
+  background-color: var(--bright-color);
+  /* outline: 1px solid var(--dark-color); */
+  clip-path: polygon(26% 0 ,100% 0%, 88% 51%, 100% 144%, 0 100%, 0 50%, 0 99%);
+  z-index: -1;
+  /* transform: rotate(2deg); */
+}
+
+
+.m-gnb__menu li a::after{
+  content: '';
+  /* background: url(../images/nav_w.png) no-repeat; */
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 91px;
+  height: 32px;
+  background-color: var(--dark-color);
+  /* outline: 1px solid var(--dark-color); */
+  clip-path: polygon(27% 0 ,100% 0%, 88% 51%, 100% 144%, 0 100%, 0 50%, 0 99%);
+  z-index: -2;
+  /* transform: rotate(2deg); */
+}
+
+
+
+
+.m-gnb__menu li:nth-child(1) a{
+  left: 25.2%;
+}
+.m-gnb__menu li:nth-child(2) a{
+  left: 35.2%;
+}
+.m-gnb__menu li:nth-child(3) a{
+  left: 45.6%;
+}
+.m-gnb__menu li:nth-child(4) a{
+  left: 53%;
+}
+.m-gnb__menu li:nth-child(5) a{
+  left: 66.1%;
+}
+.m-gnb__menu li:nth-child(6) a{
+  left: 75%;
+}
+
+
+
+/* 네비게시연 아이템 on 되어있는 상태 */
+.m-gnb__item.on.m-gnb__item::before{
+  background-color: var(--point-color);
+}
+.m-gnb__item.on.m-gnb__item::after{
+  background-color: var(--bright-color);
+}
+
+.m-gnb__menu li a.m-gnb__item.on {
+  color: var(--bright-color);
+}
+
+.m-gnb__menu li:nth-child(1){
+  order: 2;
+}
+.m-gnb__menu li:nth-child(2){
+  order: 3;
+}
+.m-gnb__menu li:nth-child(3){
+  order: 4;
+}
+.m-gnb__menu li:nth-child(4){
+  order: 1;
+}
+.m-gnb__menu li:nth-child(5){
+  order: 6;
+}
+.m-gnb__menu li:nth-child(6){
+  order: 5;
+}
+
+
+/* _____________________  메인색  _________________________ */
+
+
+
+
+
+/* _____________________  상단 로고 및 토글버튼  _________________________ */
+
+
+.top-area{
+  width: 100%;
+  height: 60px;
+  position: fixed;
+
+
+  left: var(--margin-left);
+
+}
+
+/* 상단영역 로고 */
+.top-area .logo{
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  /* left: 20px; */
+}
+
+.top-area .logo img{
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+
+}
+
+
+.logo{
+  position: fixed;
+  top: 34px;
+  left: -28px;
+  width: 300px;
+}
+
+
+
+.logo img{
+  position: absolute;
+  width: 42%;
+
+  
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 0;
+  color: var(--dark-color);
+}
+
+.logo img:nth-child(1){
+  transform: scale(1);
+  animation: intro-rotate 8s linear infinite;
+  /* intro-scale 1.5s ease-in 1 ; */
+}
+
+.logo img:nth-child(2){
+  transform: scale(1);
+  /* animation: intro-scale2 1.5s ease-in 1 forwards ; */
+
+}
+
+
+/* .top-area .logo img:nth-child(2){
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  mix-blend-mode: difference;
+
+} */
+
+
+
+/* 상단 오른쪽 토글버튼 */
+.top-area .trans_btn__box{
+  width: 150px;
+  height: 24px;
+  position: absolute;
+  bottom: 0;
+  right: calc(var(--margin-left) + var(--margin-right));
+  border-radius: 50px;
+  background-color: var(--dark-color);
+  border: 1px solid var(--bright-color);
+  
+  /* transition: 1s; */
+}
+
+
+.trans_btn__box.dark{
+  background-color: var(--bright-color);
+  border: 1px solid var(--dark-color);
+}
+
+
+.top-area .trans_btn{
+  cursor: pointer;
+
+}
+
+.trans_btn span{
+  font-family: 'KOTRALEAP';
+}
+
+
+.trans_btn .btn{
+  display: inline-block;
+  width: 77px;
+  height: 24px;
+  border-radius: 50px;
+  text-align: center;
+  line-height: 1.3;
+  font-size: 1.7rem;
+  font-family:var(--bold-font);
+  box-sizing: border-box;
+    font-family: 'KOTRALEAP';
+}
+
+
+
+
+/* 혁신관 */
+.btn.m_btn{
+  
+  position: absolute;
+  left: 0px;
+  background-color: var(--bright-color);
+  border: 1px solid var(--dark-color);
+  transition: left .4s;
+}
+
+
+/* 혁신관 뒤글자 */
+.btn.b_btn1{
+
+  position: absolute;
+  left: 0px;
+  color: var(--dark-color);
+
+}
+
+
+
+
+/* 단계관 뒤글자 */
+
+.btn.b_btn2{
+  position: absolute;
+  right: 0;
+  color: var(--bright-color);
+ }
+
+
+
+.trans_btn .btn1 .part2{
+  position: absolute;
+
+  left: 0;
+  background-color: var(--bright-color);
+  border: 1px solid var(--dark-color);
+ 
+}
+
+
+
+.trans_btn .btn2 .part2{
+  position: absolute;
+  right: 0;
+  color: var(--bright-color);
+}
+
+
+
+/* _____________________  인트로  _________________________ */
+
+
+/* 인트로 */
+#intro{
+  height: auto;
+  padding-top: 26vh;
+  padding-left: var(--margin-left);
+  padding-right: var(--margin-right);
+}
+
+
+
+.intro_op{
+ position: sticky;
+ top: 20vh;
+}
+
+
+.intro_op span:nth-child(1){
+  font-family: 'KOTRALEAP';
+font-size: max(10vw,5.8rem);
+}
+.intro_op span:nth-child(2){
+  font-family: 'Merriweather', serif;
+font-size: max(10vw,5.8rem);
+}
+.intro_op span:nth-child(3){
+  font-family: 'Danjo-bold-Regular';
+font-size: max(10vw,5.8rem);
+}
+.intro_op span:nth-child(4){
+  font-family: 'Libre Baskerville', serif;
+font-size: max(10vw,5.8rem);
+}
+.intro_op span:nth-child(5){
+  font-family: 'KOTRALEAP';
+font-size: max(10vw,5.8rem);
+}
+
+
+.logo2{
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.logo2 img {
+  position: absolute;
+  width: 42%;
+  animation: intro-rotate 20s linear infinite;
+  /* left: 0; */
+  right: 0;
+  margin: 0 auto;
+  top: 180px;
+  color: var(--dark-color);
+  scale: 2;
+}
+
+
+
+
+.intro__content__warp{
+  
+}
+
+.intro__content{
+
+}
+
+.intro__item{
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 20px 20px 0 0;
+  width: 40vw;
+  height: 800px;
+  
+  position: relative;
+  padding: 9vw 5vw;
+
+  color: var(--bright-color);
+  box-sizing: border-box;
+}
+
+
+
+.intro__item h3{
+  font-size: 4vw;
+  line-height: 4.7vw;
+  margin-bottom: 5vh;
+  color: var(--point-color)
+}
+.intro__item h4{
+  font-size: 3vw;
+  line-height: 4vw;
+  margin-bottom: 5vh;
+  color: var(--bright-color)
+}
+
+
+.intro__item.intro1{
+  position: sticky;
+  top: calc(100vh + 20vh);
+}
+
+
+/* 인트로 내용 파트1 */
+.intro__item.intro2{
+  position: sticky;
+  top: 27vh;
+  background-color: var(--color1);
+}
+
+/* 인트로 내용 파트2 */
+.intro__item.intro3{
+  position: sticky;
+  top: 30vh;
+  background-color: var(--color2);
+}
+
+.intro__item article{
+    line-height: 1.5;
+    font-size: 1.4rem;
+   text-align: center;
+   display: inline-block;
+   margin: 3vh 0;
+ }
+
+
+/* 인트로 내용 파트3 */
+.intro__item.intro4{
+  position: sticky;
+  background-color: var(--color3);
+
+  height: 170vh;
+}
+
+
+.intro_bg{
+  width: 100%;
+  height: 100%;
+  scale:.8;
+  z-index: -1;
+  background-color: var(--color3);
+
+    background-color: var(--color3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    transition: 2s;
+  }
+  
+  .intro_bg.on{
+  
+    scale:2;
+
+  }
+
+
+.round__box{
+text-align: center;
+}
+
+.round__wrap{
+  display: flex;
+  justify-content: center;
+}
+
+.big-round {
+  position: relative;
+
+  width: 20vw;
+  aspect-ratio: 1;
+
+  border: 1px solid var(--point-color);
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  float: left;
+}
+
+.big-round.bx2 {
+  border: 1px dashed var(--point-color);
+}
+/* 회전하는 작은 원 */
+.small-round {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--point-color);
+  border-radius: 50%;
+  background-color: var(--point-color);
+  transition: 1s linear;
+  z-index: 1;
+}
+
+
+
+/* _____________________  강사소개  _________________________ */
+
+
+
+
+.about{
+  position: sticky;
+  top: 29vh;
+}
+
+
+.about__teacher{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* padding-left: var(--margin-left);
+  padding-right: var(--margin-right); */
+  box-sizing: border-box;
+  
+}
+
+
+.about__teacher.part1{
+  background-color: var(--bright-color);
+}
+
+
+
+.about__teacher.part2.on{
+
+  background-color: var(--dark-color);
+  color: var(--bright-color);
+}
+
+.about__box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+
+}
+
+
+.about__round{
+  position: relative;
+flex: 1;
+
+}
+
+.round__content{
+  top: 37%;
+  position: absolute;
+  left: 0;
+  right: 0;
+
+}
+.about__round h4{
+  color: var(--dark-color); 
+  font-size: min(3.5vw,2rem);
+  text-align: center;
+}
+
+.about__round span{
+  text-align: center;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.round{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+
+  border-radius: 50%;
+  border: 1px solid var(--dark-color);
+}
+
+
+
+
+/* _____________________  강사소개 2 _________________________ */
+
+
+
+.round.part2{
+  border: 1px dashed var(--bright-color);
+}
+
+.small-round.round2{
+  border: 1px solid var(--dark-color);
+}
+
+.about__content{
+  flex: 1;
+}
+
+.about__round.part2 h4{
+  color: var(--bright-color);
+}
+
+.about__title h3,h4{
+  
+  font-size: min(3.8vw,4rem);
+}
+
+
+.about__title.part2 h3,h4{
+color: var(--bright-color);
+
+}
+
+.about__title.part2 h3{
+  text-align: right;
+}
+
+.about__title h4{
+  font-size: min(4.5vw,2rem);
+  color: var(--point-color);
+}
+.about__title.part2 h4{
+  text-align: right;
+}
+
+.about__history{
+  line-height: 1.5;
+  font-size: 1.6rem;
+}
+
+
+.about__history span{
+display: block;
+padding: 1vh 5% 1vh 0;
+}
+
+.about__history .line{
+  margin-top: -8.1px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid var(--dark-color);
+  transform: scaleX(100%);
+  transform-origin: right;
+}
+
+
+/* .about__history span::after{
+  content: '';
+  position: absolute;
+  height: 24px;
+
+  border-bottom: 1px solid var(--dark-color);
+  right: 0;
+  left: 52.5%;
+} */
+
+
+
+
+.about__history.part2 span{
+text-align: right;
+padding: 1vh 0 1vh 15%;
+}
+
+.about__history.part2 .line{
+  margin-top: -8.1px;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid var(--bright-color);
+  transform: scaleX(100%);
+  transform-origin: left;
+}
+
+/* .about__history.part2 span::after{
+  border-bottom: 1px solid var(--bright-color);
+  left: 0;
+  right: 47.5%;
+}
+ */
+
+/* _____________________  슬라이드  _________________________ */
+
+.slide__wrap{
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* padding: 20vh 0; */
+}
+/* 오버프로우 히든하면 z인덱스 안먹히는거
+어떻게 해결하면 좋을까 */
+
+
+.slide{
+  height: 30px;
+  border:  1px solid var(--dark-color);
+  background-color: var(--point-color);
+  /* transform: scale(1.2) rotate(355deg) translate(2px, -40px); */
+}
+
+.slide__box{
+  position: relative;
+  /* JS에서 스크롤 시 레프트값 조절하여 이동 */
+  left: -30%;
+
+  display: flex;  
+
+  height: 100%;
+  width: 5500px;
+}
+
+
+.slide__text{
+  font-size: 3rem;
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+}
+
+.slide__text span{
+  font-family: 'Libre Baskerville', serif;
+  line-height: 1.3;
+}
+
+.slide__logo{
+  height: 100%;
+}
+.slide__logo img{
+    transform: scale(0.3);
+    transform-origin: top;
+}
+
+.slide_back{
+/* width: 100%;
+height: 37%;
+top: 0;
+background-color: var(--dark-color);
+position: absolute; */
+}
+
+.slide.slide2{
+ background-color: var(--bright-color);
+
+ }
+
+
+/* _____________________  광고  _________________________ */
+
+
+
+.cont{
+
+}
+
+.cont__box{
+  position: relative;
+  width: 100%;
+
+  background-color: var(--point-color);
+}
+
+.cont__content{
+  position: sticky;
+  top: 100px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.cont__title{
+
+  font-size: 3rem;
+  text-align: center;
+}
+.cont__title span{
+  font-family: 'GowunBatang-Regular';
+}
+
+.cont__img{
+  width: 300px;
+  height: 300px;
+  text-align: center;
+
+}
+.cont__img img{
+  height: 100%;
+  
+}
+
+
+/* _____________________  학원소개  _________________________ */
+
+#facility{
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+
+
+.photo{
+  position: relative;
+  overflow: hidden;
+  padding-top: 20vh;
+}
+
+.photo__box{
+  height: 100%;
+
+
+}
+
+
+.photo__item{
+  height: 44vh;
+  background-color: var(--dark-color);
+  position: relative;
+  border-radius: 20px;
+
+}
+
+.photo__item::before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: var(--point-color);
+  position: absolute;
+  border-radius: 20px;
+  top: 10px;
+  left: 10px;
+  mix-blend-mode: hue;
+}
+
+.photo__item:hover::before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: absolute;
+  border-radius: 20px;
+  top: 10px;
+  left: 10px;
+  transition: .3s;
+}
+
+.photo__item.on::before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: absolute;
+  border-radius: 20px;
+  top: 10px;
+  left: 10px;
+  transition: .3s;
+}
+
+.photo__item img{
+  border-radius: 20px;
+}
+
+.photo__title{
+  width: 100%;
+  height: 35px;
+  position: absolute;
+  bottom: 0;
+
+border-radius: 0 0 20px 20px;
+background: linear-gradient(transparent,#000);
+padding: 2% 0;
+}
+
+
+/* .photo__title::after{
+  content: '';
+  position: absolute;
+  width: 55%;
+  height: 1px;
+  background-color: var(--point-color);
+  top: 50%;
+  right: 5%;
+} */
+
+
+.photo__item h3{
+  bottom: 0;
+  color: var(--bright-color);
+
+  font-size: min(6vw,2rem);
+  text-align: left;
+  margin-left: 5%;
+}
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+
+.swiper-slide {
+
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+.swiper-slide:hover img{
+
+}
+/* _____________________  반소개  _________________________ */
+
+#about__class {
+  height: auto;
+}
+
+.about__class{
+  position: relative;
+
+  padding: 10vh 13vw;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.about__class-wrap{
+  display: flex;
+  justify-content: space-between;
+  gap: 1vw;
+  flex-direction: column;
+
+}
+
+
+
+
+.about__class__box {
+  
+  position: relative;
+  width: 300px;
+  height: 300px;
+
+  box-sizing: border-box;
+  /* border: 1px dashed var(--point-color);
+  */
+  
+  box-shadow:2px 2px 8px -5px;
+  border-radius: 50%;
+
+  text-align: center;
+  padding: 2.9vh 2vw;
+  
+
+
+}
+
+.about__sum{
+width: 100%;
+height: 100%;
+padding: 1vw 1vh;
+}
+
+
+
+.about__class__box h2{
+  font-size: 3rem;
+  margin: 5% 0;
+}
+
+.about__class__box article{
+  color: var(--dark-color);
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: bold;
+  padding: 1vw 0;
+
+}
+
+
+
+.about__class__box h3{
+  font-size: 2rem;
+  padding: 2vw 0;
+}
+.about__class__box h4{
+  font-size: 1.7rem;
+}
+.about__class__box p{
+  font-size: 1.6rem;
+}
+
+
+.about__class__box:hover .class__name__box-wrap{
+opacity: 1;
+
+} 
+
+
+.class__name__box-wrap{
+  display: flex;
+  gap: 1vw;
+  flex-direction: row;
+  opacity: 1;
+  position: absolute;
+  left: 111%;
+  top: 22%;
+}
+
+
+.class__name__box-wrap.on{
+  display: block;
+  
+}
+
+
+.class__name{
+  padding: 1vw;
+}
+
+.class__name__box{
+  border-radius: 20px;
+  flex: 1;
+  background-color: var(--point-color);
+  width: 200px;
+}
+
+.class__name h4{
+ 
+  display: inline-block;
+  border: 1px solid var(--dark-color);
+  border-radius: 20px;
+  padding: 1% 5%;
+  background-color: var(--dark-color);
+  color: var(--bright-color);
+  font-size: 1.6rem;
+}
+
+.class__name p{
+  padding: 4% 0;
+}
+
+
+/* _____________________  시간표  _________________________ */
+table {
+  width: 100%;
+  border: 1px solid #444444;
+  
+  border-collapse: collapse;
+}
+
+
+.Elementary{
+  padding-bottom: 3%;
+}
+
+#time_table{
+}
+
+.time_table_content{
+  width: 100%;
+  height: 90%;
+
+  text-align: center;
+  margin-bottom: 3%;
+
+  border-top: none; 
+  border-bottom: none; 
+  border-left: none;
+  border-right: none;
+  
+}
+
+.time_table__text {
+  width: 63%;
+  height: 50%;
+  position: absolute;
+  text-align: center;
+  line-height: 44;
+  font-size: 1.4rem;
+}
+
+/* 이미지 현재 없음 */
+.time_table_content img{
+  position: absolute;
+  transform: translate(-70%, -29%) scale(.8);
+  z-index: -1;
+}
+
+.time__table__radio{
+  position: relative;
+  text-align: right;
+  margin: 2% 0;
+}
+
+label{
+  font-size: 1.4rem;
+}
+.time_table__box{
+  position: relative;
+  width: 40%;
+  height: 75%;
+  box-sizing: border-box;
+
+
+  margin-right: var(--margin-right);
+  position: absolute;
+  right: 0;
+
+  font-size: 1.4rem;
+}
+
+
+.time_table_content .empty{
+  height: 2%;
+}
+
+
+
+.time_table_content .class-name{
+  border-radius: 20px 0 0 20px;
+  width: 30%;
+  background-color: var(--color1);
+  color: var(--bright-color);
+
+  font-family: 'GowunBatang-Regular';
+  font-weight: bold;
+}
+
+
+/* 시간표 각 파트 위에 호버하면
+배경백 바뀌는거 */
+.elementary.class-name:hover .time_table{
+ background-color: var(--ex1-color);
+}
+.middle:hover .time_table{
+  background-color: var(--ex2-color);
+}
+.high:hover .time_table{
+  background-color: var(--ex3-color);
+}
+
+.time:hover{
+  background-color: var(--point-color);
+}
+
+
+
+
+.time_table_content .class-part{
+  background-color: var(--color2);
+  color: var(--bright-color);
+  border: 1px dotted var(--dark-color);
+  position: relative;
+  width: 16%;
+
+  border-left: none;
+  border-right: none;
+  font-family: 'GowunBatang-Regular';
+  /* font-weight: bold; */
+}
+
+/* .class-part::after{
+  content: '';
+  height: 100%;
+  width: 115px;
+  background-color: var(--color2);
+  position: absolute;
+  left: -33px;
+  top: 0;
+  z-index: -1;
+
+} */
+
+.time_table_content .day{
+  background-color: var(--bright-color);
+  border: 1px solid var(--bright-color);
+  /* border-radius: 20px; */
+  width: 20%;
+  font-weight: bold;
+  background-color: #cdc9c3;
+  color: var(--dark-color);
+  
+
+}
+
+.time_table_content .time{
+  background-color: var(--bright-color);
+  border: 1px dashed var(--dark-color);
+  border-left: none;
+  width: 30%;
+  color: var(--dark-color);
+}
+
+
+
+.time_table_content .day.up{
+  /* border-radius:20px 20px 0 0; */
+  border-bottom: none;
+
+}
+.time_table_content .day.down{
+  border-top: none;
+  /* border-radius: 0 0 20px 20px; */
+}
+
+
+.time_table_content .time.up{
+  /* border-radius:0 20px 0 0; */
+  border-bottom: none;
+}
+.time_table_content .time.down{
+  /* border-radius:0 0 20px 0; */
+  border-top: none;
+}
+
+
+
+/* _____________________  큰로고  _________________________ */
+
+.image__logo{
+  width: 100%;
+  overflow: hidden;
+}
+
+.image__logo img{
+  left: 0;
+  position: relative;
+  width: 100%;
+}
+
+/* _____________________  공지사항  _________________________ */
+.notice{
+  background-color: var(--dark-color);
+
+}
+
+.notice .tit{
+  color: var(--point-color);
+}
+
+
+
+#notice{
+  position: relative;
+ /*  padding-left: var(--margin-left);
+  padding-right: var(--margin-right);
+  box-sizing: border-box; */
+}
+
+.accordion{
+  text-align: right;
+}
+.accordion h3{
+  font-size: 1.6rem;
+  border-top: 1px solid var(--bright-color);
+  padding: 1% 2%;
+  cursor: pointer;
+}
+
+
+.accordion p,ul,ol,li{
+  font-size: 1.6rem;
+  line-height: 1.3;
+  color: var(--bright-color);
+}
+
+
+.notice__box{
+  width: 100%;
+  height: 70%;
+  /* margin-left: 5%; */
+  margin-top: 5%;
+}
+
+.notice__title{
+  background-color: var(--dark-color);
+  border-color: var(--bright-color);
+  color: var(--bright-color);
+
+}
+
+.notice__title:hover{
+  background-color: var(--point-color);
+  transition: .5s;
+}
+
+
+.notice_content{
+background-color: var(--color2);
+height:auto;
+padding: 3% 2% 3% 30%;
+
+}
+
+/* _____________________  컨택트  _________________________ */
+.contact__box{
+  margin-left: var(--margin-left);
+  margin-right: var(--margin-right);
+  display: flex;
+  position: relative;
+  /* gap: 5%; */
+  flex-direction: column;
+  height: 77vh;
+}
+
+
+.contact__box_title{
+font-size: 1.6rem;
+margin: 3% 0;
+color: var(--dark-color);
+display: inline-block;
+border: 1px solid var(--dark-color);
+border-radius: 20px;
+padding: 1% 5%;
+}
+
+
+.contact__box p{
+  display: inline-block;
+  width: 100%;
+  font-size: 1.8rem;
+  margin-bottom: 3%;
+}
+.contact__box span{
+  display: inline-block;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  /* margin-bottom: 9%; */
+  color: var(--point-color);
+}
+
+.contact__map{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 20px;
+
+}
+.contact__map iframe{
+border: 1px solid #000;
+ 
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+
+.contact__time{
+  text-align: right;
+  flex: 1;
+  position: relative;
+  padding-right: 3%;
+}
+
+.contact__time::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  top: 0;
+  right: 0;
+  background-color: var(--dark-color);
+}
+.contact__address{
+
+  flex: 1;
+}
+.contact__number{
+
+  flex: 1;
+}
+
+.wrap1{
+  padding-top: 5%;
+  /* flex: 1; */
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.wrap2{
+  display: flex;
+  justify-content: space-around;
+
+  padding-top: 5%;
+  gap: 3%;
+
+  flex: 1;
+}
+
+.wrap3{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+
+
+
+
+/* _____________________  푸터  _________________________ */
+
+.footer{
+  background-color: var(--bright-color);
+  padding-left: var(--margin-left);
+  padding-right: var(--margin-right);
+  padding-top: 10%;
+  text-align: center;
+  color: var(--dark-color);
+}
+
+.footer__logo{
+
+  text-align: center;
+}
+.footer__logo img{
+
+  width: 29vw;
+
+}
+
+
+.footer__content{
+  display: inline-block;
+  height: 14vh;
+  font-size: 1.4rem;
+  padding-top: 15%;
+}
+
+
+
