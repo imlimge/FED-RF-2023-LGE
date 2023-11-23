@@ -101,24 +101,25 @@ export function TopArea() {
             {/* 3. 검색,회원가입,로그인 링크 */}
 
             <li style={{ marginLeft: "auto" }}>
-              {/* 검색입력창 */}
-              <div className="searchingGnb">
-                {/* 검색버튼 돋보기 아이콘  */}
+         {/* 검색입력박스 */}
+         <div className="searchingGnb">
+                {/* 검색버튼 돋보기 아이콘 */}
                 <FontAwesomeIcon
                   icon={faSearch}
                   className="schbtnGnb"
-                  title="Open Search"
+                  title="Open search"
                 />
                 {/* 입력창 */}
                 <input
                   id="schinGnb"
                   type="text"
-                  placeholder="Filter by keyword"
+                  placeholder="Filter by Keyword"
                   onKeyUp={enterKey}
                 />
               </div>
+              
               {/* 검색기능링크 - 클릭시 검색창보이기 */}
-              <a href="#">
+              <a href="#" onClick={showSearch}>
                 <FontAwesomeIcon icon={faSearch} />
               </a>
             </li>
