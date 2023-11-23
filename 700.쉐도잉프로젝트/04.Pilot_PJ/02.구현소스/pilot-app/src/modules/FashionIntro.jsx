@@ -3,6 +3,7 @@
 // 패션 인트로 데이터 불러오기
 import { fsData } from "../data/fashion_intro";
 
+
 // 패션 인트로 CSS 불러오기
 import "../css/fashion_intro.css";
 

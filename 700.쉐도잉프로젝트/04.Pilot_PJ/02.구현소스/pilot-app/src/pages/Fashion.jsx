@@ -1,24 +1,41 @@
 // 공통패션 서브 페이지 컨텐츠 컴포넌트
 
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
+
+// 컨텍스트 API 불러오기
+import { pCon } from '../modules/PilotContext';
+
+
+// 제이쿼리 호출
+import $ from "jquery";
+
 
 //공통 서브 CSS불러오기
 import "../css/fashion.css"
 import { SwiperApp } from "../plugin/SwiperApp";
 
-export function Fashion(props){
 
+
+
+export function Fashion(props){
+  // 컨텍스트 API 사용
+  const myCon = useContext(pCon);
 
   useEffect(()=>{
-    document.querySelector('html').style.overflow='visible';
-    document.querySelector('body').style.overflow='visible';
+    $('html,body').css({overflow:'visible'});
+    
+    //로고클릭 시 페이지 이동 : pgName 변경 - > chgPgName()
+    $('#logo a').click(()=>myCon.chgPgName('main'));
+
+    // document.querySelector('html').style.overflow='visible';
+    // document.querySelector('body').style.overflow='visible';
   },[])
 
   return(
     <>
       {/* 1. 배너영역 */}
       <section id="ban" className="page">
-        <SwiperApp />
+        <SwiperApp cat={myCon.pgName} />
       </section>
       {/* 2. 신상품영역 */}
       <section id="c1" className="cont c1 men"></section>

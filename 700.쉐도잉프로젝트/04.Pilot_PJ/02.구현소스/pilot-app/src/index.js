@@ -1,8 +1,12 @@
 // 메인 페이지 JS - index.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import ReactDOM, { createRoot } from 'react-dom/client';
-//컨텍스트 API 불러오기
+// 컨텍스트 API 불러오기
 import { pCon } from './modules/PilotContext';
+
+
+// 자동스크롤 JS 불러오기 >> MainCont로 옮겨져서 필요없음
+import { wheelFn,evtFn } from './func/jquery-autoScroll';
 
 
 import { TopArea } from './layout/TopArea';
@@ -56,16 +60,58 @@ function App(){
       // pause() 메서드 : 동영상 정지 메서드
 
 
-    })
+    }); //////// click ////////
 
   },[]); ///useEffect ///////
+
+
+  // 처음 로딩 시 스크롤 
+  useLayoutEffect(()=>{
+    window.scrollTo(0,0);
+  })
+
+
+
+
+
+ // 여기에 넣었었는데 >>> 지우는기능 MainCont 의 소멸자로 이동함
+
+  // 자동스크롤 적용 이벤트 설정하기
+  // useEffect(()=>{
+
+
+   
+
+    // ((중요))
+    // 특정이벤트를 설정해제하고자 할 때
+    // 반드시 그 이벤트 설정은 JS파일 내부에서 하지 말고
+    // 리액트 함수에서 JS 함수를 호출하는 형태로 해야
+    // 해제 메서드인 removeEventListener 가 유효함
+
+
+    // 메인페이지인 경우///
+    // if(pgName =='main'){
+    // 휠이벤트 적용하기
+    // window.addEventListener('wheel',wheelFn);
+    // 메뉴이벤트 설정함수
+    // evtFn();
+    // }
+    // 기타 서브페이지인 경우///
+    // else{
+      // 휠 이벤트 헤제하기
+      // window.removeEventListener('wheel',wheelFn);
+      // 익명함수는 해제 안 됨 > 함수 이름이 있어야지 지우기 가능 ()=>{} 이렇게 바로 쓰는경우 안 됨
+    // }
+
+
+  // }); ///useEffect ///////
 
 
 
 
   //// 리턴코드 /////////
   return(
-  <pCon.Provider value={{chgPgName}}>
+  <pCon.Provider value={{pgName,chgPgName}}>
         <TopArea cat={pgName} />        
         <MainArea page={pgName} />
         <FooterArea />
