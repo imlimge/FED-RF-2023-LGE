@@ -4,14 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../modules/Logo";
 import { menu } from "../data/gnb";
 
+// 컨텍스트 API
+import { dcCon } from "../modules/dcContext";
+
+// 제이쿼리
+import $ from 'jquery';
+
 // 폰트어썸 불러오기
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
-// 제이쿼리 호출
-import $ from "jquery";
-
+import { useContext } from "react";
 
 /******************************************************* 
   [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -23,41 +25,52 @@ import $ from "jquery";
   -> 여기서는 MainArea 컴포넌트에 출력!
 *******************************************************/
 export function TopArea() {
+  // 컨텍스트 API사용
+  const myCon = useContext(dcCon);
 
-  // 라우터 이동메서드 함수
-  const goNav = useNavigate();
-
-
-  // 검색 관련 함수들///////////////////
-    // 1. 검색창 보이기 함수
-  const showSearch = ()=>{
-    // 1. 검색창보이기
+  // 검색 관련 함수들 ////////////
+  // 1. 검색창 보이기함수
+  const showSearch = () => {
+    // 1. 검색창 보이기
     $('.searchingGnb').show();
     // 2. 입력창에 포커스 보내기
     $('#schinGnb').focus();
+  }; //////////// showSearch 함수 //////////
 
-  };//// showSearch ///
-
-
-
-  // 2. 입력창에 엔터키를 누르면 검색함수 호출
+  // 2. 입력창에 엔터키를 누르면 검색함수 호출!
   const enterKey = e => {
     // console.log(e.key);
-    // 엔터키는 'Enter' 문자열을 리턴함
-    if(e.key === 'Enter') goSearch();
+    // 엔터키는 'Enter'문자열을 리턴함!
+    if(e.key === 'Enter') {
 
-  };
+    // 입력창의 입력값 읽어오기 : val() 사용
+    let txt = $(e.target).val().trim();
+    // console.log(txt)
+    //빈값이 아니면 검색함수 호출(검색어전달)
+    if(txt!=''){
+      //입력창 부모박스 닫기
+      $(e.target).parent().hide();
+      //
+      goSearch(txt);
+    }
 
-  // 3. 검색 페이지로 검색어와 함께 이동하
-  const goSearch = ()=>{
-      console.log('나는 검색하러간다')
-     // 라우터 이동함수로 이동하기
-     goNav('/schpage',{state:{keyword:''}})
-
-  }; /// goSearch ////
   
+  } /// if ////
 
 
+
+  }; ////////// enterKey 함수 ////////////
+
+  // 3. 검색 페이지로 검색어와 함께 이동하기
+  const goSearch = (txt) => {  //txt는 검색어
+
+    console.log('나는 검색하러 간다');
+    // 라우터 이동함수로 이동하기 : 컨텍스트 API 사용
+    myCon.chgPage('/schpage',{state:{keyword:txt}})
+  }; //////////// goSearch 함수 /////////////
+
+
+  // 리턴코드 ///////////////////////////
   return (
     <>
       {/* 1.상단영역 */}
@@ -73,7 +86,7 @@ export function TopArea() {
             {menu.map((v, i) => (
               <li key={i}>
                 {
-                  // 하위메뉴가 있으면 일반 a 요소에 출력
+                  // 하위메뉴가 있으면 일반a요소에 출력
                   // 없으면 Link 라우팅 출력
                   v.sub ? (
                     <a href="#">{v.txt}</a>
@@ -81,7 +94,6 @@ export function TopArea() {
                     <Link to={v.link}>{v.txt}</Link>
                   )
                 }
-
                 {
                   // 서브메뉴 데이터가 있으면 하위 그리기
                   v.sub && (
@@ -99,10 +111,9 @@ export function TopArea() {
               </li>
             ))}
             {/* 3. 검색,회원가입,로그인 링크 */}
-
             <li style={{ marginLeft: "auto" }}>
-         {/* 검색입력박스 */}
-         <div className="searchingGnb">
+              {/* 검색입력박스 */}
+              <div className="searchingGnb">
                 {/* 검색버튼 돋보기 아이콘 */}
                 <FontAwesomeIcon
                   icon={faSearch}
@@ -117,13 +128,12 @@ export function TopArea() {
                   onKeyUp={enterKey}
                 />
               </div>
-              
+
               {/* 검색기능링크 - 클릭시 검색창보이기 */}
               <a href="#" onClick={showSearch}>
                 <FontAwesomeIcon icon={faSearch} />
               </a>
             </li>
-
             {/* 회원가입, 로그인은 로그인 아닌 상태일때 나옴 */}
             <li>
               <Link to="/member">JOIN US</Link>
@@ -139,8 +149,6 @@ export function TopArea() {
     </>
   );
 }
-
-
 
 /* 
   map()을 사용하여 태그를 생성할때
