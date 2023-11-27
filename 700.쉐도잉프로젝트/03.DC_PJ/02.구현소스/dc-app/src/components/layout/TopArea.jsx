@@ -13,7 +13,7 @@ import $ from 'jquery';
 // 폰트어썸 불러오기
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
 /******************************************************* 
   [ 리액트 라우터와 연결하여 사용되는 라우터 컴포넌트 ]
@@ -24,18 +24,42 @@ import { useContext } from "react";
   -> 라우터 연결 컴포넌트 출력자리 컴포넌트
   -> 여기서는 MainArea 컴포넌트에 출력!
 *******************************************************/
-export function TopArea() {
-  // 컨텍스트 API사용
-  const myCon = useContext(dcCon);
 
-  // 검색 관련 함수들 ////////////
+
+
+// 메모이제이션 단순적용 시 효과 없음
+// 컨텍스트 API가 전역적인 함수/변수를 전달하고 있어서 매번 새롭게 리랜더링 됨으로 인해
+// 메모이제이션 갱신을 하게끔 하기에 효과가 없는 것
+
+// -> 방법은? 컨텍스트 API 사용하지 말고 props로 전달하는 방식으로 전환하면 됨
+// -> React.memo는 전달속성이 변경됨을 기준하여 메모이제이션 기능을 제공하기 때문이다
+// ->> 전달되는 함수가 반드시 useCallback() 처리가 되어야 한다
+
+
+
+// export function TopArea(){
+export const TopArea = memo(({chgPageFn}) => {
+// 보통 props 등 전달변수만 쓰면 하위 속성명으로 값을 전달하지만
+// 중괄호{} 를 사용하면 속성명을 직접 사용할 수 있다
+
+  // 컴포넌트 호출확인
+  console.log('상단영역 호출');
+
+  // 컨텍스트 API사용
+  // const myCon = useContext(dcCon);
+
+// 검색 관련 함수들 ////////////
   // 1. 검색창 보이기함수
-  const showSearch = () => {
+  const showSearch = (e) => {
+    // 0. a요소 기본기능막기(리랜더링도 막는다!)
+    e.preventDefault();
     // 1. 검색창 보이기
     $('.searchingGnb').show();
     // 2. 입력창에 포커스 보내기
     $('#schinGnb').focus();
   }; //////////// showSearch 함수 //////////
+
+  
 
   // 2. 입력창에 엔터키를 누르면 검색함수 호출!
   const enterKey = e => {
@@ -66,7 +90,10 @@ export function TopArea() {
 
     console.log('나는 검색하러 간다');
     // 라우터 이동함수로 이동하기 : 컨텍스트 API 사용
-    myCon.chgPage('/schpage',{state:{keyword:txt}})
+    // myCon.chgPage('/schpage',{state:{keyword:txt}})
+    // 메모이제이션때문에 mycon 사용 안함
+
+    chgPageFn('/schpage',{state:{keyword:txt}})
   }; //////////// goSearch 함수 /////////////
 
 
@@ -148,7 +175,7 @@ export function TopArea() {
       </header>
     </>
   );
-}
+})
 
 /* 
   map()을 사용하여 태그를 생성할때

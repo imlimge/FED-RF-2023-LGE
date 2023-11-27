@@ -13,6 +13,7 @@ import $ from "jquery";
 //공통 서브 CSS불러오기
 import "../css/fashion.css"
 import { SwiperApp } from "../plugin/SwiperApp";
+import { SinSang } from "../modules/SinSang";
 
 
 
@@ -38,11 +39,14 @@ export function Fashion(props){
         <SwiperApp cat={myCon.pgName} />
       </section>
       {/* 2. 신상품영역 */}
-      <section id="c1" className="cont c1 men"></section>
+      <section id="c1" className={"cont c1 "+ myCon.pgName}>
+        <SinSang cat={props.cat} />
+      </section>
+
       {/* 2.5. 상세보기박스 */}
       <div className="bgbx"></div>
       {/* 3. 패럴랙스 */}
-      <section id="c2" className="cont c2 men"></section>
+      <section id="c2" className={"cont c2 "+ myCon.pgName}></section>
       {/* 4. 단일상품영역 */}
       <section id="c3" className="cont c3"></section>
       {/* 5. 스타일상품영역 */}
