@@ -34,6 +34,7 @@ export function VidSwipe(props){
             <h2 className="tit">{catTit[props.cat]}</h2>
             {/* 2. 스와퍼 컴포넌트 : SwiperVid -> 전달속성 cat은 데이터 선택을 위한*/}
             <SwiperVid cat={props.cat}/>
+
             {/* 3. 비디오 재생창 */}
             <section className="vid-bx">
                 {/* 비디오 중앙박스 */}
@@ -44,7 +45,9 @@ export function VidSwipe(props){
                     <iframe src="" allow="autoplay"></iframe>
                     {/* 닫기버튼 */}
                     <button className="cbtn">×</button>
+
                 </div>
+                
             </section>
         </section>
         </>
