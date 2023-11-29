@@ -14,6 +14,7 @@ import $ from "jquery";
 import "../css/fashion.css"
 import { SwiperApp } from "../plugin/SwiperApp";
 import { SinSang } from "../modules/SinSang";
+import { ItemDetail } from "../modules/ItemDetail";
 
 
 
@@ -44,7 +45,9 @@ export function Fashion(props){
       </section>
 
       {/* 2.5. 상세보기박스 */}
-      <div className="bgbx"></div>
+      <div className="bgbx">
+      <ItemDetail />
+      </div>
       {/* 3. 패럴랙스 */}
       <section id="c2" className={"cont c2 "+ myCon.pgName}></section>
       {/* 4. 단일상품영역 */}
