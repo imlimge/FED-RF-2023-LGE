@@ -54,6 +54,6 @@ console.log('코드',hcode);
 stage.innerHTML = hcode;
 
 // 6. 일정시간 뒤 등장클래스 .on 주기
-setTimeout(() => {
-  stage.classList.add('on');
-}, 2000);
+// setTimeout(() => {
+//   stage.classList.add('on');
+// }, 2000);
