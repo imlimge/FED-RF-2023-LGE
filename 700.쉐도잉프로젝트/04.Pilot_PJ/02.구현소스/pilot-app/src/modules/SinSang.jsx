@@ -1,6 +1,6 @@
 // 신상품 컴포넌트 ////////
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 // 신상품 데이터 가져오기
 import { sinsangData } from "../data/sinsang";
@@ -8,13 +8,18 @@ import { sinsangData } from "../data/sinsang";
 
 import $ from 'jquery';
 
-export function SinSang(props) {
+export function SinSang({cat,chgItemFn}) {
   // props.cat - 카테고리 분류명
+
+  // props.chgItmeFn - 선택상품정보 변경부모함수
+
+
+
 
 
   // 선택데이터
 
-  const selData = sinsangData[props.cat];
+  const selData = sinsangData[cat];
 
   const makeList = () => {
     // 코드 담을 배열
@@ -26,9 +31,11 @@ export function SinSang(props) {
         key={x}
         onMouseEnter={showInfo}
         onMouseLeave={removeInfo}>
-          <a href="#">
+          <a href="#" onClick={(e)=>{
+            e.preventDefault();
+            chgItemFn('m' + (x + 1))}}>
             <img
-              src={"./images/goods/" + props.cat + "/m" + (x + 1) + ".png"}
+              src={"./images/goods/" + cat + "/m" + (x + 1) + ".png"}
               alt="신상품"
             />
           </a>
@@ -54,17 +61,25 @@ export function SinSang(props) {
 
     tg.append(`<div class="ibox"></div>`)
 
-    // 3. 현재 li에 만든 .ibox에 데이터 넣기
-    tg.find('.ibox').html(selData[gKey].split('^')
-    .map((v)=>`<div>${v}</div>`))
+   // 3. 현재li에 만든 .ibox에 데이터 넣기+등장
+   tg.find('.ibox').html(
+    selData[gKey].split('^')
+    .map((v,i)=>`<div>${i==2?addComma(v)+"원":v}</div>`)
+  )
+  // 등장애니
+  .animate({
+    top: '110%',
+    opacity: 1,
+  },300)
 
-    // 등장애니
-    .animate({
-      top: '110%',
-      opacity : 1
-    },300)
+}; /////////// showInfo함수 ///////////////
 
-  }; //// showInfo //////
+
+//정규식함수(숫자 세자리마다 콤마해주는 기능)
+function addComma(x) {
+return x.toString()
+.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 
   // 정보박스 지우기 함수
@@ -74,9 +89,14 @@ export function SinSang(props) {
   };
 
 
+
+
+
   // 신상품 리스트 이동함수 사용변수 ///
-  // 위치값변수(left값)
-  let lpos = 0;
+  // 위치값변수(left값) -> 리앤더링시 기존값을 유지하도록
+  // useREf를 사용한다 - > 사용할 때 변수명.current로 사용!!!!!
+
+  let lpos = useRef(0);
   // 재귀호출 상태값(1-호출,0-멈춤)
   let callSts = 1;
   
@@ -85,18 +105,18 @@ export function SinSang(props) {
   const flowList = (ele) => { // ele-움직일대상
     // console.log(ele);
     // 대상의 left값을 1씩 감소함
-    lpos--;
+    lpos.current--;
     
     // 이미지박스 한개가 나가면 잘라서 맨뒤로 보냄
-    if(lpos < -300){
+    if(lpos.current < -300){
       // 위치값 초기화!(-301일때 0으로 변경!)
-      lpos = 0;
+      lpos.current = 0;
       // 첫번째 li 맨뒤로 이동
       ele.append(ele.find('li').first());
     } ///// if //////
     
     // 적용함
-    ele.css({left:lpos+'px'})
+    ele.css({left:lpos.current+'px'})
 
     // 재귀호출
     if(callSts)
@@ -121,7 +141,7 @@ export function SinSang(props) {
     flowList($('.flist'))
 
 
-  }); ////////// useEffect ////////
+  },[]); ////////// useEffect ////////
 
 
 
