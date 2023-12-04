@@ -71,13 +71,14 @@ domFn.addEvt(window,'scroll',moveSlide);
 function moveSlide(){
 
   // 스크롤 위치값 -> 불필요
-  // let scTop = window.scrollY;
+  let scTop = window.scrollY;
 
 
   // 1. 스티키 부모박스 바운딩 top값
 
   let bTop = domFn.getBCR(tpg);
-    // console.log('나야나',domFn.getBCR(tpg));
+    console.log('나야나',domFn.getBCR(tpg));
+    console.log('scTop',scTop);
 
 
  // 2. 바운딩값으로 대상 left위치 변경하기
