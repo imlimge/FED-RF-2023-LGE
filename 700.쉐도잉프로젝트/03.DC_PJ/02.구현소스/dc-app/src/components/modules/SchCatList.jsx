@@ -1,13 +1,8 @@
-// DC PC 캐릭터 검색결과 리스트 컴포넌트
-
+// DC PJ 캐릭터 검색결과 리스트 컴포넌트
 import { Link } from "react-router-dom";
 
-
-
-// 캐릭터 검색 리스트 CSS가져오기
-import "../../css/search_cat_list.css"
-
-
+// 캐릭터 검색 리스트 CSS 가져오기
+import "../../css/search_cat_list.css";
 
 export function SchCatList({dt,total}) {
   // dt - 검색된 배열데이터
@@ -19,9 +14,6 @@ export function SchCatList({dt,total}) {
   // 선택데이터 개수
   const selCnt = total;
 
-
-  
-  console.log(selData, selCnt);
   return (
     <>
       {
@@ -38,7 +30,7 @@ export function SchCatList({dt,total}) {
                     facts: v.facts,
                   }}
                 >
-                  <img src={v.tmsrc} alt={v.cname} />
+                  <img src={process.env.PUBLIC_URL+v.tmsrc} alt={v.cname} />
                   <h3>{v.cname}</h3>
                 </Link>
               </li>

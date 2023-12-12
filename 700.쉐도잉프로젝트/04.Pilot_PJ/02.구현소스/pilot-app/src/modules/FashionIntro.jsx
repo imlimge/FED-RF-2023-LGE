@@ -25,7 +25,6 @@ export function FashionIntro(props) {
   // 'women'일 경우 값을 셋팅
   if (props.cat == "women") newStyle.flexDirection = "row-reverse";
 
-  
   // 리턴 코드 ////////////////////////////
   return (
     <div id={props.cat} className="fs-page">

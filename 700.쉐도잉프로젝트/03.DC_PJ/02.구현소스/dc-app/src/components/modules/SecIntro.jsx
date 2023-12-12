@@ -41,7 +41,7 @@ export function SecIntro(){
                     {/* 1. 이미지박스 */}
                     <div className="imbx">
                         <img 
-                            src={v.isrc} 
+                            src={process.env.PUBLIC_URL+v.isrc} 
                             alt={v.tit.split('^')[0]} />
                     </div>
                     {/* 2. 타이틀박스 */}
@@ -54,7 +54,7 @@ export function SecIntro(){
                         <button 
                         onClick={()=>
                         // 컨텍스트 API 함수호출!
-                        myCon.chgPage(v.link)}>
+                        myCon.chgPage(v.link,{})}>
                             {v.btn.toUpperCase()}
                         </button>
                     </div>

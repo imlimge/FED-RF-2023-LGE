@@ -22,14 +22,10 @@ import { catListData } from "../data/swiper_cat";
 // 이유는 배열의 정렬정보가 컴포넌트에 포함될경우
 // 컴포넌트 리랜더링시 초기화 되므로 정렬이 변경되지 않는다!
 // 따라서 컴포넌트 바깥쪽 위에서 정렬된 원본 배열데이터를
-// 만들어준다! - > 외부 검색어로 검색을 위해 여기는 주석
-
-
+// 만들어준다! -> 외부검색어로 검색을 위해 여기는 주석!
 // catListData.sort((a,b)=>{
 //   return a.cname==b.cname?0:a.cname>b.cname?1:-1;
 // })
-
-
 
 // console.log(catListData);
 
@@ -39,7 +35,7 @@ export function Searching(props) {
   console.log("전달검색어:", props.kword);
 
   ////////// 후크 상태관리 변수 ////////////
-  // 1. 검색어 후크상태변수 : 초기값은 전달된 검색어 > 검색어 안넣음
+  // 1. 검색어 후크상태변수 : 초기값은 전달된 검색어 안넣음
   const [kword,setKword] = useState(null);
 
   // 2. 출력개수 후크상태변수
@@ -59,54 +55,36 @@ export function Searching(props) {
   // 검색어 업데이트 함수 /////
   const chgKword = txt => setKword(txt);
 
-
-
   // 검색 케이스 구분변수(useRef->값유지!)
   const allow = useRef(1);
   // 1-상단검색허용 , 0-상단검색불허용
   // useRef 변수 사용은 변수명.current
 
-
-  // 처음상태 구분변수(랜더링 이전 시점에 한번 실행 구분)
-  const firstSts = useRef(0)
-
+  // 처음상태 구분변수(랜더링이전 시점에 한번실행구분)
+  const firstSts = useRef(0);
 
   // 폰트어썸을 참조하는 테스트용 참조변수
   const xx = useRef(null);
   useEffect(()=>{
     //xx가 폰트어썸 컴포넌트를 담은후!
     console.log(xx);
-    // 테두리디자인
+    // 테두리디자인 줘봐요!
     xx.current.style.outline = '5px dotted orange';
   }); //// useEffect ///
-
-
-
-
-
-
-
 
   // 상단검색 초기실행함수 ///////
   const initFn = () => {
     // 넘어온 검색어와 셋팅된 검색어가 다르면 업데이트
     if(props.kword!=kword){ 
-
-      console.log('상단검색실행',props.kword,kword)
-
+      console.log('상단검색실행!',props.kword,kword);
       // 키워드 상태변수에 업데이트
       chgKword(props.kword);
       // 모듈검색 input창에 같은 값 넣어주기
       $('#schin').val(props.kword);
-
       // 검색리스트 만들기 함수 호출
       schList();
-
     } ///////// if ///////////
   } ///////// initFn 함수 ///////////
-
-
-
 
   // 만약 useRef변수값이 1이면(true면) initFn실행!
   if(allow.current) initFn();
@@ -114,39 +92,35 @@ export function Searching(props) {
   console.log('allow값:',allow.current);
 
 
-
-  function firstDo (){
-    console.log('처음한번만~!',props.kword);
-    const firstTemp = catListData.filter(v=>{
-      if(v.cname.toLowerCase().indexOf(props.kword.toLowerCase())!==-1) return true;
-    })
-    
-    firstTemp.sort((a,b)=>{
-      return a.cname==b.cname?0:a.cname>b.cname?1:-1;
-    })
   
-    console.log('처음결과:',firstTemp);
-    // 데이터변경 업데이트
-    setSelData([firstTemp,2]);
-    // 검색건수 상태관리변수 업데이트!
-    setCnt(firstTemp.length);
-    // 키워드 업데이트
-    chgKword(props.kword);
+
+function firstDo (){
+  console.log('처음한번만~!',props.kword);
+  const firstTemp = catListData.filter(v=>{
+    if(v.cname.toLowerCase().indexOf(props.kword.toLowerCase())!==-1) return true;
+  })
   
-  } ///////////// firstDo 함수 ////////
+  firstTemp.sort((a,b)=>{
+    return a.cname==b.cname?0:a.cname>b.cname?1:-1;
+  })
 
+  console.log('처음결과:',firstTemp);
+  // 데이터변경 업데이트
+  setSelData([firstTemp,2]);
+  // 검색건수 상태관리변수 업데이트!
+  setCnt(firstTemp.length);
+  // 키워드 업데이트
+  chgKword(props.kword);
 
-  //한번만 호출
-if(!firstSts.current){
+} ///////////// firstDo 함수 ////////
+
+// 한번만 호출 ////
+if(!firstSts.current) {
   firstDo();
-  firstSts.current =1;
-} /// if ////////
+  firstSts.current = 1;
+} //// if /////////////
 
-
-  useEffect(()=>{
-
-  },[])
-
+useEffect(()=>{},[])
 
 
 
@@ -160,7 +134,7 @@ if(!firstSts.current){
   //////////////////////////
   // 검색리스트 만들기 함수 //
   //////////////////////////
-  function schList (e){
+  function schList (e) {
     // 1. 검색어 읽어오기
     let keyword = $('#schin').val();
 
@@ -178,7 +152,7 @@ if(!firstSts.current){
     // 검색건수 상태관리변수 업데이트!
     setCnt(newList.length);
     
-  }; ///////////// schList 함수 /////////////
+  } ///////////// schList 함수 /////////////
 
   // 엔터키 반응 함수
   const enterKey = (e) => {
@@ -196,9 +170,7 @@ if(!firstSts.current){
       // 검색리스트만들기 함수 호출
       schList();
     } /////// if //////
-  } ////// enterKey 함수 //////
-
-
+  }; ////// enterKey 함수 //////
 
   ////////////////////////
   // 체크박스검색 함수 ////

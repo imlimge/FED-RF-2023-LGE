@@ -5,7 +5,7 @@ import "./css/index.css";
 
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
-import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom"
+import { HashRouter, BrowserRouter, Route, Routes} from "react-router-dom"
 import { Layout } from "./components/layout/Layout";
 import { Main } from "./components/pages/Main";
 import { Character } from "./components/pages/Charactor";
@@ -18,6 +18,8 @@ import { SwiperApp } from "./components/plugin/SwiperApp";
 import { CatDetail } from "./components/pages/CatDetail";
 import { Series } from "./components/pages/Series";
 import { SchPage } from "./components/pages/SchPage";
+import { Member } from "./components/pages/Member";
+import { Login } from "./components/pages/Login";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -54,11 +56,13 @@ import { SchPage } from "./components/pages/SchPage";
 // 출력해야하기 때문에 스스로 내보내기를 셋팅해야하는 것!
 export default function App() {
   return (
-    /* basename 속성은 package.json의 "homepage"속성값을 읽어옴 */
-    // <BrowserRouter basename={process.env.PUBLIC_URL}>
-  //  <BrowserRouter >
-  // basename을 안써도  HashRouter는 홈페이지 속성값을 자동으로 연결
-  <HashRouter>
+    /* basename속성은 package.json의 "homepage"속성값을 읽어옴 */
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    {/* <BrowserRouter> */}
+    
+    {/* basename 을 안써도 HashRouter는 package.json의 homepage 속성값을 
+    자동으로 연결함 */}
+    {/* <HashRouter> */}
       <Routes>
         {/* 중요!!! 레이아웃 컴포넌트를 루트로 설정! */}
         <Route path="/" element={<Layout />}>
@@ -68,21 +72,20 @@ export default function App() {
           <Route index element={<Main />} />
           <Route path="character" element={<Character />} />
           <Route path="comics" element={<Comics />} />
-          <Route path="movies" element={<Movies />}>
-                    <Route path="series" element={<Series />} />
-          </Route>
-          
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/series" element={<Series />} />
           <Route path="games" element={<Games />} />
           <Route path="news" element={<News />} />
           <Route path="video" element={<Video />} />
           <Route path="board" element={<SwiperApp />} />
           <Route path="detail" element={<CatDetail />} />
           <Route path="schpage" element={<SchPage />} />
+          <Route path="member" element={<Member />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
-      </HashRouter>
-
-    // </BrowserRouter>
+      {/* </HashRouter> */}
+    </BrowserRouter>
   );
 } ///////////// App 컴포넌트 ///////////////////
 
