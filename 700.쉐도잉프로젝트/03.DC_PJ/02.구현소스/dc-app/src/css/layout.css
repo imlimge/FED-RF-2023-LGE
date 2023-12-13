@@ -16,9 +16,8 @@ main.cont{
   background-color: #fff;    
   font-family: 'Ubuntu Condensed', sans-serif;
 }
-
 /* 로그인 환영메시지 박스 */
-.logmsg{
+.logmsg{    
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -138,7 +137,8 @@ input:focus{
 .info>ul>li:last-child{
   font-weight: bold;
 }
-.bmenu{
+/* 하단 ol>li>a 링크박스 */
+ol.bmenu{
   font-family: 'Ubuntu Condensed', sans-serif;
   display: flex;
   justify-content: center;
@@ -197,7 +197,6 @@ input:focus{
       padding: 0 20px;
       box-sizing: border-box;
       z-index: 9999;
-      overflow: hidden;
       transition: .4s ease-out;
   }
   .top-area.on{
@@ -208,6 +207,18 @@ input:focus{
 
 /* 1024px 이하 미디어쿼리 */
 @media screen and (max-width:1024px) {
+
+  /* 모바일 모드일때 넘치는 자식숨기기 */
+  .top-area{
+      overflow: hidden;
+  }
+
+  /* 로그인 환영메시지박스 */
+  .logmsg {
+      top: 18px;
+  }
+
+  /* GNB박스 */
   .gnb{
       background-color: #fff;
   }
@@ -280,6 +291,10 @@ input:focus{
       font-size: 11px;
       vertical-align: 2px;
       margin-left: 5px;
+  }
+  /* 서브메뉴 들어쓰기 없앰 */
+  .smenu{
+      text-indent: 0;
   }
   /* 검색박스 */
   .searchingGnb{
