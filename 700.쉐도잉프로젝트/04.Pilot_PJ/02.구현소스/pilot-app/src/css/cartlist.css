@@ -84,7 +84,7 @@
   width: 50px;
   transition: 0.4s ease-in 2s;
 }
-/* 개수표시박스 */
+/* 개수 표시박스 */
 #mycart .cntBx {
   text-align: center;
   font-size: 20px;
@@ -92,10 +92,41 @@
   color: blue;
   opacity: 0;
 }
-
 #mycart.on .cntBx {
-opacity: 1;  
-transition: .4s 2.5s;
+  opacity: 1;
+  transition: 0.4s 3s;
 }
 
+/* 수량증감 박스 */
+.cnt-part span,
+.cnt-part > div {
+  display: flex;
+}
+/* 입력창 */
+.item-cnt {
+  width: 20px;
+}
+/* 증감 이미지버튼 */
 
+#cartlist .btn-cnt img {
+  display: block;
+  width: 18px;
+}
+/* 반영 버튼 */
+.btn-insert {
+  position: absolute;
+  margin-left: 40px;
+  width: 34px;
+  white-space: nowrap;
+  padding: 0;
+  /* display: none; */
+  overflow: hidden;
+  width: 0;
+  transition: .1s .1s;
+}
+
+.item-cnt:focus+.btn-insert {
+/* display: inline-block; */
+width: 34px;
+transition: none;
+}
