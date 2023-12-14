@@ -1,24 +1,52 @@
 // OPINION 의견 게시판 컴포넌트
 // 게시판용 CSS
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import "../../css/board.css";
 // 기본데이터 제이슨 불러오기
 import baseData from "../data/board.json";
 
-// 초기데이터 셋업하기
-let org;
+//기본데이터 역순 정렬
+baseData.sort((a,b)=>{
+  return Number(a.idx)===Number(b.idx)?0:Number(a.idx)>Number(b.idx)?-1:1;
+})
+
+// 초기데이터 셋업하기 (원본데이터 담기)
+let orgData;
 // 로컬스가 있으면 그것 넣기
 if (localStorage.getItem("bdata"))
-  org = JSON.parse(localStorage.getItem("bdata"));
+  orgData = JSON.parse(localStorage.getItem("bdata"));
 // 로컬스 없으면 제이슨 데이터 넣기
-else org = baseData;
+else orgData = baseData;
+// 빈테이터 테스트
+// else orgData = [];
 
 // console.log(org)
 
+
+
+// *************************** Board 컴포넌트 ****************************/
+
 export function Board() {
+
+  // [ 컴포넌트 전체 공통변수 ]
+  // 1. 페이지단위수 : 한페이지 당 레코드 수
+  const pgBlock = 7;
+  // 2. 전체 레코드 수 : 배열데이터 총 개수
+  const totNum = baseData.length;
+  // 빈테이터 테스트
+  // const totNum = orgData.length;
+  console.log('페이지단위수:',pgBlock,"\n전체레코드수",totNum)
+
+  
+  
+  
+  
   // [ 상태관리 변수 셋팅 ] ///////
-  // 1. 데이터 변경변수 : 초기데이터로 셋팅
-  const [jsn, setJsn] = useState(org);
+  // 1. 현재 페이지 번호 : 가장 중요한 리스트 바인딩의 핵심
+  const [pgNum,setPgNum] = useState(1);
+
+  // 1. 데이터 변경변수 : 리스트에 표시되는 실제 데이터 셋
+  const [currData, setCurrData] = useState(null);
   // 2. 게시판 모드관리변수
   const [bdMode, setBdMode] = useState("L");
 
@@ -26,6 +54,146 @@ export function Board() {
   // C - 글쓰기 / R - 글읽기 / U - 글수정 / D - 글삭제(U에 포함)
   // 상태추가 : L - 글목록
   // 전체 5가지 상태값 : CRUD + L
+
+/************************************************** 
+ * 함수명:bindList
+ * 기능:페이지별 리스트를 생성하여 바인딩함
+ **************************************************/
+const bindList = () =>{
+  console.log('다시바인딩',pgNum)
+
+  
+  // 데이터 선별하기
+  const tempData = [];
+
+
+  //시작값 : (페이지번호-1)*블록단위수
+  let initNum = (pgNum-1)*pgBlock
+  //한계값 : 블록단위수*페이지번호
+  let limitNum = pgBlock*pgNum
+
+
+  console.log('시작값:',initNum,'\,한계값',limitNum)
+
+
+
+  // 데이터 선별용 for문 : 원본데이터(orgData)로 부터 생성
+  for(let i = initNum ; i<limitNum; i++) {
+    // 마지막 페이지 한계수체크
+    if(i>=totNum) break; 
+    // 코드 푸시
+    tempData.push(orgData[i]);
+  } //// for ////
+
+
+  console.log('결과셋:',tempData)
+
+  //데이터가 없는 경우
+if(tempData.length===0){
+
+return(
+<tr>
+ <td colSpan="5">There is no data.</td>
+</tr>
+)
+
+}
+
+// if문에 들어가지 않으면 여기를
+return(
+    tempData.map((v,i) =>
+      <tr key={i}>
+        {/* 일련번호 */}
+        <td>{(i+1) + initNum}</td>
+        {/* 글제목 */}
+        <td>
+          <a href="#" datatype={v.idx}>
+            {v.tit}
+          </a>
+        </td>
+        {/* 글쓴이 */}
+        <td>{v.writer}</td>
+        {/* 날짜 */}
+        <td>{v.date}</td>
+        {/* 조회수 */}
+        <td>{v.cnt}</td>
+     </tr>
+      )
+
+  
+  );
+
+  
+
+  }; //// bindList 함수 /////
+
+
+
+
+
+
+  /************************************************** 
+ * 함수명:pagingLink
+ * 기능:리스트 페이징 링크를 생성한다
+ **************************************************/
+const pagingLink = () => {
+
+  //페이징 블록만들기 ///
+  //1. 블록개수 계산하기
+  const blockCnt = Math.floor(totNum / pgBlock);
+  // 전체레코드수 / 페이지단위 (나머지가 있으면 +1)
+  // 전체레코드수 : pgBlock 변수에 할당
+  // 2. 블록 나머지수 
+  const blockPad = totNum % pgBlock; 
+  
+  // 최종한계수- > 여분 레코드 존재에 따라 1더하기
+  const limit = blockCnt + (blockPad === 0?0:1)
+  
+  console.log('블록개수:',blockCnt,'\n블록 나머지수:',blockPad,'\n최종한계수:',limit)
+
+
+  // 리액트에서는 jsx 문법 코드를 배열에 넣고
+  // 출력하면 바로 코드로 변환된다
+  let pgCode = [];
+  
+  //리턴코드
+  //만약 빈태그 묶음에 key를 심어야 할 경우 오류 -> Fragment조각 가상태그를 사용
+  for(let i=0; i<limit; i++){
+    pgCode[i] = 
+    <Fragment key={i}>
+    {pgNum-1===i ?    
+    (<b>{i+1}</b>) : 
+    (<a href="#" onClick={chgList}>{i+1}</a>)  }
+   
+    {i<limit-1?' | ':''} 
+    </Fragment>;
+  }; //for ///
+
+  return(pgCode);
+
+}; //// pagingLink 함수 ////
+
+
+
+/************************************************** 
+ * 함수명:chgList
+ * 기능:페이지 링크 클릭 시 리스트변경
+ **************************************************/
+const chgList = (e) => {
+  let currNum = e.target.innerText
+  console.log('번호:',currNum);
+  //현재 페이지번호 업데이트 -> 리스트 업데이트 됨
+  setPgNum(currNum);
+//바인드 리스트 호출 => 불필요  usestate가 사용되고 있음
+// ==> pgNum을 bindList 에서 사용하고있기 때문에 리랜더링이 자동으로 일어남
+// bindList();
+
+}; //// chgList /////
+
+
+
+
+
 
   // 리턴코드 /////////////
   return (
@@ -48,9 +216,9 @@ export function Board() {
 
             {/* 중앙 레코드 표시부분 */}
             <tbody>
-              <tr>
-                <td colSpan="5">There is no data.</td>
-              </tr>
+             
+              {bindList()}
+
             </tbody>
 
             {/* 하단 페이징 표시부분 */}
@@ -58,6 +226,7 @@ export function Board() {
               <tr>
                 <td colSpan="5" className="paging">
                   {/* 페이징번호 위치  */}
+                  {pagingLink()}
                 </td>
               </tr>
             </tfoot>
