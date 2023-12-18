@@ -48,6 +48,7 @@ npm i
 -> 아래이름으로 만들음
 npx create-react-app my-first-react-app
 npx create-react-app kairos-app
+npx create-react-app shop-app
 
 ______________________________________________
 
