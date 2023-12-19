@@ -107,7 +107,6 @@
   width: 20px;
 }
 /* 증감 이미지버튼 */
-
 #cartlist .btn-cnt img {
   display: block;
   width: 18px;
@@ -115,18 +114,29 @@
 /* 반영 버튼 */
 .btn-insert {
   position: absolute;
-  margin-left: 40px;
-  width: 34px;
+  margin-left: 43px;
   white-space: nowrap;
   padding: 0;
-  /* display: none; */
   overflow: hidden;
   width: 0;
   transition: .1s .1s;
+  /* display: none; */
+}
+/* 입력창에 포커스 갈때 다음형제요소 반영버튼 보이기 */
+.item-cnt:focus+.btn-insert{
+  /* outline: 10px dotted red; */
+  width: 34px;
+  transition: none;
+  /* display: inline-block; */
 }
 
-.item-cnt:focus+.btn-insert {
-/* display: inline-block; */
-width: 34px;
-transition: none;
+/* 페이징 파트 */
+.paging{
+  text-align: center;
+  padding: 20px 0;
+}
+.paging a, .paging b{
+  color: #222;
+  text-decoration: none;
+  font-size: 20px;
 }
