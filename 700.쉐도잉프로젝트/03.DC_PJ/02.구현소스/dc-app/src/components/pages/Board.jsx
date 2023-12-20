@@ -125,8 +125,6 @@ export function Board() {
       tempData.push(orgData[i]);
     } ///// for /////
 
-    
-
     // console.log("결과셋:", tempData);
 
     // 데이터가 없는 경우 출력 ///
@@ -288,6 +286,9 @@ export function Board() {
 
       setBdMode("R");
 
+      // 조회수 증가 함수 호출
+      plusCnt();
+
       // -> 아래의 방식은 스크립트로 DOM에 셋팅하는 방법
       // ->>> 리액트는 가상돔에 데이터를 셋팅하도록 해야함!
       // cData를 참조변수로 만들어서 미리 데이터를 셋팅했음!
@@ -396,20 +397,17 @@ export function Board() {
         };
 
         // console.log("입력전 준비데이터:", temp);
-        
+
         // 5. 원본임시변수에 배열데이터 값 push하기
         orgTemp.push(temp);
-        
+
         // console.log("최종반영 전체데이터:",  orgTemp);
 
         // 6. 로컬스에 반영하기
-        localStorage.setItem('bdata',
-        JSON.stringify(orgTemp))
+        localStorage.setItem("bdata", JSON.stringify(orgTemp));
 
         // 7. 리스트 페이지로 이동하기
-        setBdMode('L');
-
-
+        setBdMode("L");
       } //////// else //////////
     } ////// else if ///////
 
@@ -438,13 +436,12 @@ export function Board() {
 
       // 2. 통과시 실제 데이터 입력하기
       else {
-        
         // 2. 원본 데이터 변수할당
         let orgTemp = orgData;
 
         // 3. 원본에 해당 데이터 찾아서 업데이트하기
-        orgTemp.some(v=>{
-          if(Number(cData.current.idx)===Number(v.idx)){
+        orgTemp.some((v) => {
+          if (Number(cData.current.idx) === Number(v.idx)) {
             // 제목과 내용 업데이트하기
             v.tit = subEle.val().trim();
             v.cont = contEle.val().trim();
@@ -452,49 +449,37 @@ export function Board() {
             // 이코드를 만나면 여기시 순회종료!
             return true;
           } ///// if ////
-        }); /////// Array some /////        
+        }); /////// Array some /////
 
         // 4. 로컬스에 반영하기
-        localStorage.setItem('bdata',
-        JSON.stringify(orgTemp))
+        localStorage.setItem("bdata", JSON.stringify(orgTemp));
 
         // 5. 리스트 페이지로 이동하기
-        setBdMode('L');
-
+        setBdMode("L");
       } //////// else //////////
-    
     } ////// else if ///////
 
     //3.7. 삭제하기
-    else if(modeTxt === "D" && bdMode === "U"){
-      if(window.confirm('삭제하시겠습니까')){
+    else if (modeTxt === "D" && bdMode === "U") {
+      if (window.confirm("삭제하시겠습니까")) {
         // 데이터 순회하다가 해당 데이터이면 순번으로 splice(순번,1)사용 삭제
-        orgData.some((v,i)=>{
-          if(Number(cData.current.idx)===Number(v.idx)){
+        orgData.some((v, i) => {
+          if (Number(cData.current.idx) === Number(v.idx)) {
             // 해당 데이터의 순번으로 삭제
-            orgData.splice(i,1);
+            orgData.splice(i, 1);
 
             // 이코드를 만나면 여기시 순회종료!
             return true;
           } ///// if ////
-        }); /////// Array some /////  
-        
-          // 4. 로컬스에 반영하기
-          localStorage.setItem('bdata',
-          JSON.stringify(orgData))
-  
-          // 5. 리스트 페이지로 이동하기
-          setBdMode('L');
+        }); /////// Array some /////
 
-      }// if //
-    }// else if ///
+        // 4. 로컬스에 반영하기
+        localStorage.setItem("bdata", JSON.stringify(orgData));
 
-
-
-
-
-
-
+        // 5. 리스트 페이지로 이동하기
+        setBdMode("L");
+      } // if //
+    } // else if ///
   }; //////// chgMode 함수 ///////////
 
   // 사용자 비교함수 //////////
@@ -524,25 +509,122 @@ export function Board() {
       // 3. 로그인사용자 정보와 조회하기
       // 아이디로 조회함!
 
-      if(cUser){ // 할당안되면 undefined 이므로 할당 되었을때만 if문처리
+      if (cUser) {
+        // 할당안되면 undefined 이므로 할당 되었을때만 if문처리
 
-      const currUsr = JSON.parse(myCon.logSts);
-      if (currUsr.uid === cUser.uid) setBtnSts(true);
-      else setBtnSts(false);
-
+        const currUsr = JSON.parse(myCon.logSts);
+        if (currUsr.uid === cUser.uid) setBtnSts(true);
+        else setBtnSts(false);
       } ///if///
-      else{ // 사용자 비교값이 없는 경우
+      else {
+        // 사용자 비교값이 없는 경우
         setBtnSts(false);
       } /// else /////
-
-
- 
     } /////// if ////////////
     else {
       // 로그인 안한 상태 ////
       setBtnSts(false);
     } //////// else ///////////
   }; ///////// compUsr 함수 ////////
+  /************************************* 
+    * 함수명 : plusCnt
+    * 기능 : 게시판 조회수 증가 반영하기
+    * 조건 : 
+      (1) 자신의 글은 업데이트 안됨
+      (2) 한 글에 대해 한번만 업데이트 됨
+      -> 방법: 사용자가 방문한 글 고유번호를
+      배열에 기록하고 조회하여 같은 글인 경우 
+      업데이트를 막아준다!
+      (이때 배열은 세션스에 기록함! 이유는
+        브라우저 닫을 때 사라짐!)
+
+    * 업데이트 시점 : 글 읽기 모드에 들어간후
+  *************************************/
+  const plusCnt = () => {
+    // 0. 처음에 통과상태 설정하기
+    let isOK = true;
+    // 세션스에 등록된글 or 로그인사용자 글 일때 false처리!
+
+    // 1. [ 현재읽은 글은 cData.current로 읽어옴! ]
+    let cidx = cData.current.idx;
+    console.log("조회수 증가체크 idx:", cidx);
+
+    // 2. [ 세션스에 등록된 글 idx가 있는지 여부 확인하기 ]
+    // 세션스에 'cnt-idx' 없으면 만들기 ///////
+    if (!sessionStorage.getItem("cnt-idx"))
+      sessionStorage.setItem("cnt-idx", "[]");
+
+    // 세션스 파싱!
+    let cntIdx = JSON.parse(sessionStorage.getItem("cnt-idx"));
+
+    // 배열여부확인
+    console.log(Array.isArray(cntIdx));
+
+    // 3. [ 카운트 증가하기 조건검사 ] //////////
+
+    // 3-1. 세션스에 등록된 글번호만큼 돌다가 같은 글이면
+    // isOK값을 false로 처리함!
+    cntIdx.some((v) => {
+      if (Number(v) === Number(cidx)) {
+        isOK = false;
+        // 여기서 나감!(break역할!)
+        return true;
+      } /// if /////
+    }); /////////// some //////
+
+
+    // 3-2. 로그인한 사용자일 경우 로그인 사용자 계정과 같은 글이면 증가하지 않는다
+    if(localStorage.getItem('minfo')){
+      // 사용자 로그인정보 로컬스
+      let minfo = JSON.parse(localStorage.getItem('minfo'));
+      // 로그인 아이디
+      let cUid = minfo.uid;
+      
+      // 로그인 아이디 === 현재글 아이디 검사 통과 시
+      // isOK값 false처리로 조회수 증가 막기
+
+      if(cUid === cData.current.uid) isOK = false;
+      
+      console.log('로그인사용자 검사',cUid,isOK);
+
+
+    } /// if ////
+
+
+    // 4. [ 카운트 증가하기 ] ////////
+    if (isOK) {
+      // 로컬스 'bdata'에서 조회하여 업데이트함!
+      let data = JSON.parse(localStorage.getItem("bdata"));
+      data.some((v) => {
+        if (Number(v.idx) === Number(cidx)) {
+          // 기존 cnt항목의 숫자를 1증가하여 업데이트!
+          v.cnt = Number(v.cnt)+1;
+          // 여기서 나감!(break역할!)
+          return true;
+        } ////////// if //////////
+      });
+
+      // 원본 데이터에 반영하기 : 필수*** 꼭 해야만 리스트 업데이트 됨
+      orgData = data;
+
+      // 반영된 배열 데이터를 다시 'bdata' 로컬스에 넣기
+      localStorage.setItem('bdata',JSON.stringify(data));
+      
+    } //////////// if /////////////
+
+    // 5. [ 현재글 세션스에 처리하기 ] ////////
+    if(isOK){ // 조회수 증가일 경우에만 글번호 세션스 등록!
+      // 세션스 배열에 idx값 넣기
+      cntIdx.push(Number(cidx));
+  
+      console.log("넣은후:", cntIdx);
+  
+      // 세션스에 저장하기
+      sessionStorage.setItem("cnt-idx", JSON.stringify(cntIdx));
+    } /////////////// if //////////////
+  }; //////////// plusCnt 함수 /////////////
+
+
 
   // 리턴코드 ////////////////////
   return (
