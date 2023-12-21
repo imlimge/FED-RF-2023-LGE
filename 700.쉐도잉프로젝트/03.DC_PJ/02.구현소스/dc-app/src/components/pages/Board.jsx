@@ -569,7 +569,7 @@ export function Board() {
         isOK = false;
         // 여기서 나감!(break역할!)
         return true;
-      } /// if /////
+      } /// if ///// 
     }); /////////// some //////
 
 
