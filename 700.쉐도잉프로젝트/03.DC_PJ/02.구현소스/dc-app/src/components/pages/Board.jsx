@@ -38,13 +38,25 @@ let orgData;
 if (localStorage.getItem("bdata"))
   orgData = JSON.parse(localStorage.getItem("bdata"));
 // 로컬스 없으면 제이슨 데이터 넣기
-else orgData = baseData;
+else {
+  // 기본 데이터 제이슨에서 가져온것 넣기
+  orgData = baseData;
+  
+}
 // else orgData = [];
+
 
 // // console.log(org);
 
 // ******* Borad 컴포넌트 ******* //
 export function Board() {
+  
+  // 보드 데이터가 없으면 넣기
+  if(!localStorage.getItem("bdata")){
+  // 로컬스 'bdata'가 없으므로 여기서 최초 생성하기
+  // -> 조회수 증가 시 로컬스 데이터로 확인하기 때문에
+  localStorage.setItem('bdata',JSON.stringify(orgData));}
+
   // 기본사용자 정보 셋업 함수 호출
   initData();
 

@@ -128,3 +128,7 @@
   margin: min(0.8vw, 10px) 0;
   /* 마진: 위아래 양쪽 */
 }
+
+.inx{
+  background-color: #fff;
+}
