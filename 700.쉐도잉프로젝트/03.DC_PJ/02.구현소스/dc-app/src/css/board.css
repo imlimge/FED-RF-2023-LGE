@@ -1,8 +1,19 @@
-/* board.css */
-
 /* 게시판 모듈용 CSS - board.css  */
 
 /* CSS Document */
+
+/* 검색옵션박스 */
+.selbx {
+  max-width: 90%;
+  width: 950px;
+  margin: 0 auto;
+  padding: 20px 10px 10px;
+  box-sizing: border-box;
+}
+.selbx>*{
+  margin-right: 10px;
+}
+
 /*테이블 디자인*/
 .dtbl {
   /*테이블전체*/
@@ -43,29 +54,38 @@
   padding: 10px;
   /*위아래, 양쪽*/
   /*
-    padding은 안쪽 공간-> 기존박스가 커짐
-    padding: 위 오른 아래 왼;(4개)
-    padding: 위 오른왼 아래;(3개)
-    padding: 위아래 오른왼;(2개)
-    padding: 모든방향;(1개)
- */
+  padding은 안쪽 공간-> 기존박스가 커짐
+  padding: 위 오른 아래 왼;(4개)
+  padding: 위 오른왼 아래;(3개)
+  padding: 위아래 오른왼;(2개)
+  padding: 모든방향;(1개)
+*/
+}
+
+/* a요소 말줄임표시하기 */
+#board tbody td a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: min(361px,40vw);
 }
 
 /*각 th별 가로크기지정 */
 .dtbl th:nth-child(1){
-  width: 50px;
+  width: 5%;
 }
 .dtbl th:nth-child(2){
-  width: 420px;
+  width: 40%;
 }
 .dtbl th:nth-child(3){
-  width: 100px;
+  width: 30%;
 }
 .dtbl th:nth-child(4){
-  width: 100px;
+  width: 15%;
 }
 .dtbl th:nth-child(5){
-  width: 80px;
+  width: 5%;
 }
 
 .dtbl tbody tr td {
@@ -90,11 +110,11 @@
 }
 
 /*
- 가상 클래스 중
- :first-child - 첫번째 자식
- :last-child - 두번째 자식
- :nth-child(숫자) - 숫자번째 자식 (짝수 even, 홀수 odd 사용)
- 단, 자식 태그의 종류가 한가지 여야함~!!!!
+가상 클래스 중
+:first-child - 첫번째 자식
+:last-child - 두번째 자식
+:nth-child(숫자) - 숫자번째 자식 (짝수 even, 홀수 odd 사용)
+단, 자식 태그의 종류가 한가지 여야함~!!!!
 */
 /*짝수번째 배경색 넣기*/
 .dtbl tbody tr:nth-child(even) td {

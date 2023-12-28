@@ -67,7 +67,7 @@ export function Searching(props) {
   const xx = useRef(null);
   useEffect(()=>{
     //xx가 폰트어썸 컴포넌트를 담은후!
-    console.log(xx);
+    // console.log(xx);
     // 테두리디자인 줘봐요!
     xx.current.style.outline = '5px dotted orange';
   }); //// useEffect ///
