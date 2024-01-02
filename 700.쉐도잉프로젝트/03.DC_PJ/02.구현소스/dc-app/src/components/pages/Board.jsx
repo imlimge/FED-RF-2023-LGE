@@ -88,6 +88,11 @@ export function Board() {
   // 5. 검색상태 관리변수 : 값유지만 하도록 참조변수로 생성
   const searchSts = useRef(false);
 
+  // 6. 최초 랜더링시 상태관리변수 : 처음 한번만 내림차순적용하기
+  const firstSts = useRef(true);
+  // 주의: 참조변수는 최초 랜더링시에만 초기값 셋팅되고
+  // 리랜더링시엔 다시 셋팅되지 않는다!!!
+
   // 리랜더링 루프에 빠지지 않도록 랜더링후 실행구역에
   // 변경코드를 써준다! 단, logSts에 의존성을 설정해준다!
   useEffect(() => {
@@ -107,13 +112,16 @@ export function Board() {
     함수명 : sortData
     기능 : 내림차순정렬
   ****************************************/
-  function sortData (data) {
+  function sortData (data,arr) {
+    // arr은 배열값으로 
+    // 내림차순은 [-1,1]
+    // 오름차순은 [1,-1] 을 보내준다!
     return data.sort((a, b) => {
       return Number(a.idx) === Number(b.idx)
         ? 0
         : Number(a.idx) > Number(b.idx)
-        ? -1
-        : 1;
+        ? arr[0]
+        : arr[1];
     });
   } ////////////// sortData 함수 ////////////
 
@@ -124,20 +132,29 @@ export function Board() {
  const rawData = () => {
     // orgData를 로컬스 데이터로 덮어쓰기
     // 단, 내림차순으로 정렬하여 넣어준다!
-    orgData = sortData(JSON.parse(localStorage.getItem('bdata')));
+    // orgData = sortData(JSON.parse(localStorage.getItem('bdata'),[-1,1]));
+    orgData = JSON.parse(localStorage.getItem('bdata'),[-1,1]);
  }; ///////////// rawData /////////////
+
+ 
+ // 최초랜더링 시에만 한번 실행하기
+ if(firstSts.current)
+    sortData(orgData,[-1,1]);
 
   /************************************* 
     함수명 : bindList
     기능 : 페이지별 리스트를 생성하여 바인딩함
   *************************************/
   const bindList = () => {
+    // 바인드시 최초상태 false로 업데이트!
+    firstSts.current = false;
+    
     // console.log("다시바인딩!", pgNum);
     // 데이터 선별하기
     const tempData = [];
 
     // 내림차순 정렬 함수호출
-    sortData(orgData);
+    // sortData(orgData,[-1,1]);
 
     // 시작값 : (페이지번호-1)*블록단위수
     let initNum = (pgNum - 1) * pgBlock;
@@ -707,24 +724,28 @@ export function Board() {
     orgData = resData;
 
     // 6. 강제 리랜더링하기
-    // 조건 : 1페이지일때 실행
-    if(pgNum===1)  setForce(Math.random());
-    else setPgNum(1)
+    // 조건: 기존 1페이지 일때만 실행
+    // 다른 페이지에서 검색하면 1페이지로 변경(이때 리랜더링됨!)
+    if(pgNum===1) setForce(Math.random());
+    else setPgNum(1);
   }; ////////////// searchList 함수 //////////////
 
-
-  // 검색을 실행하고 다른 페이지로 이동할 경우
+  // 검색을 실행하고 다른페이지로 이동할 경우
   // 데이터가 검색된 것으로 남아있으므로
-  // 컴포넌트 소멸자로 원본 데이터 초기화 셋팅 함수를 사라질 때 불러준다
+  // 이때 소멸자로 원본 데이터 초기화 셋팅 함수를
+  // 호출해준다!!
   useEffect(()=>{
+    // 처음 한번 들어왔을때 내림차순 정렬은 효과 있는가?
+    // 화면 랜더링 전에 정렬을 해야 바로 반영되므로
+    // 여기서 정렬은 효과 없음!
+    // sortData(orgData,[-1,1]);
 
-    //소명자
+    // 소멸자
     return(()=>{
       rawData();
-    })
+    }); ///// return 소멸자 /////
 
-  }); //return 소멸자
-
+  },[]); /////// useEffect /////////
 
   // 리턴코드 ////////////////////
   return (
@@ -743,13 +764,30 @@ export function Board() {
                 <option value="cont">Contents</option>
                 <option value="unm">Writer</option>
               </select>
-              <select name="sel" id="sel" className="sel">
-                <option value="0">JungYeol</option>
+              <select name="sel" id="sel" className="sel" onChange={(e)=>{
+                // 선택값읽기
+                let opt = $(e.currentTarget).val();
+                console.log('선택값:',opt);
+                // 선택에 따른 정렬호출
+                if(Number(opt)===0) 
+                  sortData(orgData,[-1,1]);
+                else 
+                  sortData(orgData,[1,-1]);
+
+                  console.log(orgData);
+                  // 강제 리랜더링
+                  setForce(Math.random());
+              }}>
+                <option value="0">Descending</option>
                 <option value="1">Ascending</option>
-                <option value="2">Descending</option>
               </select>
-              <input id="stxt" type="text" maxLength="50" onKeyUp={(e)=>{if(e.code==='Enter')searchList()}} />
-              <button className="sbtn" onClick={searchList}>
+              <input id="stxt" type="text" maxLength="50" onKeyUp={(e)=>{
+                // 엔터칠때 검색실행!
+                if(e.code==='Enter')searchList();
+                // console.log(e.code);
+              }} />
+              <button className="sbtn" 
+              onClick={searchList}>
                 Search
               </button>
             </div>
@@ -942,8 +980,7 @@ export function Board() {
                       rawData();
                       setForce(Math.random());
                       $('#stxt').val('');
-                      $('#cta').val('tit');
-                      
+                      $('#cta').val('tit')
                     }}>
                       <a href="#">List</a>
                     </button>
@@ -951,7 +988,7 @@ export function Board() {
                 )
               }
               {
-                // 리스트 모드(L)
+                // 리스트 모드(L) : 로그인상태이면 쓰기버튼 보이기
                 bdMode === "L" && myCon.logSts !== null && (
                   <>
                     <button onClick={chgMode}>
