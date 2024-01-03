@@ -174,10 +174,10 @@ export function ItemDetail({ cat, goods }) {
       // 출력박스 : #total
       $("#total").text(addComma(ginfo[3] * num) + "원");
     });
-
     
   }, []); ////  한번만 실행 /////
 
+  
   // 리랜더링 실행구역 /////
   useEffect(() => {
     // 수량초기화
