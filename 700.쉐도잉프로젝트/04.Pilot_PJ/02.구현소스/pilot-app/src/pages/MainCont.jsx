@@ -19,8 +19,6 @@ export function MainCont() {
     // 랜더링 후 한번만 적용!
     // console.log("랜더링OK!");
     
-    // 스크롤바 없애기
-    $('html,body').css({overflow:'hidden'});
 
     // (((중요!!!))) /////////////////////////////
     // 특정이벤트를 설정해제하고자 할때
@@ -28,20 +26,35 @@ export function MainCont() {
     // 리액트 함수에서 JS함수를 호출하는 형태로해야
     // 해제 메서드인 removeEventListener 가 유효함!
 
-    // 자동스크롤 이벤트 설정하기 /////
-    window.addEventListener('wheel',wheelFn);
 
-    // 메뉴+인디케이터 이벤트 기능설정함수 호출 ////
-    evtFn();
 
-    // 초기화 함수 호출
-    initSet();
+    /// : 조건은 모바일 아닐 때 실행
+    // 모바일은 가로크기 800px이하
+    if($(window).width()>800){    
 
-    // 페이지번호 초기화 호출
-    zeroPno();
+      // 자동스크롤 이벤트 설정하기 //
+      window.addEventListener('wheel',wheelFn);
+      // 스크롤바 없애기
+      $('html,body').css({overflow:'hidden'});
+
+
+      initSet();
+
+      // 메뉴+인디케이터 이벤트 기능설정함수 호출 ////
+      evtFn();
+
+      // 페이지번호 초기화 호출
+       zeroPno();
+
+    } 
+
+ 
 
     //드래그배너 호출
     dragBanner();
+
+
+    
 
     // 컴포넌트 소멸자 : 이 컴포넌트가 삭제될때 호출됨 //
     return(()=>{
