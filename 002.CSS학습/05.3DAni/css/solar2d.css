@@ -312,3 +312,18 @@ body{
         transform: rotate(360deg) translateY(var(--pluto-trans-size)) rotate(-360deg);
     }
 } /* 명왕성회전 키프레임 */
+
+
+
+
+/* 태양계박스 축소확대용 부모박스 */
+.scbx{
+    position: relative;
+    top: 34%;
+    /* 트랜지션: 속시이지 */
+    transition: transform 2s ease-in-out;
+
+}
+
+
+
