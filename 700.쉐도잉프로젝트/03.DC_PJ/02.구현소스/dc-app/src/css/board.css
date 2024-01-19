@@ -62,12 +62,13 @@
 */
 }
 
-/* a요소 말줄임표시하기 */
+/* 보드 메인리스트 a요소 말줄임표시하기 */
 #board tbody td a {
   display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  /* 가로크기 지정(최대361px) */
   width: min(361px,40vw);
 }
 
@@ -163,6 +164,18 @@
   text-align: center;
 }
 
+/* 추가 첨부파일링크 */
+.dtblview td a,
+.dtblview td b {
+  font-size: 20px;
+  text-decoration: none;
+  color: #000;
+}
+.dtblview td a:hover{
+  text-decoration: underline;
+  color: #f00;
+}
+
 /* 버튼그룹 */
 .btngrp button{
   border-radius: 25px;
@@ -184,4 +197,19 @@
 }
 .btngrp button:hover a{
   color: #fff;
+}
+
+@media screen and (max-width:700px) {
+  /* 보기 모드 공통 */
+  .cont .dtblview {
+      width: 90vw;
+  }
+  .cont .dtblview td{
+      width: auto;
+      font-size: 16px;
+  }
+  .cont .dtblview input,
+  .cont .dtblview textarea {
+      width: calc(90vw - 64px);
+  }
 }

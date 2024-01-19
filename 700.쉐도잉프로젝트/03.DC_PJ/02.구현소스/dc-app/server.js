@@ -69,7 +69,9 @@ app.post('/upload', upload.single('file'),
 );
 
 
-
+app.use(express.urlencoded({extended:true})); 
+// url : Uniform Resource 
+app.use(express.json());
 
 
 
