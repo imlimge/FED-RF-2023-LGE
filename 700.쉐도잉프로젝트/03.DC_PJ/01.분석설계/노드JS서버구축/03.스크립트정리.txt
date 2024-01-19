@@ -1,0 +1,10 @@
+[ 명령어 스크립트 정리 ]
+
+1. 익스프레스 설치
+npm i express
+
+2. 서버 구동하기 : node js에 설치된
+node server
+
+3. 서버 멈추기 : ctrl+c -> 바로 서버 멈춤
+

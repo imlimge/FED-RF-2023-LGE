@@ -1,5 +1,6 @@
 {
-
+  "homepage": "http://localhost:8080/",
+  
   "name": "dc-app",
 
   "version": "0.1.0",
@@ -25,6 +26,8 @@
     "@testing-library/user-event": "^13.5.0",
 
     "axios": "^1.6.3",
+
+    "express": "^4.18.2",
 
     "jquery": "^3.7.1",
 
