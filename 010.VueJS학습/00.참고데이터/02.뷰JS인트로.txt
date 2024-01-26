@@ -13,4 +13,36 @@ Vue JS는 가상DOM을 만들어서 변경사항을 모두 수집하여
 미리 정의하여 가상돔에 올리기위한 모듈이다!
 
 -> Vue JS의 사용목적: 복잡한 웹 어플리케이션의 개발 및 유지보수
-를 쉽게하기 위해 등장한 JS 라이브러리다!
+를 쉽게하기 위해 등장한 JS 프레임워크다!
+
+-> SPA를 위해서 가장 좋다!
+Single Page Application ???
+예컨데 일반 웹페이지에 반복되는 부분과 변경되는 부분이 있다.
+보통 구현시엔 별도의 페이지로 메인페이지, 서브페이지 등으로
+만들게 된다! 그런데 SPA는 한 페이지 안에서 고정되는 부분은
+그대로 두고 변경되는 부분만 Vue JS로 구현할 수 있다!
+
+
+
+2. 참고 웹:
+1) Vue JS 본사설명서: 
+https://kr.vuejs.org/v2/guide/index.html
+
+2) 뷰JS 비교적 쉽운 입문서:
+고양이도 할 수 있는 Vue.js
+https://rintiantta.github.io/jpub-vue/
+
+
+
+3. Vue JS 기본 구현 구조
+ MVVM 모델을 기본으로 함
+ M - Model : 화면에 데이터를 구성하는 역할
+ V - View : 실제출력화면(DOM)
+ VM - View Model : 뷰 인스턴스 객체의 비즈니스를 구성하는 역할
+    -> VM은 모델과 뷰의 중간역할자임!
+
+참고 ) MVC 모델이 예전부터 유명한 개발모델
+(Model View Controler)
+
+
+
