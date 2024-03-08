@@ -68,13 +68,16 @@ const vm = new Vue({
 
   methods:{
     // 이미지 태그를 만들어서 리턴함
-    makeImg(val){ // val - 이미지 경로명
+    makeImg(val){ 
+      // val - 이미지명만 들어옴
+      // 오버시 이미지까지 2개의 이미지를 리턴함
       return `
-      <img src=""./images/${val}" alt="item">
+      <img src="./images/fashion1/${val}.jpg" alt="item">
+      <img src="./images/fashion2/${val}.png" alt="item">
       `;
     },
     //정규식함수(숫자 세자리마다 콤마해주는 기능)
-    numberWithCommas(x) {
+    addCommas(x) {
       return x.toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
@@ -106,16 +109,60 @@ const vm = new Vue({
       this.itemData.push(
         new GetList(
           i, // 일련번호
-          goods[rdm1], // 상품명
-          `fashion1/${i}.jpg`,
+          goods[rdm1]+i, // 상품명
+          `nanda_${i}`,// 이미지명
+          20000 * rdm2 // 상품가격
 
           )
         )
 
-    }
+    } /// for ////
+    // 생성된 상품 데이터 확인
+    console.log('itemData', this.itemData)
 
 
   }, /// created ////
+
+  // [ 뷰 랜더링 완료 단계 : mounted ]//
+  // -> JS, 제이쿼리등 DOM에 그려진 후 코딩해야 하는 것을
+  // 이 파트에 연결시킨다
+  mounted: function(){
+    // 랜더링 후 자동실행 구형
+    // 1. 제목 숨겼다 보이기
+    $('.tit').hide().delay(1000).slideDown(300);
+    // 2. 로고 왼쪽에서 날아오기
+    $('.logo')
+    .css({
+      position: 'relative',
+      opacity:0,
+      left:'-100%'
+    })
+    .animate({
+      opacity:1,
+      left:'0',
+
+    },800,'easeInOutQuint',()=>{
+      // 등장 후 콜백함수로 스크롤 이동
+  // 제이쿼리 로딩구역
+      // 정확한 사이즈를 위해
+          const ban = $('.gwrap');
+          const tit = $('.tit');
+console.log(ban.offset().top)
+    // 3. 스크롤 이동하기
+    $('html,body').delay(1000).animate({
+      scrollTop: ( ban.offset().top + tit.height())+'px'
+    },600,'easeInOutExpo');
+
+
+
+    });
+
+
+    
+ 
+
+
+  },  
 
 
 
